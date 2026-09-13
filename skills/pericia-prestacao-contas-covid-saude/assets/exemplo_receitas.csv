@@ -1,0 +1,8 @@
+data;fonte;origem;documento;valor
+20/03/2020;214-COVID;Portaria GM/MS 0001/2020 (exemplo fictício): custeio para enfrentamento da covid-19;OB FNS 2020/001;150000,00
+15/04/2020;214-COVID;Portaria GM/MS 0002/2020 (exemplo fictício): custeio para enfrentamento da covid-19;OB FNS 2020/002;250.000,00
+10/06/2020;LC173-SAUDE;LC 173/2020, art. 5º, I: auxílio financeiro para ações de saúde, parcela 1;OB STN 2020/101;120000,00
+10/07/2020;LC173-SAUDE;LC 173/2020, art. 5º, I: auxílio financeiro para ações de saúde, parcela 2;OB STN 2020/102;120000,00
+05/08/2020;215-COVID;Portaria GM/MS 0003/2020 (exemplo fictício): investimento em leitos covid-19;OB FNS 2020/003;100000,00
+30/09/2020;214-COVID;Rendimento de aplicação financeira da conta específica;Extrato 09/2020;1250,40
+15/01/2021;214-COVID;Devolução ao FNS de saldo não aplicado (GRU);GRU 2021/01;-20000,00

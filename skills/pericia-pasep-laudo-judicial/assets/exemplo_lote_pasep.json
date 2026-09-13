@@ -1,0 +1,179 @@
+{
+  "skill": "pericia-pasep-laudo-judicial",
+  "versao_registro": "1.0.0",
+  "perito": "Perita fictícia, CRC 000000",
+  "criado_em": "12/09/2026",
+  "atualizado_em": "12/09/2026",
+  "locale": "pt-BR (R$ 1.234,56; 12,5%; dd/mm/aaaa)",
+  "premissas": {
+    "isolamento": "cada processo tem registro, extrato, caso.json e quadro de cenários próprios; nada é copiado entre processos",
+    "prazos": "prazo_laudo e prazo_esclarecimentos são datas fixadas ou calculadas pela perita; o painel apenas mede a distância até elas",
+    "calculo": "nenhum valor monetário é tratado aqui; usar o motor da skill pericia-pasep"
+  },
+  "processos": [
+    {
+      "id": "P-001",
+      "numero": "0000001-00.0000.0.00.0000",
+      "justica": "Justiça Federal",
+      "vara": "3ª Vara Federal Cível",
+      "comarca": "Seção Judiciária fictícia",
+      "autor": "João dos Santos (autor)",
+      "reus": [
+        "Banco do Brasil S.A.",
+        "União"
+      ],
+      "polo_demandado": "LITISCONSORCIO",
+      "data_nomeacao": "20/07/2026",
+      "data_saneamento": "10/07/2026",
+      "objeto_saneamento": "Apurar a evolução do saldo da conta PASEP do autor desde a abertura, identificar as saídas e sua modalidade, e quantificar eventuais diferenças em cenários por polo passivo, sem decidir prescrição.",
+      "prazo_laudo": "30/10/2026",
+      "modalidades_alegadas": [
+        "CAIXA-BB"
+      ],
+      "quesitos": {
+        "juizo": 3,
+        "autor": 7,
+        "reu": 9
+      },
+      "documentos": {
+        "extrato_analitico": "recebido",
+        "microfilmagem": "pendente",
+        "rais": "recebido",
+        "contracheques": "nao_aplicavel",
+        "conta_destino": "nao_aplicavel"
+      },
+      "status": "calculo",
+      "assistente_autor": "indicado",
+      "assistente_reu": "não indicado",
+      "honorarios": "arbitrados; 50% levantado (CPC art. 465, § 4º)",
+      "proxima_acao": "Rodar conciliacao_pasep.py e cenarios_atualizacao.py da pericia-pasep com o caso.json do P-001",
+      "observacoes": "Alegação de dois saques em caixa em 1998 e 2003; BB ainda não juntou microfilmagem.",
+      "historico": [
+        {
+          "data": "12/09/2026",
+          "evento": "adicionado ao lote",
+          "alteracoes": {}
+        }
+      ],
+      "prazo_esclarecimentos": "",
+      "versao_laudo": ""
+    },
+    {
+      "id": "P-002",
+      "numero": "0000002-00.0000.0.00.0000",
+      "justica": "Justiça Estadual",
+      "vara": "2ª Vara Cível",
+      "comarca": "Comarca fictícia",
+      "autor": "Maria da Silva (autora)",
+      "reus": [
+        "Banco do Brasil S.A."
+      ],
+      "polo_demandado": "BB",
+      "data_nomeacao": "05/08/2026",
+      "data_saneamento": "28/07/2026",
+      "objeto_saneamento": "Verificar os saques lançados na conta PASEP da autora, sua modalidade e comprovação, e apurar o saldo que existiria sem as saídas impugnadas.",
+      "prazo_laudo": "25/09/2026",
+      "modalidades_alegadas": [
+        "CAIXA-BB",
+        "FOPAG"
+      ],
+      "quesitos": {
+        "juizo": 2,
+        "autor": 5,
+        "reu": 6
+      },
+      "documentos": {
+        "extrato_analitico": "parcial",
+        "microfilmagem": "pendente",
+        "rais": "recebido",
+        "contracheques": "pendente",
+        "conta_destino": "nao_aplicavel"
+      },
+      "status": "diligencia",
+      "assistente_autor": "indicado",
+      "assistente_reu": "indicado",
+      "honorarios": "proposta apresentada; aguardando arbitramento",
+      "proxima_acao": "Expedir ofício ao BB pelo extrato desde 1985 e microfilmagem",
+      "observacoes": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985. | 12/09/2026: Termo de diligência protocolado",
+      "historico": [
+        {
+          "data": "12/09/2026",
+          "evento": "adicionado ao lote",
+          "alteracoes": {}
+        },
+        {
+          "data": "12/09/2026",
+          "evento": "atualização",
+          "alteracoes": {
+            "status": {
+              "de": "diligencia",
+              "para": "diligencia"
+            },
+            "proxima_acao": {
+              "de": "Expedir termo de diligência: extrato analítico desde a abertura e microfilmagem dos saques",
+              "para": "Expedir ofício ao BB pelo extrato desde 1985 e microfilmagem"
+            },
+            "observacoes": {
+              "de": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985.",
+              "para": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985. | 12/09/2026: Termo de diligência protocolado"
+            },
+            "documentos.microfilmagem": {
+              "de": "pendente",
+              "para": "pendente"
+            },
+            "quesitos.reu": {
+              "de": 4,
+              "para": 6
+            }
+          }
+        }
+      ],
+      "prazo_esclarecimentos": "",
+      "versao_laudo": ""
+    },
+    {
+      "id": "P-003",
+      "numero": "0000003-00.0000.0.00.0000",
+      "justica": "Justiça Federal",
+      "vara": "1ª Vara Federal",
+      "comarca": "Subseção Judiciária fictícia",
+      "autor": "Pedro Oliveira (autor)",
+      "reus": [
+        "União"
+      ],
+      "polo_demandado": "UNIAO",
+      "data_nomeacao": "08/09/2026",
+      "data_saneamento": "01/09/2026",
+      "objeto_saneamento": "Apurar diferenças de correção monetária e rendimentos do saldo PASEP do autor entre 1988 e 2020, confrontando os índices creditados com os percentuais oficiais do Conselho Diretor.",
+      "prazo_laudo": "20/11/2026",
+      "modalidades_alegadas": [],
+      "quesitos": {
+        "juizo": 0,
+        "autor": 0,
+        "reu": 0
+      },
+      "documentos": {
+        "extrato_analitico": "recebido",
+        "microfilmagem": "nao_aplicavel",
+        "rais": "pendente",
+        "contracheques": "nao_aplicavel",
+        "conta_destino": "nao_aplicavel"
+      },
+      "status": "nomeado",
+      "assistente_autor": "",
+      "assistente_reu": "",
+      "honorarios": "",
+      "proxima_acao": "Apresentar proposta de honorários, currículo e contatos em 5 dias (CPC art. 465, § 2º)",
+      "observacoes": "Sem saques impugnados; discussão restrita a índices e expurgos.",
+      "historico": [
+        {
+          "data": "12/09/2026",
+          "evento": "adicionado ao lote",
+          "alteracoes": {}
+        }
+      ],
+      "prazo_esclarecimentos": "",
+      "versao_laudo": ""
+    }
+  ]
+}

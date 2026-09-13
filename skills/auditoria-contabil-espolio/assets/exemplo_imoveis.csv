@@ -1,0 +1,5 @@
+id;descricao;pais;moeda;situacao;aluguel_contratual;aluguel_mercado;fonte_mercado;ocupante;fracao_ocupante;marco_inicial;fim;encargos_pagos_espolio
+IM01;Apartamento na Rua Beta, 100, São Paulo, SP (matrícula 00.000);Brasil;BRL;locado;3.000,00;3.200,00;Anúncios de imóveis equivalentes, fls. 220 a 225;;;10/01/2024;;
+IM02;Casa na Rua Gama, 200, Campinas, SP (matrícula 00.001);Brasil;BRL;ocupado_herdeiro;;4.000,00;Laudo de avaliação de fl. 210;Pedro Alfa (herdeiro);1/4;01/07/2024;;11.400,00
+IM03;Apartamento na Rua Delta, 3, Lisboa, Portugal (caderneta predial 000000);Portugal;EUR;locado;1.200,00;1.300,00;Portal de anúncios e INE, fl. 230;;;10/01/2024;;
+IM04;Sala comercial na Avenida Épsilon, 400, São Paulo, SP (matrícula 00.002);Brasil;BRL;vago;;1.500,00;Anúncios de salas equivalentes, fl. 226;;;01/01/2025;;

@@ -1,0 +1,5 @@
+[
+  {"descricao": "Lucros do exercício 2021 deliberados em reunião de sócios", "tipo": "lucros", "data_deliberacao": "30/04/2022", "valor_socio": "12.500,00", "pago": "0,00", "fonte": "Ata de 30/04/2022, fls. 88 (dado fictício)"},
+  {"descricao": "Lucros do exercício 2022 deliberados em reunião de sócios", "tipo": "lucros", "data_deliberacao": "28/04/2023", "valor_sociedade": "60.000,00", "pago": "0,00", "fonte": "Ata de 28/04/2023, fls. 92 (dado fictício)"},
+  {"descricao": "Lucros do exercício 2024 deliberados em reunião de sócios", "tipo": "lucros", "data_deliberacao": "30/04/2025", "valor_socio": "10.000,00", "pago": "4.000,00", "fonte": "Ata de 30/04/2025, fls. 96; comprovante de pagamento parcial, fls. 98 (dado fictício)"}
+]

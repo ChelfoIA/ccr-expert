@@ -1,0 +1,15 @@
+data;item;quantidade;preco_unitario;nf;cliente
+28/03/2025;CIM-50;30;39,90;4990;Construtora Beta Ltda.
+02/04/2025;CIM-50;150;39,90;5001;Construtora Beta Ltda.
+08/04/2025;TIJ-8F;5;890,00;5002;Obra Gama Empreendimentos
+15/04/2025;CIM-50;200;39,90;5003;Construtora Beta Ltda.
+25/04/2025;VER-38;120;58,00;5004;Engenharia Delta S.A.
+30/04/2025;ARE-M3;12;130,00;5005;Obra Gama Empreendimentos
+06/05/2025;CIM-50;120;41,00;5006;Construtora Beta Ltda.
+12/05/2025;TIN-18L;30;319,00;5007;Pinturas Epsilon ME
+20/05/2025;ARG-20;80;22,90;5008;Construtora Beta Ltda.
+28/05/2025;VER-38;60;58,00;5009;Engenharia Delta S.A.
+10/06/2025;TIJ-8F;4;900,00;5010;Obra Gama Empreendimentos
+18/06/2025;ARE-M3;25;135,00;5011;Engenharia Delta S.A.
+25/06/2025;TEL-6M;40;45,00;5012;Pinturas Epsilon ME
+05/07/2025;CIM-50;100;41,00;5013;Construtora Beta Ltda.

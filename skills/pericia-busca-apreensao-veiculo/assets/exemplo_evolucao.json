@@ -1,0 +1,1303 @@
+{
+  "skill": "pericia-busca-apreensao-veiculo",
+  "script": "evolucao_cdc_veiculo.py",
+  "versao": "1.0.0",
+  "locale": "pt-BR (R$ 1.234,56; 12,5%; dd/mm/aaaa)",
+  "arredondamento": "ROUND_HALF_UP, 2 casas na apresentação",
+  "premissas": {
+    "sistema_amortizacao": "Tabela Price nos cenários A e B; MEJS no cenário C quando solicitado",
+    "capitalizacao": "mensal nos cenários A e B (pactuação expressa é matéria da Súmula 539/STJ, aferida pelo juízo)",
+    "carencia": "juros pro rata (base 30 dias) sobre os dias em que a primeira parcela excede um mês civil da contratação",
+    "criterio_cenario_B": "taxa contratada 2,9000% = 1,8125 x a média 1,6000%, acima do limiar 1,50: cenário B adota a média",
+    "limiar_multiplo_da_media": "1,50 (premissa usual de jurisprudência, não norma; REsp 1.061.530 fala em discrepância substancial)",
+    "tarifas_contestadas": "excluídas do principal de B quando incluídas no financiado; se pagas à vista, listadas para restituição",
+    "iof": "mantido no principal em A e B",
+    "taxa_media": {
+      "mensal_pct": "1,6000",
+      "fonte": "Exemplo fictício: BACEN/SGS, taxa média mensal, PF, aquisição de veículos, pré-fixado; código da série a validar na API",
+      "competencia": "03/2024"
+    },
+    "pagamentos": "imputados à parcela indicada; pagamento parcial gera residual; sem imputação de excesso em amortização",
+    "data_referencia": "10/09/2025",
+    "parcelas_vincendas": "saldo devedor a valor presente = saldo da tabela após a última vencida; nominal = soma das parcelas"
+  },
+  "contrato": {
+    "identificacao": "CCB nº 000000 (financiamento de veículo, alienação fiduciária)",
+    "devedor": "Maria da Silva (ré na busca e apreensão, autora da revisional)",
+    "credor": "Banco Alfa S.A. (autor da busca e apreensão)",
+    "processo": "0000000-00.0000.0.00.0000",
+    "data_contratacao": "15/03/2024",
+    "valor_financiado": "38.500,00",
+    "taxa_mensal_contratada_pct": "2,9000",
+    "taxa_anual_informada_pct": "40,9200",
+    "taxa_anual_equivalente_composta_pct": "40,9238",
+    "n_parcelas": 36,
+    "data_primeira_parcela": "15/04/2024",
+    "dias_ate_primeira_parcela": 31,
+    "iof": "800,00",
+    "itens": [
+      {
+        "grupo": "tarifas",
+        "nome": "Tarifa de cadastro",
+        "valor": "850,00",
+        "incluida_no_financiado": true,
+        "contestada": false,
+        "motivo": "início de relacionamento; validade a conferir no laudo"
+      },
+      {
+        "grupo": "tarifas",
+        "nome": "Registro de contrato",
+        "valor": "350,00",
+        "incluida_no_financiado": true,
+        "contestada": true,
+        "motivo": "sem comprovação do registro no órgão de trânsito nos autos"
+      },
+      {
+        "grupo": "tarifas",
+        "nome": "Avaliação do bem",
+        "valor": "400,00",
+        "incluida_no_financiado": true,
+        "contestada": true,
+        "motivo": "sem laudo de avaliação juntado; serviço não comprovado"
+      },
+      {
+        "grupo": "seguros",
+        "nome": "Seguro prestamista",
+        "valor": "1.100,00",
+        "incluida_no_financiado": true,
+        "contestada": false,
+        "motivo": "adesão facultativa assinada em documento apartado"
+      }
+    ]
+  },
+  "data_referencia": "10/09/2025",
+  "razao_contratada_sobre_media": "1,8125",
+  "cenarios": {
+    "A": {
+      "rotulo": "A",
+      "descricao": "contratual, como cobrado (Price, taxa e principal do contrato)",
+      "metodo": "price",
+      "formula": "PMT = PV x i / (1 - (1 + i)^-n)",
+      "taxa_mensal_pct": "2,9000",
+      "taxa_anual_equivalente_pct": "40,9238",
+      "principal_base": "38.500,00",
+      "juros_carencia": "0,00",
+      "principal": "38.500,00",
+      "parcela": "1.737,23",
+      "total_parcelas": "62.540,37",
+      "total_juros": "24.040,37",
+      "sanidade": {
+        "soma_amortizacoes": "38.500,00",
+        "principal": "38.500,00",
+        "soma_juros": "24.040,37",
+        "soma_parcelas": "62.540,37",
+        "ultimo_saldo": "0,00",
+        "resultado": "OK"
+      },
+      "tabela": [
+        {
+          "n": 1,
+          "vencimento": "15/04/2024",
+          "saldo_inicial": "38.500,00",
+          "juros": "1.116,50",
+          "amortizacao": "620,73",
+          "parcela": "1.737,23",
+          "saldo_final": "37.879,27",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 2,
+          "vencimento": "15/05/2024",
+          "saldo_inicial": "37.879,27",
+          "juros": "1.098,50",
+          "amortizacao": "638,73",
+          "parcela": "1.737,23",
+          "saldo_final": "37.240,53",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 3,
+          "vencimento": "15/06/2024",
+          "saldo_inicial": "37.240,53",
+          "juros": "1.079,98",
+          "amortizacao": "657,26",
+          "parcela": "1.737,23",
+          "saldo_final": "36.583,28",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 4,
+          "vencimento": "15/07/2024",
+          "saldo_inicial": "36.583,28",
+          "juros": "1.060,92",
+          "amortizacao": "676,32",
+          "parcela": "1.737,23",
+          "saldo_final": "35.906,96",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 5,
+          "vencimento": "15/08/2024",
+          "saldo_inicial": "35.906,96",
+          "juros": "1.041,30",
+          "amortizacao": "695,93",
+          "parcela": "1.737,23",
+          "saldo_final": "35.211,03",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 6,
+          "vencimento": "15/09/2024",
+          "saldo_inicial": "35.211,03",
+          "juros": "1.021,12",
+          "amortizacao": "716,11",
+          "parcela": "1.737,23",
+          "saldo_final": "34.494,92",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 7,
+          "vencimento": "15/10/2024",
+          "saldo_inicial": "34.494,92",
+          "juros": "1.000,35",
+          "amortizacao": "736,88",
+          "parcela": "1.737,23",
+          "saldo_final": "33.758,04",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 8,
+          "vencimento": "15/11/2024",
+          "saldo_inicial": "33.758,04",
+          "juros": "978,98",
+          "amortizacao": "758,25",
+          "parcela": "1.737,23",
+          "saldo_final": "32.999,79",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 9,
+          "vencimento": "15/12/2024",
+          "saldo_inicial": "32.999,79",
+          "juros": "956,99",
+          "amortizacao": "780,24",
+          "parcela": "1.737,23",
+          "saldo_final": "32.219,55",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 10,
+          "vencimento": "15/01/2025",
+          "saldo_inicial": "32.219,55",
+          "juros": "934,37",
+          "amortizacao": "802,87",
+          "parcela": "1.737,23",
+          "saldo_final": "31.416,68",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 11,
+          "vencimento": "15/02/2025",
+          "saldo_inicial": "31.416,68",
+          "juros": "911,08",
+          "amortizacao": "826,15",
+          "parcela": "1.737,23",
+          "saldo_final": "30.590,53",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 12,
+          "vencimento": "15/03/2025",
+          "saldo_inicial": "30.590,53",
+          "juros": "887,13",
+          "amortizacao": "850,11",
+          "parcela": "1.737,23",
+          "saldo_final": "29.740,43",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 13,
+          "vencimento": "15/04/2025",
+          "saldo_inicial": "29.740,43",
+          "juros": "862,47",
+          "amortizacao": "874,76",
+          "parcela": "1.737,23",
+          "saldo_final": "28.865,67",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 14,
+          "vencimento": "15/05/2025",
+          "saldo_inicial": "28.865,67",
+          "juros": "837,10",
+          "amortizacao": "900,13",
+          "parcela": "1.737,23",
+          "saldo_final": "27.965,54",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 15,
+          "vencimento": "15/06/2025",
+          "saldo_inicial": "27.965,54",
+          "juros": "811,00",
+          "amortizacao": "926,23",
+          "parcela": "1.737,23",
+          "saldo_final": "27.039,31",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 16,
+          "vencimento": "15/07/2025",
+          "saldo_inicial": "27.039,31",
+          "juros": "784,14",
+          "amortizacao": "953,09",
+          "parcela": "1.737,23",
+          "saldo_final": "26.086,22",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 17,
+          "vencimento": "15/08/2025",
+          "saldo_inicial": "26.086,22",
+          "juros": "756,50",
+          "amortizacao": "980,73",
+          "parcela": "1.737,23",
+          "saldo_final": "25.105,48",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 18,
+          "vencimento": "15/09/2025",
+          "saldo_inicial": "25.105,48",
+          "juros": "728,06",
+          "amortizacao": "1.009,17",
+          "parcela": "1.737,23",
+          "saldo_final": "24.096,31",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 19,
+          "vencimento": "15/10/2025",
+          "saldo_inicial": "24.096,31",
+          "juros": "698,79",
+          "amortizacao": "1.038,44",
+          "parcela": "1.737,23",
+          "saldo_final": "23.057,87",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 20,
+          "vencimento": "15/11/2025",
+          "saldo_inicial": "23.057,87",
+          "juros": "668,68",
+          "amortizacao": "1.068,55",
+          "parcela": "1.737,23",
+          "saldo_final": "21.989,32",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 21,
+          "vencimento": "15/12/2025",
+          "saldo_inicial": "21.989,32",
+          "juros": "637,69",
+          "amortizacao": "1.099,54",
+          "parcela": "1.737,23",
+          "saldo_final": "20.889,77",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 22,
+          "vencimento": "15/01/2026",
+          "saldo_inicial": "20.889,77",
+          "juros": "605,80",
+          "amortizacao": "1.131,43",
+          "parcela": "1.737,23",
+          "saldo_final": "19.758,34",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 23,
+          "vencimento": "15/02/2026",
+          "saldo_inicial": "19.758,34",
+          "juros": "572,99",
+          "amortizacao": "1.164,24",
+          "parcela": "1.737,23",
+          "saldo_final": "18.594,10",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 24,
+          "vencimento": "15/03/2026",
+          "saldo_inicial": "18.594,10",
+          "juros": "539,23",
+          "amortizacao": "1.198,00",
+          "parcela": "1.737,23",
+          "saldo_final": "17.396,10",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 25,
+          "vencimento": "15/04/2026",
+          "saldo_inicial": "17.396,10",
+          "juros": "504,49",
+          "amortizacao": "1.232,75",
+          "parcela": "1.737,23",
+          "saldo_final": "16.163,36",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 26,
+          "vencimento": "15/05/2026",
+          "saldo_inicial": "16.163,36",
+          "juros": "468,74",
+          "amortizacao": "1.268,50",
+          "parcela": "1.737,23",
+          "saldo_final": "14.894,86",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 27,
+          "vencimento": "15/06/2026",
+          "saldo_inicial": "14.894,86",
+          "juros": "431,95",
+          "amortizacao": "1.305,28",
+          "parcela": "1.737,23",
+          "saldo_final": "13.589,58",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 28,
+          "vencimento": "15/07/2026",
+          "saldo_inicial": "13.589,58",
+          "juros": "394,10",
+          "amortizacao": "1.343,13",
+          "parcela": "1.737,23",
+          "saldo_final": "12.246,44",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 29,
+          "vencimento": "15/08/2026",
+          "saldo_inicial": "12.246,44",
+          "juros": "355,15",
+          "amortizacao": "1.382,09",
+          "parcela": "1.737,23",
+          "saldo_final": "10.864,36",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 30,
+          "vencimento": "15/09/2026",
+          "saldo_inicial": "10.864,36",
+          "juros": "315,07",
+          "amortizacao": "1.422,17",
+          "parcela": "1.737,23",
+          "saldo_final": "9.442,19",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 31,
+          "vencimento": "15/10/2026",
+          "saldo_inicial": "9.442,19",
+          "juros": "273,82",
+          "amortizacao": "1.463,41",
+          "parcela": "1.737,23",
+          "saldo_final": "7.978,78",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 32,
+          "vencimento": "15/11/2026",
+          "saldo_inicial": "7.978,78",
+          "juros": "231,38",
+          "amortizacao": "1.505,85",
+          "parcela": "1.737,23",
+          "saldo_final": "6.472,94",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 33,
+          "vencimento": "15/12/2026",
+          "saldo_inicial": "6.472,94",
+          "juros": "187,72",
+          "amortizacao": "1.549,52",
+          "parcela": "1.737,23",
+          "saldo_final": "4.923,42",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 34,
+          "vencimento": "15/01/2027",
+          "saldo_inicial": "4.923,42",
+          "juros": "142,78",
+          "amortizacao": "1.594,45",
+          "parcela": "1.737,23",
+          "saldo_final": "3.328,96",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 35,
+          "vencimento": "15/02/2027",
+          "saldo_inicial": "3.328,96",
+          "juros": "96,54",
+          "amortizacao": "1.640,69",
+          "parcela": "1.737,23",
+          "saldo_final": "1.688,27",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 36,
+          "vencimento": "15/03/2027",
+          "saldo_inicial": "1.688,27",
+          "juros": "48,96",
+          "amortizacao": "1.688,27",
+          "parcela": "1.737,23",
+          "saldo_final": "0,00",
+          "pago": "0,00",
+          "status": "em aberto"
+        }
+      ]
+    },
+    "B": {
+      "rotulo": "B",
+      "descricao": "revisado (Price; taxa média se contratada acima do limiar; tarifas contestadas fora do principal)",
+      "metodo": "price",
+      "formula": "PMT = PV x i / (1 - (1 + i)^-n)",
+      "taxa_mensal_pct": "1,6000",
+      "taxa_anual_equivalente_pct": "20,9830",
+      "principal_base": "37.750,00",
+      "juros_carencia": "0,00",
+      "principal": "37.750,00",
+      "parcela": "1.387,58",
+      "total_parcelas": "49.953,06",
+      "total_juros": "12.203,06",
+      "sanidade": {
+        "soma_amortizacoes": "37.750,00",
+        "principal": "37.750,00",
+        "soma_juros": "12.203,06",
+        "soma_parcelas": "49.953,06",
+        "ultimo_saldo": "0,00",
+        "resultado": "OK"
+      },
+      "tabela": [
+        {
+          "n": 1,
+          "vencimento": "15/04/2024",
+          "saldo_inicial": "37.750,00",
+          "juros": "604,00",
+          "amortizacao": "783,58",
+          "parcela": "1.387,58",
+          "saldo_final": "36.966,42",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 2,
+          "vencimento": "15/05/2024",
+          "saldo_inicial": "36.966,42",
+          "juros": "591,46",
+          "amortizacao": "796,12",
+          "parcela": "1.387,58",
+          "saldo_final": "36.170,29",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 3,
+          "vencimento": "15/06/2024",
+          "saldo_inicial": "36.170,29",
+          "juros": "578,72",
+          "amortizacao": "808,86",
+          "parcela": "1.387,58",
+          "saldo_final": "35.361,43",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 4,
+          "vencimento": "15/07/2024",
+          "saldo_inicial": "35.361,43",
+          "juros": "565,78",
+          "amortizacao": "821,80",
+          "parcela": "1.387,58",
+          "saldo_final": "34.539,63",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 5,
+          "vencimento": "15/08/2024",
+          "saldo_inicial": "34.539,63",
+          "juros": "552,63",
+          "amortizacao": "834,95",
+          "parcela": "1.387,58",
+          "saldo_final": "33.704,68",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 6,
+          "vencimento": "15/09/2024",
+          "saldo_inicial": "33.704,68",
+          "juros": "539,27",
+          "amortizacao": "848,31",
+          "parcela": "1.387,58",
+          "saldo_final": "32.856,37",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 7,
+          "vencimento": "15/10/2024",
+          "saldo_inicial": "32.856,37",
+          "juros": "525,70",
+          "amortizacao": "861,88",
+          "parcela": "1.387,58",
+          "saldo_final": "31.994,49",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 8,
+          "vencimento": "15/11/2024",
+          "saldo_inicial": "31.994,49",
+          "juros": "511,91",
+          "amortizacao": "875,67",
+          "parcela": "1.387,58",
+          "saldo_final": "31.118,81",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 9,
+          "vencimento": "15/12/2024",
+          "saldo_inicial": "31.118,81",
+          "juros": "497,90",
+          "amortizacao": "889,68",
+          "parcela": "1.387,58",
+          "saldo_final": "30.229,13",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 10,
+          "vencimento": "15/01/2025",
+          "saldo_inicial": "30.229,13",
+          "juros": "483,67",
+          "amortizacao": "903,92",
+          "parcela": "1.387,58",
+          "saldo_final": "29.325,21",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 11,
+          "vencimento": "15/02/2025",
+          "saldo_inicial": "29.325,21",
+          "juros": "469,20",
+          "amortizacao": "918,38",
+          "parcela": "1.387,58",
+          "saldo_final": "28.406,83",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 12,
+          "vencimento": "15/03/2025",
+          "saldo_inicial": "28.406,83",
+          "juros": "454,51",
+          "amortizacao": "933,08",
+          "parcela": "1.387,58",
+          "saldo_final": "27.473,75",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 13,
+          "vencimento": "15/04/2025",
+          "saldo_inicial": "27.473,75",
+          "juros": "439,58",
+          "amortizacao": "948,00",
+          "parcela": "1.387,58",
+          "saldo_final": "26.525,75",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 14,
+          "vencimento": "15/05/2025",
+          "saldo_inicial": "26.525,75",
+          "juros": "424,41",
+          "amortizacao": "963,17",
+          "parcela": "1.387,58",
+          "saldo_final": "25.562,57",
+          "pago": "1.737,23",
+          "status": "paga"
+        },
+        {
+          "n": 15,
+          "vencimento": "15/06/2025",
+          "saldo_inicial": "25.562,57",
+          "juros": "409,00",
+          "amortizacao": "978,58",
+          "parcela": "1.387,58",
+          "saldo_final": "24.583,99",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 16,
+          "vencimento": "15/07/2025",
+          "saldo_inicial": "24.583,99",
+          "juros": "393,34",
+          "amortizacao": "994,24",
+          "parcela": "1.387,58",
+          "saldo_final": "23.589,75",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 17,
+          "vencimento": "15/08/2025",
+          "saldo_inicial": "23.589,75",
+          "juros": "377,44",
+          "amortizacao": "1.010,15",
+          "parcela": "1.387,58",
+          "saldo_final": "22.579,60",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 18,
+          "vencimento": "15/09/2025",
+          "saldo_inicial": "22.579,60",
+          "juros": "361,27",
+          "amortizacao": "1.026,31",
+          "parcela": "1.387,58",
+          "saldo_final": "21.553,29",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 19,
+          "vencimento": "15/10/2025",
+          "saldo_inicial": "21.553,29",
+          "juros": "344,85",
+          "amortizacao": "1.042,73",
+          "parcela": "1.387,58",
+          "saldo_final": "20.510,56",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 20,
+          "vencimento": "15/11/2025",
+          "saldo_inicial": "20.510,56",
+          "juros": "328,17",
+          "amortizacao": "1.059,42",
+          "parcela": "1.387,58",
+          "saldo_final": "19.451,14",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 21,
+          "vencimento": "15/12/2025",
+          "saldo_inicial": "19.451,14",
+          "juros": "311,22",
+          "amortizacao": "1.076,37",
+          "parcela": "1.387,58",
+          "saldo_final": "18.374,77",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 22,
+          "vencimento": "15/01/2026",
+          "saldo_inicial": "18.374,77",
+          "juros": "294,00",
+          "amortizacao": "1.093,59",
+          "parcela": "1.387,58",
+          "saldo_final": "17.281,19",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 23,
+          "vencimento": "15/02/2026",
+          "saldo_inicial": "17.281,19",
+          "juros": "276,50",
+          "amortizacao": "1.111,09",
+          "parcela": "1.387,58",
+          "saldo_final": "16.170,10",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 24,
+          "vencimento": "15/03/2026",
+          "saldo_inicial": "16.170,10",
+          "juros": "258,72",
+          "amortizacao": "1.128,86",
+          "parcela": "1.387,58",
+          "saldo_final": "15.041,24",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 25,
+          "vencimento": "15/04/2026",
+          "saldo_inicial": "15.041,24",
+          "juros": "240,66",
+          "amortizacao": "1.146,93",
+          "parcela": "1.387,58",
+          "saldo_final": "13.894,31",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 26,
+          "vencimento": "15/05/2026",
+          "saldo_inicial": "13.894,31",
+          "juros": "222,31",
+          "amortizacao": "1.165,28",
+          "parcela": "1.387,58",
+          "saldo_final": "12.729,04",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 27,
+          "vencimento": "15/06/2026",
+          "saldo_inicial": "12.729,04",
+          "juros": "203,66",
+          "amortizacao": "1.183,92",
+          "parcela": "1.387,58",
+          "saldo_final": "11.545,11",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 28,
+          "vencimento": "15/07/2026",
+          "saldo_inicial": "11.545,11",
+          "juros": "184,72",
+          "amortizacao": "1.202,86",
+          "parcela": "1.387,58",
+          "saldo_final": "10.342,25",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 29,
+          "vencimento": "15/08/2026",
+          "saldo_inicial": "10.342,25",
+          "juros": "165,48",
+          "amortizacao": "1.222,11",
+          "parcela": "1.387,58",
+          "saldo_final": "9.120,14",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 30,
+          "vencimento": "15/09/2026",
+          "saldo_inicial": "9.120,14",
+          "juros": "145,92",
+          "amortizacao": "1.241,66",
+          "parcela": "1.387,58",
+          "saldo_final": "7.878,48",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 31,
+          "vencimento": "15/10/2026",
+          "saldo_inicial": "7.878,48",
+          "juros": "126,06",
+          "amortizacao": "1.261,53",
+          "parcela": "1.387,58",
+          "saldo_final": "6.616,95",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 32,
+          "vencimento": "15/11/2026",
+          "saldo_inicial": "6.616,95",
+          "juros": "105,87",
+          "amortizacao": "1.281,71",
+          "parcela": "1.387,58",
+          "saldo_final": "5.335,24",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 33,
+          "vencimento": "15/12/2026",
+          "saldo_inicial": "5.335,24",
+          "juros": "85,36",
+          "amortizacao": "1.302,22",
+          "parcela": "1.387,58",
+          "saldo_final": "4.033,02",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 34,
+          "vencimento": "15/01/2027",
+          "saldo_inicial": "4.033,02",
+          "juros": "64,53",
+          "amortizacao": "1.323,06",
+          "parcela": "1.387,58",
+          "saldo_final": "2.709,96",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 35,
+          "vencimento": "15/02/2027",
+          "saldo_inicial": "2.709,96",
+          "juros": "43,36",
+          "amortizacao": "1.344,23",
+          "parcela": "1.387,58",
+          "saldo_final": "1.365,73",
+          "pago": "0,00",
+          "status": "em aberto"
+        },
+        {
+          "n": 36,
+          "vencimento": "15/03/2027",
+          "saldo_inicial": "1.365,73",
+          "juros": "21,85",
+          "amortizacao": "1.365,73",
+          "parcela": "1.387,58",
+          "saldo_final": "0,00",
+          "pago": "0,00",
+          "status": "em aberto"
+        }
+      ]
+    }
+  },
+  "comparativo_parcelas": [
+    {
+      "n": 1,
+      "vencimento": "15/04/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 2,
+      "vencimento": "15/05/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 3,
+      "vencimento": "15/06/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 4,
+      "vencimento": "15/07/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 5,
+      "vencimento": "15/08/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 6,
+      "vencimento": "15/09/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 7,
+      "vencimento": "15/10/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 8,
+      "vencimento": "15/11/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 9,
+      "vencimento": "15/12/2024",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 10,
+      "vencimento": "15/01/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 11,
+      "vencimento": "15/02/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 12,
+      "vencimento": "15/03/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 13,
+      "vencimento": "15/04/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 14,
+      "vencimento": "15/05/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65",
+      "pago": "1.737,23",
+      "excesso_sobre_B": "349,65"
+    },
+    {
+      "n": 15,
+      "vencimento": "15/06/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 16,
+      "vencimento": "15/07/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 17,
+      "vencimento": "15/08/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 18,
+      "vencimento": "15/09/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 19,
+      "vencimento": "15/10/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 20,
+      "vencimento": "15/11/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 21,
+      "vencimento": "15/12/2025",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 22,
+      "vencimento": "15/01/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 23,
+      "vencimento": "15/02/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 24,
+      "vencimento": "15/03/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 25,
+      "vencimento": "15/04/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 26,
+      "vencimento": "15/05/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 27,
+      "vencimento": "15/06/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 28,
+      "vencimento": "15/07/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 29,
+      "vencimento": "15/08/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 30,
+      "vencimento": "15/09/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 31,
+      "vencimento": "15/10/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 32,
+      "vencimento": "15/11/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 33,
+      "vencimento": "15/12/2026",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 34,
+      "vencimento": "15/01/2027",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 35,
+      "vencimento": "15/02/2027",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    },
+    {
+      "n": 36,
+      "vencimento": "15/03/2027",
+      "parcela_A": "1.737,23",
+      "parcela_B": "1.387,58",
+      "diferenca_A_B": "349,65"
+    }
+  ],
+  "pagamentos": {
+    "quantidade_pagamentos": 14,
+    "parcelas_com_pagamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "total_pago": "24.321,22",
+    "devido_B_parcelas_pagas": "19.426,19",
+    "excesso_A_B": "4.895,03"
+  },
+  "situacao_na_referencia": {
+    "A": {
+      "parcelas_vencidas": 17,
+      "parcelas_vincendas": 19,
+      "vencidas_nao_pagas": [
+        {
+          "n": 15,
+          "vencimento": "15/06/2025",
+          "parcela": "1.737,23",
+          "pago": "0,00",
+          "residual": "1.737,23",
+          "dias_atraso": 87
+        },
+        {
+          "n": 16,
+          "vencimento": "15/07/2025",
+          "parcela": "1.737,23",
+          "pago": "0,00",
+          "residual": "1.737,23",
+          "dias_atraso": 57
+        },
+        {
+          "n": 17,
+          "vencimento": "15/08/2025",
+          "parcela": "1.737,23",
+          "pago": "0,00",
+          "residual": "1.737,23",
+          "dias_atraso": 26
+        }
+      ],
+      "total_residual_vencidas": "5.211,69",
+      "saldo_devedor_valor_presente_vincendas": "25.105,48",
+      "vincendas_valor_nominal": "33.007,42"
+    },
+    "B": {
+      "parcelas_vencidas": 17,
+      "parcelas_vincendas": 19,
+      "vencidas_nao_pagas": [
+        {
+          "n": 15,
+          "vencimento": "15/06/2025",
+          "parcela": "1.387,58",
+          "pago": "0,00",
+          "residual": "1.387,58",
+          "dias_atraso": 87
+        },
+        {
+          "n": 16,
+          "vencimento": "15/07/2025",
+          "parcela": "1.387,58",
+          "pago": "0,00",
+          "residual": "1.387,58",
+          "dias_atraso": 57
+        },
+        {
+          "n": 17,
+          "vencimento": "15/08/2025",
+          "parcela": "1.387,58",
+          "pago": "0,00",
+          "residual": "1.387,58",
+          "dias_atraso": 26
+        }
+      ],
+      "total_residual_vencidas": "4.162,74",
+      "saldo_devedor_valor_presente_vincendas": "22.579,60",
+      "vincendas_valor_nominal": "26.364,11"
+    }
+  },
+  "memoria": [
+    "Contrato de 15/03/2024, valor financiado R$ 38.500,00, taxa contratada 2,9000% a.m., 36 parcelas, primeira em 15/04/2024 (31 dias após a contratação).",
+    "Cenário A: contratual, como cobrado (Price, taxa e principal do contrato).",
+    "Cenário A: principal base R$ 38.500,00 = PV R$ 38.500,00; i = 2,9000% a.m.; n = 36; PMT = PV x i / (1 - (1 + i)^-n); PMT = R$ 1.737,23.",
+    "Cenário A: sanidade: soma das amortizações R$ 38.500,00 = PV; último saldo R$ 0,00.",
+    "Critério do cenário B: taxa contratada 2,9000% = 1,8125 x a média 1,6000%, acima do limiar 1,50: cenário B adota a média.",
+    "Cenário B: excluídos do principal Registro de contrato R$ 350,00; Avaliação do bem R$ 400,00 (total R$ 750,00).",
+    "Cenário B: revisado (Price; taxa média se contratada acima do limiar; tarifas contestadas fora do principal).",
+    "Cenário B: principal base R$ 37.750,00 = PV R$ 37.750,00; i = 1,6000% a.m.; n = 36; PMT = PV x i / (1 - (1 + i)^-n); PMT = R$ 1.387,58.",
+    "Cenário B: sanidade: soma das amortizações R$ 37.750,00 = PV; último saldo R$ 0,00.",
+    "Excesso: total pago R$ 24.321,22 menos devido em B pelas mesmas parcelas R$ 19.426,19 = R$ 4.895,03 (valores nominais nas datas de pagamento; atualização pela skill atualizacao-monetaria).",
+    "Situação em 10/09/2025, cenário A: 17 parcelas vencidas, 3 em aberto (residual R$ 5.211,69), 19 vincendas (valor presente R$ 25.105,48; nominal R$ 33.007,42).",
+    "Situação em 10/09/2025, cenário B: 17 parcelas vencidas, 3 em aberto (residual R$ 4.162,74), 19 vincendas (valor presente R$ 22.579,60; nominal R$ 26.364,11)."
+  ]
+}

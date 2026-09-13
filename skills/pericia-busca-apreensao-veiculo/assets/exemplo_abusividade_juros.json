@@ -1,0 +1,13 @@
+{
+  "_comentario": "Exemplo fictício para scripts/abusividade_juros.py. A taxa média é inventada para o exemplo; na perícia real ela vem do SGS do BACEN, com código de série validado na API e data de consulta registrada.",
+  "descricao": "CCB nº 000000, Maria da Silva x Banco Alfa S.A., processo 0000000-00.0000.0.00.0000, contratação em 15/03/2024",
+  "taxa_contratada_mensal": "2,90",
+  "taxa_contratada_anual": "40,92",
+  "taxa_media_mensal": "1,60",
+  "fonte": "Exemplo fictício: BACEN/SGS, taxa média de juros, recursos livres, pessoa física, aquisição de veículos, pré-fixado; consulta simulada em 12/09/2026",
+  "competencia": "03/2024",
+  "serie_sgs": "[A VERIFICAR na API do SGS antes de citar]",
+  "limiar": "1,5",
+  "periodicidade_capitalizacao": "mensal",
+  "taxa_diaria_informada": null
+}

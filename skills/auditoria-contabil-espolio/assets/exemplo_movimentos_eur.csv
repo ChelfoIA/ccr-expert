@@ -1,0 +1,10 @@
+data;conta;historico;valor;tipo;categoria;beneficiario;vinculo_beneficiario;autorizacao_judicial;documento;imovel_id;empresa_id;moeda
+05/02/2024;Banco Português IBAN PT00 (espólio);Renda IM03 competência 02/2024;1.200,00;C;aluguel_recebido;Inquilino Lisboa;terceiro;;recibo de renda fl. 501;IM03;;EUR
+05/03/2024;Banco Português IBAN PT00 (espólio);Renda IM03 competência 03/2024;1.200,00;C;aluguel_recebido;Inquilino Lisboa;terceiro;;recibo de renda fl. 502;IM03;;EUR
+06/04/2024;Banco Português IBAN PT00 (espólio);Renda IM03 competência 04/2024 (sábado);1.200,00;C;aluguel_recebido;Inquilino Lisboa;terceiro;;recibo de renda fl. 503;IM03;;EUR
+15/05/2024;Banco Português IBAN PT00 (espólio);IMI 2023 primeira prestação;310,00;D;tributo;Autoridade Tributária e Aduaneira;terceiro;N;nota de cobrança fl. 510;IM03;;EUR
+05/06/2024;Banco Português IBAN PT00 (espólio);Renda IM03 competência 06/2024;1.200,00;C;aluguel_recebido;Inquilino Lisboa;terceiro;;recibo de renda fl. 505;IM03;;EUR
+20/06/2024;Banco Português IBAN PT00 (espólio);Condomínio IM03 semestre;480,00;D;condominio;Condomínio Rua Delta 3;terceiro;N;recibo fl. 511;IM03;;EUR
+05/07/2024;Banco Português IBAN PT00 (espólio);Renda IM03 competência 07/2024;1.200,00;C;aluguel_recebido;Inquilino Lisboa;terceiro;;recibo de renda fl. 506;IM03;;EUR
+31/08/2024;Banco Português IBAN PT00 (espólio);IRS Modelo 3 rendimentos prediais 2023 (sábado);1.050,00;D;tributo;Autoridade Tributária e Aduaneira;terceiro;N;nota de liquidação fl. 512;IM03;;EUR
+10/09/2024;BB ag 0000 cc 00000-0 (espólio);Aluguel IM01 competência 09/2024 (já em reais);3.000,00;C;aluguel_recebido;Gama Locações Ltda.;terceiro;;recibo fl. 120;IM01;;BRL

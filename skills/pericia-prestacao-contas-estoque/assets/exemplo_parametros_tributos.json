@@ -1,0 +1,31 @@
+{
+  "descricao": "Parâmetros tributários fictícios de Alfa Comércio Ltda. (Lucro Presumido, comércio de materiais de construção). Toda alíquota entra por este arquivo, com o campo fonte preenchido. Valores de ICMS são hipotéticos e devem ser conferidos no RICMS da UF do caso.",
+  "regime": "presumido",
+  "leitura_clausula": "Cláusula 4.1 do contrato de venda: repasse do valor da venda do estoque abatidos os impostos. Leitura adotada no cenário base: tributos incidentes sobre a receita (ICMS, PIS e COFINS). Cenário amplo: acrescenta IRPJ e CSLL presumidos.",
+  "icms": {
+    "aliquota": "18,00",
+    "fonte": "[A VERIFICAR] RICMS da UF de Alfa Comércio Ltda., alíquota interna para materiais de construção no ano-calendário de 2025; conferir também itens sujeitos a substituição tributária, que saem da base"
+  },
+  "pis": {
+    "aliquota": "0,65",
+    "fonte": "Lei 9.715/1998, art. 8º, I (regime cumulativo)"
+  },
+  "cofins": {
+    "aliquota": "3,00",
+    "fonte": "Lei 9.718/1998, art. 8º (regime cumulativo)"
+  },
+  "irpj": {
+    "presuncao": "8,00",
+    "aliquota": "15,00",
+    "adicional": "10,00",
+    "limite_adicional_mensal": "20.000,00",
+    "adicional_metodo": "integral",
+    "justificativa_adicional": "ECF fictícia de 2025 registra apuração de adicional nos trimestres de 2025: a receita do estoque é marginal e sofre a alíquota cheia",
+    "fonte": "Lei 9.249/1995, art. 15, caput (presunção de 8% para comércio), art. 3º, caput e § 1º (15% e adicional de 10% sobre a parcela do lucro presumido que exceder R$ 20.000,00 por mês)"
+  },
+  "csll": {
+    "presuncao": "12,00",
+    "aliquota": "9,00",
+    "fonte": "Lei 9.249/1995, art. 20 (base de 12% para comércio); Lei 7.689/1988, art. 3º, II (alíquota de 9%)"
+  }
+}
