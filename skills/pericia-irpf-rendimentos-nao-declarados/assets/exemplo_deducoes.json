@@ -1,0 +1,12 @@
+{
+  "_comentario": "Exemplo fictício para scripts/recalculo_irpf.py. Os limites legais (dependente, educação, desconto simplificado) são inventados: na perícia real, obter os valores do exercício em gov.br/receitafederal e registrar a fonte em cada item. Os valores pagos (previdência, saúde, educação) vêm da DIRPF e dos comprovantes dos autos.",
+  "ano": 2023,
+  "itens": [
+    {"tipo": "dependentes", "quantidade": 1, "valor_unitario": "2.400,00", "fonte": "EXEMPLO FICTÍCIO: substituir pelo valor anual por dependente do exercício (gov.br/receitafederal)"},
+    {"tipo": "previdencia_oficial", "valor": "5.940,00", "fonte": "DIRPF 2024 (ano-calendário 2023), ficha de pagamentos, fl. 28"},
+    {"tipo": "saude", "valor": "3.200,00", "fonte": "recibos de despesas médicas, fls. 110 a 114"},
+    {"tipo": "educacao", "valor": "6.000,00", "limite_por_pessoa": "3.600,00", "pessoas": 1, "fonte": "EXEMPLO FICTÍCIO: substituir pelo limite anual de instrução do exercício (gov.br/receitafederal); valor pago conforme fl. 116"},
+    {"tipo": "pensao_alimenticia", "valor": "0,00", "fonte": "não há pensão judicial nos autos"}
+  ],
+  "desconto_simplificado": {"percentual": "20", "limite": "16.000,00", "fonte": "EXEMPLO FICTÍCIO: substituir pelo limite do desconto simplificado do exercício (gov.br/receitafederal)"}
+}

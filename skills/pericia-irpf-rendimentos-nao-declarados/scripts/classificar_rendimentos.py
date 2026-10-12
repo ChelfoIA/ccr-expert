@@ -56,7 +56,7 @@ TRATAMENTOS = (
 NATUREZAS = {
     "salario": dict(
         tratamento="ajuste",
-        fundamento="CTN, art. 43; Lei 7.713/1988, art. 3º; Lei 9.250/1995, arts. 8º e 11",
+        fundamento="CTN, art. 43; Lei 7.713/1988, art. 3º; Lei 9.250/1995, art. 8º",
         prova="contracheque, DIRF ou informe de rendimentos da fonte pagadora conciliado ao crédito líquido",
         qualificada=False,
         alerta="IRRF retido pela fonte é compensável; conferir se o rendimento já constava da DIRPF"),
@@ -101,7 +101,7 @@ NATUREZAS = {
         fundamento="Lei 7.713/1988, art. 6º, V (parcela indenizatória)",
         prova="TRCT, sentença ou acordo homologado com discriminação das verbas, alvará de levantamento",
         qualificada=False,
-        alerta="verbas remuneratórias do acordo (salários, horas extras, 13º) são tributáveis como RRA (Lei 7.713/1988, art. 12-A): separar por rubrica"),
+        alerta="verbas remuneratórias do acordo (salários, horas extras, 13º) são tributáveis, em regra como rendimentos recebidos acumuladamente [A VERIFICAR: Lei 7.713/1988, art. 12-A]: separar por rubrica"),
     "fgts": dict(
         tratamento="isento",
         fundamento="Lei 7.713/1988, art. 6º, V",
@@ -361,9 +361,15 @@ def aplicar_par3_ii(creditos, chave, lim_ind, lim_anual, memoria):
 
 
 def totais(creditos, chave, fracoes):
+    """Totais por tratamento, natureza, mês e ano; base adicional separada em
+    presumido (art. 42, tributável no mês do crédito pelo § 4º) e ajuste não
+    declarado (rendimento de fonte identificada ausente da DIRPF, tributável
+    no ajuste anual). A divisão do § 6º (conta conjunta) só alcança o presumido,
+    porque o dispositivo pressupõe origem não comprovada."""
     t = {"por_tratamento": {}, "por_natureza": {}, "por_mes": {}, "por_ano": {},
          "base_adicional_ajuste_por_ano": {}, "base_adicional_por_mes": {},
-         "presumido_por_ano": {}, "ajuste_nao_declarado_por_ano": {}}
+         "presumido_por_ano": {}, "presumido_por_mes": {},
+         "ajuste_nao_declarado_por_ano": {}, "ajuste_nao_declarado_por_mes": {}}
     soma_classes = Decimal(0)
     for c in creditos:
         trat = c[chave]
@@ -375,16 +381,19 @@ def totais(creditos, chave, fracoes):
         t["por_mes"][mes] = t["por_mes"].get(mes, Decimal(0)) + v
         t["por_ano"][ano] = t["por_ano"].get(ano, Decimal(0)) + v
         soma_classes += v
-        fracao = fracoes.get(c["conta"], 1)
-        imputado = v / Decimal(fracao)
-        c["valor_imputado_titular_" + chave] = imputado
+        imputado = v
         entra = False
         if trat == "presumido_omissao":
+            fracao = fracoes.get(c["conta"], 1)
+            imputado = v / Decimal(fracao)
             entra = True
             t["presumido_por_ano"][ano] = t["presumido_por_ano"].get(ano, Decimal(0)) + imputado
+            t["presumido_por_mes"][mes] = t["presumido_por_mes"].get(mes, Decimal(0)) + imputado
         elif trat == "ajuste" and not c["ja_declarado"]:
             entra = True
             t["ajuste_nao_declarado_por_ano"][ano] = t["ajuste_nao_declarado_por_ano"].get(ano, Decimal(0)) + imputado
+            t["ajuste_nao_declarado_por_mes"][mes] = t["ajuste_nao_declarado_por_mes"].get(mes, Decimal(0)) + imputado
+        c["valor_imputado_titular_" + chave] = imputado
         if entra:
             t["base_adicional_ajuste_por_ano"][ano] = t["base_adicional_ajuste_por_ano"].get(ano, Decimal(0)) + imputado
             t["base_adicional_por_mes"][mes] = t["base_adicional_por_mes"].get(mes, Decimal(0)) + imputado
@@ -405,7 +414,10 @@ def serializar(obj):
 
 
 def tabela_md(creditos, tot_base, tot_amp, sanidade):
-    linhas = ["| id | data | valor | natureza alegada | prova | trat. base | trat. ampliado | motivo |",
+    linhas = ["# Classificação crédito a crédito (Lei 9.430/1996, art. 42)", "",
+              "Cenário base: só prova suficiente afasta a presunção. Cenário ampliado: prova parcial aceita, "
+              "para medir a sensibilidade do resultado. Valores em R$, padrão brasileiro.", "",
+              "| id | data | valor | natureza alegada | prova | trat. base | trat. ampliado | motivo |",
               "|---|---|---|---|---|---|---|---|"]
     for c in creditos:
         motivo = "; ".join(c["motivos_prova"])
@@ -498,11 +510,15 @@ def executar(args):
     sem_prova = [c["id"] for c in creditos if c["prova"] == "ausente"]
     parciais = [c["id"] for c in creditos if c["prova"] == "parcial"]
     alertas = [f"{c['id']}: {c['alerta']}" for c in creditos if c["prova"] != "ausente"]
-    for c in creditos:
-        for chave in ("tratamento_base", "tratamento_ampliado"):
-            k = "motivos_" + chave
-            if k in c and chave == "tratamento_base" and "motivos_tratamento_base" in c:
-                pass
+    # Listas-resumo para o quadro crédito a crédito do laudo.
+    resumo = {}
+    for chave, rotulo in (("tratamento_base", "base"), ("tratamento_ampliado", "ampliado")):
+        resumo[f"presumidos_{rotulo}"] = [c["id"] for c in creditos if c[chave] == "presumido_omissao"]
+        resumo[f"excluidos_par3_ii_{rotulo}"] = [c["id"] for c in creditos if c[chave] == "excluido_par3"]
+        resumo[f"quantidade_por_tratamento_{rotulo}"] = {
+            t: sum(1 for c in creditos if c[chave] == t) for t in TRATAMENTOS if any(c[chave] == t for c in creditos)}
+    resumo["quantidade_por_prova"] = {
+        n: sum(1 for c in creditos if c["prova"] == n) for n in ("suficiente", "parcial", "ausente")}
     saida = {
         "skill": "pericia-irpf-rendimentos-nao-declarados",
         "script": "classificar_rendimentos.py",
@@ -536,6 +552,7 @@ def executar(args):
             "valor_imputado_titular_ampliado": c["valor_imputado_titular_tratamento_ampliado"],
         } for c in creditos],
         "totais": {"cenario_base": tot_base, "cenario_ampliado": tot_amp},
+        "resumo": resumo,
         "creditos_sem_prova": sem_prova,
         "creditos_prova_parcial": parciais,
         "alertas": alertas,

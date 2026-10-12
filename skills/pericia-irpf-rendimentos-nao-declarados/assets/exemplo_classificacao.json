@@ -1,0 +1,817 @@
+{
+  "skill": "pericia-irpf-rendimentos-nao-declarados",
+  "script": "classificar_rendimentos.py",
+  "data_referencia": "12/09/2026",
+  "locale": "pt-BR (R$ 1.234,56; 12,5%; dd/mm/aaaa)",
+  "arredondamento": "ROUND_HALF_UP, 2 casas na apresentação",
+  "premissas": {
+    "arquivo": "assets/exemplo_rendimentos.csv",
+    "ano_filtro": 2023,
+    "tolerancia_dias": 10,
+    "tolerancia_valor_pct": "0.5",
+    "limite_individual_par3_ii": "12000.00",
+    "limite_anual_par3_ii": "80000.00",
+    "fonte_limites": "Lei 9.430/1996, art. 42, § 3º, II, na redação da Lei 9.481/1997, art. 4º; RIR/2018, art. 913, § 3º",
+    "contas_conjuntas": {},
+    "cenario_base": "só prova suficiente afasta a presunção do art. 42",
+    "cenario_ampliado": "prova parcial aceita; mede a sensibilidade do resultado",
+    "ja_declarado": "crédito de natureza ajuste já oferecido na DIRPF não entra na base adicional"
+  },
+  "creditos": [
+    {
+      "id": "1",
+      "data": "05/01/2023",
+      "mes": "01/2023",
+      "valor": "4500.00",
+      "valor_brl": "R$ 4.500,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "TED Alfa Comércio Ltda (CNPJ 00.000.000/0000-00)",
+      "origem_alegada": "salário líquido de janeiro",
+      "natureza": "salario",
+      "tratamento_natural": "ajuste",
+      "fundamento": "CTN, art. 43; Lei 7.713/1988, art. 3º; Lei 9.250/1995, arts. 8º e 11",
+      "documento": "informe de rendimentos 2023 de Alfa Comércio Ltda, fl. 41",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "contracheque, DIRF ou informe de rendimentos da fonte pagadora conciliado ao crédito líquido",
+      "alerta": "IRRF retido pela fonte é compensável; conferir se o rendimento já constava da DIRPF",
+      "ja_declarado": true,
+      "tratamento_base": "ajuste",
+      "motivos_tratamento_base": [
+        "já oferecido à tributação na DIRPF: não compõe a base adicional"
+      ],
+      "tratamento_ampliado": "ajuste",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "4500.00",
+      "valor_imputado_titular_ampliado": "4500.00"
+    },
+    {
+      "id": "2",
+      "data": "10/01/2023",
+      "mes": "01/2023",
+      "valor": "3000.00",
+      "valor_brl": "R$ 3.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Imobiliária Beta Ltda",
+      "origem_alegada": "aluguel do imóvel da Rua A, 10",
+      "natureza": "aluguel",
+      "tratamento_natural": "ajuste",
+      "fundamento": "Lei 7.713/1988, art. 3º, § 1º; carnê-leão quando o pagador é pessoa física",
+      "documento": "contrato de locação fl. 52 e DIMOB da Imobiliária Beta fl. 55",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "contrato de locação, DIMOB da administradora, recibos e DIRF quando o locatário é pessoa jurídica",
+      "alerta": "deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+      "ja_declarado": false,
+      "tratamento_base": "ajuste",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "ajuste",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "3000.00",
+      "valor_imputado_titular_ampliado": "3000.00"
+    },
+    {
+      "id": "3",
+      "data": "10/02/2023",
+      "mes": "02/2023",
+      "valor": "3000.00",
+      "valor_brl": "R$ 3.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Imobiliária Beta Ltda",
+      "origem_alegada": "aluguel do imóvel da Rua A, 10",
+      "natureza": "aluguel",
+      "tratamento_natural": "ajuste",
+      "fundamento": "Lei 7.713/1988, art. 3º, § 1º; carnê-leão quando o pagador é pessoa física",
+      "documento": "contrato de locação fl. 52 e DIMOB da Imobiliária Beta fl. 55",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "contrato de locação, DIMOB da administradora, recibos e DIRF quando o locatário é pessoa jurídica",
+      "alerta": "deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+      "ja_declarado": false,
+      "tratamento_base": "ajuste",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "ajuste",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "3000.00",
+      "valor_imputado_titular_ampliado": "3000.00"
+    },
+    {
+      "id": "5",
+      "data": "15/02/2023",
+      "mes": "02/2023",
+      "valor": "25000.00",
+      "valor_brl": "R$ 25.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "TED João da Silva (CPF 000.000.000-00)",
+      "origem_alegada": "empréstimo do irmão",
+      "natureza": "mutuo_recebido",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "CC, art. 586; CPC, art. 409 (data certa); Lei 9.430/1996, art. 42, § 2º",
+      "documento": "contrato particular de mútuo sem registro e sem firma reconhecida, fl. 60",
+      "prova": "parcial",
+      "motivos_prova": [
+        "natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada"
+      ],
+      "prova_exigida": "contrato com data certa (registro ou firma reconhecida à época), DIRPF do mutuante e do mutuário, transferência do mutuante, capacidade financeira do mutuante, devolução posterior",
+      "alerta": "contrato sem data certa, mutuante sem lastro ou devolução inexistente reduzem a prova a parcial",
+      "ja_declarado": false,
+      "tratamento_base": "presumido_omissao",
+      "motivos_tratamento_base": [
+        "origem não comprovada no cenário base: natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada"
+      ],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "25000.00",
+      "valor_imputado_titular_ampliado": "25000.00"
+    },
+    {
+      "id": "4",
+      "data": "10/03/2023",
+      "mes": "03/2023",
+      "valor": "3000.00",
+      "valor_brl": "R$ 3.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Imobiliária Beta Ltda",
+      "origem_alegada": "aluguel do imóvel da Rua A, 10",
+      "natureza": "aluguel",
+      "tratamento_natural": "ajuste",
+      "fundamento": "Lei 7.713/1988, art. 3º, § 1º; carnê-leão quando o pagador é pessoa física",
+      "documento": "contrato de locação fl. 52 e DIMOB da Imobiliária Beta fl. 55",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "contrato de locação, DIMOB da administradora, recibos e DIRF quando o locatário é pessoa jurídica",
+      "alerta": "deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+      "ja_declarado": false,
+      "tratamento_base": "ajuste",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "ajuste",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "3000.00",
+      "valor_imputado_titular_ampliado": "3000.00"
+    },
+    {
+      "id": "6",
+      "data": "20/03/2023",
+      "mes": "03/2023",
+      "valor": "8000.00",
+      "valor_brl": "R$ 8.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Transferência da poupança 0001-1 (mesma titular)",
+      "origem_alegada": "resgate da própria poupança",
+      "natureza": "transferencia_propria",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "Lei 9.430/1996, art. 42, § 3º, I",
+      "documento": "extrato da poupança 0001-1 com o débito de 20/03/2023, fl. 63",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "extrato da conta de origem, do mesmo titular, com débito de igual data e valor",
+      "alerta": "conta conjunta ou de cônjuge não é conta própria: aplicar o § 6º ou exigir prova da titularidade do recurso",
+      "ja_declarado": false,
+      "tratamento_base": "nao_rendimento",
+      "motivos_tratamento_base": [
+        "§ 3º, I: transferência entre contas do próprio titular"
+      ],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "8000.00",
+      "valor_imputado_titular_ampliado": "8000.00"
+    },
+    {
+      "id": "7",
+      "data": "03/04/2023",
+      "mes": "04/2023",
+      "valor": "300000.00",
+      "valor_brl": "R$ 300.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "TED Ana da Silva (CPF 000.000.000-00)",
+      "origem_alegada": "doação da mãe para compra de imóvel",
+      "natureza": "doacao",
+      "tratamento_natural": "isento",
+      "fundamento": "Lei 7.713/1988, art. 6º, XVI; RIR/2018, art. 35",
+      "documento": "declaração particular de doação sem ITCMD e sem DIRPF da doadora, fl. 70",
+      "prova": "parcial",
+      "motivos_prova": [
+        "natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada"
+      ],
+      "prova_exigida": "ITCMD pago, declarado ou isenção reconhecida; DIRPF do doador (ficha de doações); transferência bancária do doador",
+      "alerta": "recibo particular sem data certa (CPC, art. 409) e doador sem capacidade financeira não comprovam a doação",
+      "ja_declarado": false,
+      "tratamento_base": "presumido_omissao",
+      "motivos_tratamento_base": [
+        "origem não comprovada no cenário base: natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada"
+      ],
+      "tratamento_ampliado": "isento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "300000.00",
+      "valor_imputado_titular_ampliado": "300000.00"
+    },
+    {
+      "id": "8",
+      "data": "12/05/2023",
+      "mes": "05/2023",
+      "valor": "1950.00",
+      "valor_brl": "R$ 1.950,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Carlos Pereira",
+      "origem_alegada": "não identificada",
+      "natureza": "sem_prova",
+      "tratamento_natural": "presumido_omissao",
+      "fundamento": "Lei 9.430/1996, art. 42, caput e § 4º",
+      "documento": "",
+      "prova": "ausente",
+      "motivos_prova": [
+        "nenhum documento apresentado"
+      ],
+      "prova_exigida": "nenhuma apresentada",
+      "alerta": "candidato à exclusão do § 3º, II, quando de pequeno valor",
+      "ja_declarado": false,
+      "tratamento_base": "excluido_par3",
+      "motivos_tratamento_base": [
+        "§ 3º, II: crédito de R$ 1.950,00 até R$ 12.000,00 e soma anual de R$ 15.650,00 até R$ 80.000,00"
+      ],
+      "tratamento_ampliado": "excluido_par3",
+      "motivos_tratamento_ampliado": [
+        "§ 3º, II: crédito de R$ 1.950,00 até R$ 12.000,00 e soma anual de R$ 6.650,00 até R$ 80.000,00"
+      ],
+      "valor_imputado_titular_base": "1950.00",
+      "valor_imputado_titular_ampliado": "1950.00"
+    },
+    {
+      "id": "9",
+      "data": "18/05/2023",
+      "mes": "05/2023",
+      "valor": "700.00",
+      "valor_brl": "R$ 700,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Loja Gama",
+      "origem_alegada": "não identificada",
+      "natureza": "sem_prova",
+      "tratamento_natural": "presumido_omissao",
+      "fundamento": "Lei 9.430/1996, art. 42, caput e § 4º",
+      "documento": "",
+      "prova": "ausente",
+      "motivos_prova": [
+        "nenhum documento apresentado"
+      ],
+      "prova_exigida": "nenhuma apresentada",
+      "alerta": "candidato à exclusão do § 3º, II, quando de pequeno valor",
+      "ja_declarado": false,
+      "tratamento_base": "excluido_par3",
+      "motivos_tratamento_base": [
+        "§ 3º, II: crédito de R$ 700,00 até R$ 12.000,00 e soma anual de R$ 15.650,00 até R$ 80.000,00"
+      ],
+      "tratamento_ampliado": "excluido_par3",
+      "motivos_tratamento_ampliado": [
+        "§ 3º, II: crédito de R$ 700,00 até R$ 12.000,00 e soma anual de R$ 6.650,00 até R$ 80.000,00"
+      ],
+      "valor_imputado_titular_base": "700.00",
+      "valor_imputado_titular_ampliado": "700.00"
+    },
+    {
+      "id": "10a",
+      "data": "02/06/2023",
+      "mes": "06/2023",
+      "valor": "12000.00",
+      "valor_brl": "R$ 12.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Crédito resgate CDB Banco Alfa (principal)",
+      "origem_alegada": "principal do CDB aplicado em 2022 e declarado na DIRPF",
+      "natureza": "resgate_principal",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "CTN, art. 43 (não há acréscimo patrimonial)",
+      "documento": "nota de resgate fl. 75 e ficha de bens da DIRPF 2023, fl. 30",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "nota de resgate ou extrato da aplicação com a aplicação de origem identificada e a DIRPF (bens e direitos)",
+      "alerta": "aplicação de origem sem lastro declarado desloca o problema para a data da aplicação",
+      "ja_declarado": false,
+      "tratamento_base": "nao_rendimento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "12000.00",
+      "valor_imputado_titular_ampliado": "12000.00"
+    },
+    {
+      "id": "10b",
+      "data": "02/06/2023",
+      "mes": "06/2023",
+      "valor": "500.00",
+      "valor_brl": "R$ 500,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Crédito resgate CDB Banco Alfa (rendimento)",
+      "origem_alegada": "rendimento do CDB com IRRF na fonte",
+      "natureza": "aplicacao_financeira",
+      "tratamento_natural": "exclusivo_fonte",
+      "fundamento": "rendimento de renda fixa com tributação exclusiva na fonte [A VERIFICAR: Lei 8.981/1995, art. 65]",
+      "documento": "informe de rendimentos financeiros do Banco Alfa, fl. 76",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "informe de rendimentos da instituição ou nota de resgate com IRRF destacado",
+      "alerta": "só o rendimento; o principal resgatado é resgate_principal; renda variável tem apuração mensal própria",
+      "ja_declarado": false,
+      "tratamento_base": "exclusivo_fonte",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "exclusivo_fonte",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "500.00",
+      "valor_imputado_titular_ampliado": "500.00"
+    },
+    {
+      "id": "11",
+      "data": "10/07/2023",
+      "mes": "07/2023",
+      "valor": "45000.00",
+      "valor_brl": "R$ 45.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "TED Delta Veículos Ltda",
+      "origem_alegada": "venda do automóvel placa ABC0000",
+      "natureza": "venda_bem",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "preço não é renda; ganho de capital tem apuração própria [A VERIFICAR: Lei 9.250/1995, arts. 22 e 23, valores vigentes]",
+      "documento": "ATPV-e de 08/07/2023 fl. 80 e baixa do bem na DIRPF 2024, fl. 32",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados; prova qualificada presente"
+      ],
+      "prova_exigida": "escritura ou registro, CRLV e ATPV, contrato com data certa, DIRPF com a baixa do bem, GCAP e DARF do ganho",
+      "alerta": "preço acima do valor declarado na DIRPF é acréscimo; sem DARF ou isenção, o ganho de capital é lançável em separado",
+      "ja_declarado": false,
+      "tratamento_base": "nao_rendimento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "45000.00",
+      "valor_imputado_titular_ampliado": "45000.00"
+    },
+    {
+      "id": "12",
+      "data": "25/08/2023",
+      "mes": "08/2023",
+      "valor": "15000.00",
+      "valor_brl": "R$ 15.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Depósito em dinheiro no caixa",
+      "origem_alegada": "não identificada",
+      "natureza": "sem_prova",
+      "tratamento_natural": "presumido_omissao",
+      "fundamento": "Lei 9.430/1996, art. 42, caput e § 4º",
+      "documento": "",
+      "prova": "ausente",
+      "motivos_prova": [
+        "nenhum documento apresentado"
+      ],
+      "prova_exigida": "nenhuma apresentada",
+      "alerta": "candidato à exclusão do § 3º, II, quando de pequeno valor",
+      "ja_declarado": false,
+      "tratamento_base": "presumido_omissao",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "presumido_omissao",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "15000.00",
+      "valor_imputado_titular_ampliado": "15000.00"
+    },
+    {
+      "id": "13",
+      "data": "05/09/2023",
+      "mes": "09/2023",
+      "valor": "6000.00",
+      "valor_brl": "R$ 6.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Pedro Souza (CPF 000.000.000-00)",
+      "origem_alegada": "honorários de consultoria",
+      "natureza": "honorarios",
+      "tratamento_natural": "ajuste",
+      "fundamento": "Lei 7.713/1988, art. 3º; carnê-leão quando o pagador é pessoa física",
+      "documento": "recibo de prestação de serviço fl. 85",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "recibo ou nota, contrato de prestação de serviço, DIRF quando o pagador é pessoa jurídica",
+      "alerta": "despesas de livro-caixa só com escrituração e comprovantes [A VERIFICAR: Lei 8.134/1990, art. 6º]",
+      "ja_declarado": false,
+      "tratamento_base": "ajuste",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "ajuste",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "6000.00",
+      "valor_imputado_titular_ampliado": "6000.00"
+    },
+    {
+      "id": "14",
+      "data": "14/09/2023",
+      "mes": "09/2023",
+      "valor": "2200.00",
+      "valor_brl": "R$ 2.200,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Crédito FGTS Caixa",
+      "origem_alegada": "saque do FGTS por rescisão",
+      "natureza": "fgts",
+      "tratamento_natural": "isento",
+      "fundamento": "Lei 7.713/1988, art. 6º, V",
+      "documento": "extrato da conta vinculada do FGTS fl. 88 e TRCT fl. 89",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "extrato da conta vinculada com o saque e TRCT ou alvará",
+      "alerta": "conferir data e valor do saque no extrato da Caixa",
+      "ja_declarado": false,
+      "tratamento_base": "isento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "isento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "2200.00",
+      "valor_imputado_titular_ampliado": "2200.00"
+    },
+    {
+      "id": "15",
+      "data": "20/10/2023",
+      "mes": "10/2023",
+      "valor": "10000.00",
+      "valor_brl": "R$ 10.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "TED Epsilon Participações Ltda",
+      "origem_alegada": "lucros distribuídos da sociedade",
+      "natureza": "dividendos",
+      "tratamento_natural": "isento",
+      "fundamento": "Lei 9.249/1995, art. 10; RIR/2018, art. 35",
+      "documento": "informe de rendimentos de Epsilon Participações Ltda fl. 92 e ata de distribuição fl. 93",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "informe de rendimentos da pessoa jurídica, ata ou deliberação, ECF e contabilidade com lucro apurado",
+      "alerta": "distribuição sem lucro contábil apurado é tributável; regime alterado a partir de 2026 [A VERIFICAR: Lei 15.270/2025]",
+      "ja_declarado": false,
+      "tratamento_base": "isento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "isento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "10000.00",
+      "valor_imputado_titular_ampliado": "10000.00"
+    },
+    {
+      "id": "16",
+      "data": "08/11/2023",
+      "mes": "11/2023",
+      "valor": "1200.00",
+      "valor_brl": "R$ 1.200,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Restituição IRPF exercício 2023",
+      "origem_alegada": "restituição do imposto de renda",
+      "natureza": "restituicao_ir",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "CTN, art. 165 (restituição de tributo)",
+      "documento": "consulta de restituição da RFB, lote de 11/2023, fl. 95",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "consulta de restituição da RFB (lote e valor) e DIRPF do exercício",
+      "alerta": "conferir se o valor creditado coincide com o lote de restituição",
+      "ja_declarado": false,
+      "tratamento_base": "nao_rendimento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "1200.00",
+      "valor_imputado_titular_ampliado": "1200.00"
+    },
+    {
+      "id": "17",
+      "data": "15/11/2023",
+      "mes": "11/2023",
+      "valor": "9000.00",
+      "valor_brl": "R$ 9.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Fernanda Lima (CPF 000.000.000-00)",
+      "origem_alegada": "valor recebido para repasse em nome de terceira",
+      "natureza": "terceiro",
+      "tratamento_natural": "terceiro",
+      "fundamento": "Lei 9.430/1996, art. 42, §§ 5º e 6º",
+      "documento": "declaração particular de Fernanda Lima sem procuração e sem DIRPF dela, fl. 98",
+      "prova": "parcial",
+      "motivos_prova": [
+        "natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada"
+      ],
+      "prova_exigida": "mandato ou procuração, DIRPF do terceiro com o rendimento, extratos do terceiro, contrato que explique a passagem do recurso",
+      "alerta": "o § 5º exige prova, não alegação; o efeito é o lançamento contra o terceiro, não a extinção do crédito",
+      "ja_declarado": false,
+      "tratamento_base": "excluido_par3",
+      "motivos_tratamento_base": [
+        "origem não comprovada no cenário base: natureza exige prova qualificada (data certa, registro público, ITCMD ou decisão) não apresentada",
+        "§ 3º, II: crédito de R$ 9.000,00 até R$ 12.000,00 e soma anual de R$ 15.650,00 até R$ 80.000,00"
+      ],
+      "tratamento_ampliado": "terceiro",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "9000.00",
+      "valor_imputado_titular_ampliado": "9000.00"
+    },
+    {
+      "id": "18",
+      "data": "01/12/2023",
+      "mes": "12/2023",
+      "valor": "3500.00",
+      "valor_brl": "R$ 3.500,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "Estorno compra cartão Loja Zeta",
+      "origem_alegada": "estorno de compra cancelada",
+      "natureza": "estorno",
+      "tratamento_natural": "nao_rendimento",
+      "fundamento": "ausência de acréscimo patrimonial (CTN, art. 43)",
+      "documento": "lançamento de débito de 28/11/2023 no mesmo extrato, fl. 101",
+      "prova": "suficiente",
+      "motivos_prova": [
+        "data, valor e contraparte conciliados"
+      ],
+      "prova_exigida": "lançamento de débito correspondente no mesmo extrato, anterior ao crédito",
+      "alerta": "estorno sem débito prévio identificado é crédito sem origem",
+      "ja_declarado": false,
+      "tratamento_base": "nao_rendimento",
+      "motivos_tratamento_base": [],
+      "tratamento_ampliado": "nao_rendimento",
+      "motivos_tratamento_ampliado": [],
+      "valor_imputado_titular_base": "3500.00",
+      "valor_imputado_titular_ampliado": "3500.00"
+    },
+    {
+      "id": "19",
+      "data": "12/12/2023",
+      "mes": "12/2023",
+      "valor": "4000.00",
+      "valor_brl": "R$ 4.000,00",
+      "conta": "CC 0001-1 Banco Alfa",
+      "historico": "PIX Marcos Silva",
+      "origem_alegada": "não identificada",
+      "natureza": "sem_prova",
+      "tratamento_natural": "presumido_omissao",
+      "fundamento": "Lei 9.430/1996, art. 42, caput e § 4º",
+      "documento": "",
+      "prova": "ausente",
+      "motivos_prova": [
+        "nenhum documento apresentado"
+      ],
+      "prova_exigida": "nenhuma apresentada",
+      "alerta": "candidato à exclusão do § 3º, II, quando de pequeno valor",
+      "ja_declarado": false,
+      "tratamento_base": "excluido_par3",
+      "motivos_tratamento_base": [
+        "§ 3º, II: crédito de R$ 4.000,00 até R$ 12.000,00 e soma anual de R$ 15.650,00 até R$ 80.000,00"
+      ],
+      "tratamento_ampliado": "excluido_par3",
+      "motivos_tratamento_ampliado": [
+        "§ 3º, II: crédito de R$ 4.000,00 até R$ 12.000,00 e soma anual de R$ 6.650,00 até R$ 80.000,00"
+      ],
+      "valor_imputado_titular_base": "4000.00",
+      "valor_imputado_titular_ampliado": "4000.00"
+    }
+  ],
+  "totais": {
+    "cenario_base": {
+      "por_tratamento": {
+        "ajuste": "19500.00",
+        "presumido_omissao": "340000.00",
+        "nao_rendimento": "69700.00",
+        "excluido_par3": "15650.00",
+        "exclusivo_fonte": "500.00",
+        "isento": "12200.00"
+      },
+      "por_natureza": {
+        "salario": "4500.00",
+        "aluguel": "9000.00",
+        "mutuo_recebido": "25000.00",
+        "transferencia_propria": "8000.00",
+        "doacao": "300000.00",
+        "sem_prova": "21650.00",
+        "resgate_principal": "12000.00",
+        "aplicacao_financeira": "500.00",
+        "venda_bem": "45000.00",
+        "honorarios": "6000.00",
+        "fgts": "2200.00",
+        "dividendos": "10000.00",
+        "restituicao_ir": "1200.00",
+        "terceiro": "9000.00",
+        "estorno": "3500.00"
+      },
+      "por_mes": {
+        "01/2023": "7500.00",
+        "02/2023": "28000.00",
+        "03/2023": "11000.00",
+        "04/2023": "300000.00",
+        "05/2023": "2650.00",
+        "06/2023": "12500.00",
+        "07/2023": "45000.00",
+        "08/2023": "15000.00",
+        "09/2023": "8200.00",
+        "10/2023": "10000.00",
+        "11/2023": "10200.00",
+        "12/2023": "7500.00"
+      },
+      "por_ano": {
+        "2023": "457550.00"
+      },
+      "base_adicional_ajuste_por_ano": {
+        "2023": "355000.00"
+      },
+      "base_adicional_por_mes": {
+        "01/2023": "3000.00",
+        "02/2023": "28000.00",
+        "03/2023": "3000.00",
+        "04/2023": "300000.00",
+        "08/2023": "15000.00",
+        "09/2023": "6000.00"
+      },
+      "presumido_por_ano": {
+        "2023": "340000.00"
+      },
+      "presumido_por_mes": {
+        "02/2023": "25000.00",
+        "04/2023": "300000.00",
+        "08/2023": "15000.00"
+      },
+      "ajuste_nao_declarado_por_ano": {
+        "2023": "15000.00"
+      },
+      "ajuste_nao_declarado_por_mes": {
+        "01/2023": "3000.00",
+        "02/2023": "3000.00",
+        "03/2023": "3000.00",
+        "09/2023": "6000.00"
+      },
+      "soma_classes": "457550.00"
+    },
+    "cenario_ampliado": {
+      "por_tratamento": {
+        "ajuste": "19500.00",
+        "nao_rendimento": "94700.00",
+        "isento": "312200.00",
+        "excluido_par3": "6650.00",
+        "exclusivo_fonte": "500.00",
+        "presumido_omissao": "15000.00",
+        "terceiro": "9000.00"
+      },
+      "por_natureza": {
+        "salario": "4500.00",
+        "aluguel": "9000.00",
+        "mutuo_recebido": "25000.00",
+        "transferencia_propria": "8000.00",
+        "doacao": "300000.00",
+        "sem_prova": "21650.00",
+        "resgate_principal": "12000.00",
+        "aplicacao_financeira": "500.00",
+        "venda_bem": "45000.00",
+        "honorarios": "6000.00",
+        "fgts": "2200.00",
+        "dividendos": "10000.00",
+        "restituicao_ir": "1200.00",
+        "terceiro": "9000.00",
+        "estorno": "3500.00"
+      },
+      "por_mes": {
+        "01/2023": "7500.00",
+        "02/2023": "28000.00",
+        "03/2023": "11000.00",
+        "04/2023": "300000.00",
+        "05/2023": "2650.00",
+        "06/2023": "12500.00",
+        "07/2023": "45000.00",
+        "08/2023": "15000.00",
+        "09/2023": "8200.00",
+        "10/2023": "10000.00",
+        "11/2023": "10200.00",
+        "12/2023": "7500.00"
+      },
+      "por_ano": {
+        "2023": "457550.00"
+      },
+      "base_adicional_ajuste_por_ano": {
+        "2023": "30000.00"
+      },
+      "base_adicional_por_mes": {
+        "01/2023": "3000.00",
+        "02/2023": "3000.00",
+        "03/2023": "3000.00",
+        "08/2023": "15000.00",
+        "09/2023": "6000.00"
+      },
+      "presumido_por_ano": {
+        "2023": "15000.00"
+      },
+      "presumido_por_mes": {
+        "08/2023": "15000.00"
+      },
+      "ajuste_nao_declarado_por_ano": {
+        "2023": "15000.00"
+      },
+      "ajuste_nao_declarado_por_mes": {
+        "01/2023": "3000.00",
+        "02/2023": "3000.00",
+        "03/2023": "3000.00",
+        "09/2023": "6000.00"
+      },
+      "soma_classes": "457550.00"
+    }
+  },
+  "resumo": {
+    "presumidos_base": [
+      "5",
+      "7",
+      "12"
+    ],
+    "excluidos_par3_ii_base": [
+      "8",
+      "9",
+      "17",
+      "19"
+    ],
+    "quantidade_por_tratamento_base": {
+      "ajuste": 5,
+      "exclusivo_fonte": 1,
+      "isento": 2,
+      "nao_rendimento": 5,
+      "presumido_omissao": 3,
+      "excluido_par3": 4
+    },
+    "presumidos_ampliado": [
+      "12"
+    ],
+    "excluidos_par3_ii_ampliado": [
+      "8",
+      "9",
+      "19"
+    ],
+    "quantidade_por_tratamento_ampliado": {
+      "ajuste": 5,
+      "exclusivo_fonte": 1,
+      "isento": 3,
+      "nao_rendimento": 6,
+      "terceiro": 1,
+      "presumido_omissao": 1,
+      "excluido_par3": 3
+    },
+    "quantidade_por_prova": {
+      "suficiente": 13,
+      "parcial": 3,
+      "ausente": 4
+    }
+  },
+  "creditos_sem_prova": [
+    "8",
+    "9",
+    "12",
+    "19"
+  ],
+  "creditos_prova_parcial": [
+    "5",
+    "7",
+    "17"
+  ],
+  "alertas": [
+    "1: IRRF retido pela fonte é compensável; conferir se o rendimento já constava da DIRPF",
+    "2: deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+    "3: deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+    "5: contrato sem data certa, mutuante sem lastro ou devolução inexistente reduzem a prova a parcial",
+    "4: deduzir do bruto os encargos do imóvel pagos pelo locador e a comissão da administradora, com comprovante",
+    "6: conta conjunta ou de cônjuge não é conta própria: aplicar o § 6º ou exigir prova da titularidade do recurso",
+    "7: recibo particular sem data certa (CPC, art. 409) e doador sem capacidade financeira não comprovam a doação",
+    "10a: aplicação de origem sem lastro declarado desloca o problema para a data da aplicação",
+    "10b: só o rendimento; o principal resgatado é resgate_principal; renda variável tem apuração mensal própria",
+    "11: preço acima do valor declarado na DIRPF é acréscimo; sem DARF ou isenção, o ganho de capital é lançável em separado",
+    "13: despesas de livro-caixa só com escrituração e comprovantes [A VERIFICAR: Lei 8.134/1990, art. 6º]",
+    "14: conferir data e valor do saque no extrato da Caixa",
+    "15: distribuição sem lucro contábil apurado é tributável; regime alterado a partir de 2026 [A VERIFICAR: Lei 15.270/2025]",
+    "16: conferir se o valor creditado coincide com o lote de restituição",
+    "17: o § 5º exige prova, não alegação; o efeito é o lançamento contra o terceiro, não a extinção do crédito",
+    "18: estorno sem débito prévio identificado é crédito sem origem"
+  ],
+  "sanidade": {
+    "total_imputado": "457550.00",
+    "soma_classes_base": "457550.00",
+    "soma_classes_ampliado": "457550.00",
+    "ok": true
+  },
+  "memoria": [
+    "Lidos 20 créditos de assets/exemplo_rendimentos.csv (ano 2023), total imputado R$ 457.550,00",
+    "Regra de prova: data do documento a até 10 dias do crédito; valor com tolerância de 0.5% (mínimo R$ 1,00); contraparte identificada; prova qualificada quando a natureza exige",
+    "Cenário base: só prova suficiente afasta a presunção; cenário ampliado: prova parcial aceita, para medir a sensibilidade",
+    "[tratamento_base] ano 2023: 4 créditos até R$ 12.000,00 somam R$ 15.650,00, dentro de R$ 80.000,00: excluídos (§ 3º, II)",
+    "[tratamento_ampliado] ano 2023: 3 créditos até R$ 12.000,00 somam R$ 6.650,00, dentro de R$ 80.000,00: excluídos (§ 3º, II)",
+    "Sanidade: soma das classes = total imputado = R$ 457.550,00 nos dois cenários"
+  ]
+}
