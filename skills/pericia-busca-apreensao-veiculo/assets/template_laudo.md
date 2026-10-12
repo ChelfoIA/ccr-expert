@@ -6,7 +6,7 @@ Nome de arquivo sugerido: `AAAA-MM-DD_Laudo_BuscaApreensao_[NomeAbreviado]_v1.md
 
 ---
 
-## LAUDO PERICIAL CONTÁBIL
+## Laudo pericial contábil
 
 **Processo nº** [número]
 **Vara** [juízo]
@@ -19,7 +19,7 @@ Nome de arquivo sugerido: `AAAA-MM-DD_Laudo_BuscaApreensao_[NomeAbreviado]_v1.md
 
 ---
 
-## 1. OBJETO
+## 1. Objeto
 
 A perícia tem por objeto a análise do contrato de financiamento de veículo com alienação fiduciária nº [número], celebrado em [data], a descrição dos fatos relativos à constituição em mora, o confronto dos juros remuneratórios com a taxa média de mercado divulgada pelo Banco Central para a modalidade no mês da contratação, a aferição da capitalização e das tarifas e seguros embutidos, a reconstrução da evolução da dívida em cenário contratual e em cenário revisado, e a apuração do valor exigível para a purga da mora na data da liminar.
 
@@ -27,7 +27,7 @@ Não integram o objeto: a validade jurídica da constituição em mora, a nulida
 
 ---
 
-## 2. QUESITOS
+## 2. Quesitos
 
 | Origem | Nº | Quesito | Seção da resposta |
 |---|---|---|---|
@@ -37,7 +37,7 @@ Não integram o objeto: a validade jurídica da constituição em mora, a nulida
 
 ---
 
-## 3. DOCUMENTOS EXAMINADOS
+## 3. Documentos examinados
 
 | Nº | Documento | Fls. | Origem | Observação |
 |---|---|---|---|---|
@@ -50,7 +50,7 @@ Não integram o objeto: a validade jurídica da constituição em mora, a nulida
 
 ---
 
-## 4. METODOLOGIA
+## 4. Metodologia
 
 1. Extração dos dados do contrato para o arquivo estruturado (`exemplo_contrato.json` como modelo), com transcrição literal das cláusulas de taxa, capitalização, encargos moratórios, tarifas e seguros.
 2. Descrição factual da notificação extrajudicial: data, endereço de destino comparado ao do contrato, resultado do aviso de recebimento, parcela mais antiga em aberto naquela data.
@@ -71,7 +71,7 @@ Não integram o objeto: a validade jurídica da constituição em mora, a nulida
 
 ---
 
-## 5. ANÁLISE
+## 5. Análise
 
 ### 5.1. Dados do contrato
 
@@ -172,7 +172,7 @@ Resposta técnica: [sim / não]. Motivos: [juros acima do limiar declarado; tari
 
 ---
 
-## 6. CONCLUSÃO
+## 6. Conclusão
 
 [Redigir por cenário, sem juízo sobre a procedência.]
 
@@ -186,7 +186,7 @@ Limitações declaradas:
 
 ---
 
-## 7. RESPOSTA AOS QUESITOS
+## 7. Resposta aos quesitos
 
 ### 7.1. Quesitos do juízo
 
@@ -199,7 +199,7 @@ Limitações declaradas:
 
 ---
 
-## 8. ENCERRAMENTO
+## 8. Encerramento
 
 Nada mais havendo a informar, o perito encerra o presente laudo, composto de [n] laudas e [n] anexos, e o submete à apreciação do juízo.
 
@@ -211,7 +211,7 @@ Perito nomeado
 
 ---
 
-## ANEXOS
+## Anexos
 
 | Anexo | Conteúdo |
 |---|---|
@@ -223,7 +223,7 @@ Perito nomeado
 
 ---
 
-## EXEMPLO PREENCHIDO (dados fictícios dos assets)
+## Exemplo preenchido (dados fictícios dos assets)
 
 Processo 0000000-00.0000.0.00.0000. Banco Alfa S.A. x Maria da Silva. CCB nº 000000, de 15/03/2024, valor financiado R$ 38.500,00, 36 parcelas de R$ 1.737,23, taxa de 2,90% a.m. (40,92% a.a. informada; composta equivalente 40,92% a.a.). Taxa média fictícia da modalidade em 03/2024: 1,60% a.m. (20,98% a.a.). Razão 1,8125, acima do limiar de 1,5 adotado como premissa. Taxa anual informada superior ao duodécuplo (34,80%), sinal de pactuação de capitalização mensal. Tarifas de registro (R$ 350,00) e de avaliação (R$ 400,00) sem prova do serviço, excluídas do principal no cenário B; cadastro e seguro prestamista mantidos.
 
@@ -242,7 +242,7 @@ Resposta ao quesito 2 do juízo: no período de normalidade (parcelas 1 a 14), o
 
 ---
 
-## PENDÊNCIAS DE VERIFICAÇÃO
+## Pendências de verificação
 
 Listar aqui todo item `[A VERIFICAR]` que restou no laudo, com o que conferir e onde, na forma da seção 9 de `references/fundamentacao-legal.md`:
 

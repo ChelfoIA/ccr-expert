@@ -19,7 +19,7 @@
     },
     "pagamentos": "imputados à parcela indicada; pagamento parcial gera residual; sem imputação de excesso em amortização",
     "data_referencia": "10/09/2025",
-    "parcelas_vincendas": "saldo devedor a valor presente = saldo da tabela após a última vencida; nominal = soma das parcelas"
+    "parcelas_vincendas": "saldo devedor a valor presente = saldo da tabela após a última vencida; nominal = soma das parcelas arredondadas ao centavo, como cobradas"
   },
   "contrato": {
     "identificacao": "CCB nº 000000 (financiamento de veículo, alienação fiduciária)",
@@ -1250,7 +1250,7 @@
       ],
       "total_residual_vencidas": "5.211,69",
       "saldo_devedor_valor_presente_vincendas": "25.105,48",
-      "vincendas_valor_nominal": "33.007,42"
+      "vincendas_valor_nominal": "33.007,37"
     },
     "B": {
       "parcelas_vencidas": 17,
@@ -1283,7 +1283,7 @@
       ],
       "total_residual_vencidas": "4.162,74",
       "saldo_devedor_valor_presente_vincendas": "22.579,60",
-      "vincendas_valor_nominal": "26.364,11"
+      "vincendas_valor_nominal": "26.364,02"
     }
   },
   "memoria": [
@@ -1297,7 +1297,7 @@
     "Cenário B: principal base R$ 37.750,00 = PV R$ 37.750,00; i = 1,6000% a.m.; n = 36; PMT = PV x i / (1 - (1 + i)^-n); PMT = R$ 1.387,58.",
     "Cenário B: sanidade: soma das amortizações R$ 37.750,00 = PV; último saldo R$ 0,00.",
     "Excesso: total pago R$ 24.321,22 menos devido em B pelas mesmas parcelas R$ 19.426,19 = R$ 4.895,03 (valores nominais nas datas de pagamento; atualização pela skill atualizacao-monetaria).",
-    "Situação em 10/09/2025, cenário A: 17 parcelas vencidas, 3 em aberto (residual R$ 5.211,69), 19 vincendas (valor presente R$ 25.105,48; nominal R$ 33.007,42).",
-    "Situação em 10/09/2025, cenário B: 17 parcelas vencidas, 3 em aberto (residual R$ 4.162,74), 19 vincendas (valor presente R$ 22.579,60; nominal R$ 26.364,11)."
+    "Situação em 10/09/2025, cenário A: 17 parcelas vencidas, 3 em aberto (residual R$ 5.211,69), 19 vincendas (valor presente R$ 25.105,48; nominal R$ 33.007,37).",
+    "Situação em 10/09/2025, cenário B: 17 parcelas vencidas, 3 em aberto (residual R$ 4.162,74), 19 vincendas (valor presente R$ 22.579,60; nominal R$ 26.364,02)."
   ]
 }

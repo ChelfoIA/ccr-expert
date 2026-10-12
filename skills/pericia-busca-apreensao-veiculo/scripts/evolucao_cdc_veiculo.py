@@ -297,7 +297,9 @@ def situacao_na_referencia(cen: dict, data_ref: date, pagos: dict) -> dict:
                             "pago": fmt_brl(pago), "residual": fmt_brl(residual),
                             "dias_atraso": (data_ref - l["vencimento"]).days})
     saldo_vp = vencidas[-1]["saldo_final"] if vencidas else cen["_pv"]
-    nominal_vinc = sum((l["parcela"] for l in vincendas), Decimal(0))
+    # Nominal das vincendas: soma das parcelas arredondadas ao centavo, como
+    # constam do carnê e da planilha do credor; coincide com purga_mora.py.
+    nominal_vinc = sum((q2(l["parcela"]) for l in vincendas), Decimal(0))
     return {"parcelas_vencidas": len(vencidas), "parcelas_vincendas": len(vincendas),
             "vencidas_nao_pagas": abertas,
             "total_residual_vencidas": fmt_brl(sum((parse_num(a["residual"]) for a in abertas), Decimal(0))),
@@ -511,7 +513,7 @@ def executar(args) -> dict:
                         "competencia": args.competencia_taxa_media} if taxa_media is not None else "não informada"),
         "pagamentos": "imputados à parcela indicada; pagamento parcial gera residual; sem imputação de excesso em amortização",
         "data_referencia": fmt_data(data_ref),
-        "parcelas_vincendas": "saldo devedor a valor presente = saldo da tabela após a última vencida; nominal = soma das parcelas",
+        "parcelas_vincendas": "saldo devedor a valor presente = saldo da tabela após a última vencida; nominal = soma das parcelas arredondadas ao centavo, como cobradas",
     }
     resultado = {
         "skill": SKILL, "script": "evolucao_cdc_veiculo.py", "versao": VERSAO,
