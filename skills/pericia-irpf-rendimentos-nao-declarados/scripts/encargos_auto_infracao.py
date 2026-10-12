@@ -465,8 +465,8 @@ def main():
         if args.saida:
             Path(args.saida).write_text(texto + "\n", encoding="utf-8")
             e = saida["encargos"]
-            print(f"Encargos gravados em {args.saida}: principal R$ {e['principal']}, multa R$ {e['multa']}, "
-                  f"juros R$ {e['juros']} (Selic {e['selic_acumulada_pct']}%), total R$ {e['total']}")
+            print(f"Encargos gravados em {args.saida}: principal {brl(e['principal'])}, multa {brl(e['multa'])}, "
+                  f"juros {brl(e['juros'])} (Selic {pct(e['selic_acumulada_pct'])}), total {brl(e['total'])}")
         else:
             print(texto)
         if args.md:

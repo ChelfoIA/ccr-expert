@@ -1,0 +1,58 @@
+{
+  "skill_name": "pericia-irpf-rendimentos-nao-declarados",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita numa anulatória. A Receita autuou a autora no ano-calendário 2023 porque a Imobiliária Beta informou em DIMOB aluguéis de R$ 3.000,00 por mês de janeiro a março (R$ 9.000,00) que ela não declarou, e um cliente pessoa física pagou R$ 6.000,00 de honorários em setembro. O auto tributou os R$ 15.000,00 como omissão de rendimentos pelo art. 42, com multa de 75%, e não compensou os R$ 225,00 de IRRF que a locatária reteve. Ela declarou R$ 54.000,00 de salário, com 1 dependente, R$ 5.940,00 de previdência oficial, R$ 3.200,00 de saúde e R$ 6.000,00 de instrução. Peguei a tabela de 2023 e os limites do exercício no site da Receita. Como classifico isso e quanto dá o imposto?",
+      "expected_output": "Classificação dos aluguéis e honorários como rendimento de fonte identificada (natureza aluguel e honorarios, tratamento ajuste, ja_declarado N, prova suficiente pela DIMOB e pelo recibo), não como presunção do art. 42; aplicação do § 2º; recálculo no modo anual com a tabela e os limites fornecidos por arquivo com fonte; compensação do IRRF de R$ 225,00 e do imposto da DIRPF original; imposto suplementar apurado; registro de que a multa de ofício incide sobre a diferença e de que a qualificação do erro do auto é do juízo.",
+      "files": [],
+      "expectations": [
+        "Classifica os R$ 15.000,00 como rendimentos de fonte identificada ausentes da DIRPF (tratamento ajuste, prova suficiente pela DIMOB e pelo recibo) e explica que não se trata de presunção do art. 42, mas de rendimento tributável no ajuste por força do § 2º",
+        "Executa recalculo_irpf.py com a tabela e os limites de dedução lidos de arquivo com coluna fonte preenchida e recusa digitar valores de tabela de memória",
+        "Compensa o IRRF de R$ 225,00 e o imposto apurado na DIRPF original ao calcular o imposto suplementar, e aponta que o auto não compensou o IRRF",
+        "Apresenta deduções legais e desconto simplificado lado a lado e declara qual foi adotado e por quê",
+        "Não conclui sobre nulidade do auto: descreve o enquadramento equivocado como fato e remete a consequência jurídica ao juízo"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Embargos à execução fiscal, IRPF 2023, lançamento por depósitos de origem não comprovada: 40 créditos somando uns R$ 480 mil numa conta do embargante. Pelo que vi, 12 créditos são transferências da poupança dele mesmo (tenho os extratos da poupança com os débitos no mesmo dia e valor), uns 15 são PIX de pessoas físicas de R$ 2 mil a R$ 9 mil que ele diz que são 'acertos entre amigos' e só tem uma declaração assinada por cada um depois da intimação, e o resto são TEDs de empresas que ele não explica. O advogado quer que eu escreva que a maior parte tem origem lícita. Use a planilha que vou montar no seu CSV.",
+      "expected_output": "Recusa da fórmula 'a maior parte tem origem lícita'; classificação crédito a crédito: as 12 transferências da poupança como transferencia_propria com prova suficiente (§ 3º, I); os PIX de terceiros com declaração posterior como prova parcial (sem data certa, sem DIRPF do terceiro), presumidos no cenário base e afastados só no ampliado; as TEDs de empresas como sem_prova; aplicação do § 3º, II, por ano sobre os presumidos até R$ 12.000,00; dois cenários com o delta explícito; quadro por tratamento com a sanidade fechando no total imputado; lista do que falta para cada crédito parcial.",
+      "files": [],
+      "expectations": [
+        "Recusa escrever que 'a maior parte tem origem lícita' e explica que o art. 42 exige prova crédito a crédito (Tema 842; REsp 1.825.390), produzindo o quadro individualizado",
+        "Classifica as 12 transferências da poupança como transferencia_propria com prova suficiente pelo extrato de origem (§ 3º, I) e as exclui nos dois cenários",
+        "Classifica os PIX de terceiros com declaração assinada depois da intimação como prova parcial, citando a ausência de data certa (CPC, art. 409) e da DIRPF do terceiro, mantendo-os presumidos no cenário base e afastando-os só no cenário ampliado",
+        "Aplica o § 3º, II, somando os créditos presumidos de valor individual até R$ 12.000,00 do ano e explicando que a exclusão é integral se a soma cabe em R$ 80.000,00 e nula se excede",
+        "Apresenta os dois cenários com a diferença de base e de imposto entre eles e a sanidade (soma das classes igual ao total imputado)",
+        "Lista, para cada crédito parcial, o cruzamento que falta (DIRPF do terceiro, extrato do remetente, contrato com data certa) sem opinar sobre boa-fé"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Caso de anulatória: a Receita tributou como omissão um crédito de R$ 300.000,00 que entrou na conta da autora em 03/04/2023 por TED da mãe dela. A autora diz que foi doação para comprar um apartamento e juntou uma declaração de doação assinada pelas duas, sem ITCMD, sem registro. A mãe não declarou a doação na DIRPF dela e a autora também não. O apartamento foi comprado em 05/2023 e está na DIRPF 2024 da autora. Isso comprova a origem? A doação não é isenta?",
+      "expected_output": "Separação das três perguntas: origem (a TED identifica a remetente e coincide em data e valor, mas a declaração particular não tem data certa nem ITCMD, e a doação não consta da DIRPF de nenhuma das duas: prova parcial), natureza (doação é isenta, Lei 7.713/1988, art. 6º, XVI, se provada) e tributação (não houve); cenário base mantém o crédito presumido e o ampliado o trata como isento; lista do que tornaria a prova suficiente (ITCMD pago ou isenção reconhecida, DIRPF retificadoras com a doação, extrato da doadora, capacidade financeira); registro de que a compra do imóvel prova a aplicação do recurso, não a origem; precedente TRF1 AC 0002129-66.2013.4.01.4200 sobre o ônus da prova da natureza isenta; nenhuma conclusão sobre boa-fé.",
+      "files": [],
+      "expectations": [
+        "Separa as três perguntas e responde que a origem imediata (TED da mãe) está identificada, mas a natureza de doação tem prova parcial: declaração particular sem data certa (CPC, art. 409), sem ITCMD e sem a doação nas DIRPF da doadora e da donatária",
+        "Classifica o crédito como presumido no cenário base e como isento no cenário ampliado, quantificando a diferença de imposto entre os cenários",
+        "Explica que a doação, se provada, é isenta (Lei 7.713/1988, art. 6º, XVI) e que o ônus de provar a natureza isenta é do contribuinte, citando TRF1, AC 0002129-66.2013.4.01.4200",
+        "Lista o que tornaria a prova suficiente: ITCMD pago ou isenção reconhecida, retificação das DIRPF com a doação, extrato da doadora com o débito e demonstração da capacidade financeira dela",
+        "Registra que a compra do apartamento demonstra a aplicação do recurso, não a sua origem, e não emite juízo sobre boa-fé ou simulação"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Preciso conferir os encargos de um auto de IRPF que cobre 2019 e 2020. Nos dois anos a contribuinte tinha IRRF retido na fonte e entregou a declaração. Ciência do auto em 10/06/2025. O auto aplicou multa de 150% sem dizer por quê, e os juros até 31/05/2025 parecem altos: para o principal de 2019 (R$ 40.000,00, vencimento 30/04/2020) lançaram R$ 23.800,00 de juros. Baixei a Selic mensal no SGS do BACEN de 05/2020 a 05/2025. O advogado quer sustentar decadência do ano de 2019. O que o laudo deve dizer?",
+      "expected_output": "Recusa de aplicar 150% sem fundamento: o script exige --fundamento e marca a redação do art. 44 após a Lei 14.689/2023 como [A VERIFICAR]; cálculo dos juros com a série fornecida (soma simples das Selic mensais de 05/2020 a 04/2025 mais 1% em 05/2025) e Selic implícita do auto (59,5%) comparada à acumulada da série; decadência por ano: para 2019, fato gerador 31/12/2019, termo final do art. 150, § 4º, em 31/12/2024 (ciência fora do prazo) e do art. 173, I, em 31/12/2025 (dentro); com pagamento antecipado (IRRF e declaração entregue) a orientação atribuída à Súmula 555/STJ [A VERIFICAR] aponta para o art. 150, § 4º, mas a regra aplicável é do juízo; para 2020 ambos os prazos dentro; tese do fato gerador mensal sob o § 4º registrada como alternativa.",
+      "files": [],
+      "expectations": [
+        "Não calcula a multa de 150% sem fundamento declarado: exige o dispositivo e o motivo da qualificação, apresenta o cenário a 75% (art. 44, I) e marca a redação vigente do art. 44 após a Lei 14.689/2023 como [A VERIFICAR]",
+        "Calcula os juros pela soma simples das Selic mensais de 05/2020 a 04/2025 mais 1% em 05/2025, lida do CSV com fonte, e compara com a Selic implícita de 59,5% do auto (R$ 23.800,00 sobre R$ 40.000,00), declarando se os juros lançados são reproduzíveis",
+        "Para 2019 informa fato gerador em 31/12/2019, termo final de 31/12/2024 pelo art. 150, § 4º (ciência em 10/06/2025 fora do prazo) e de 31/12/2025 pelo art. 173, I (dentro do prazo)",
+        "Explica que, havendo IRRF e declaração entregue, a orientação atribuída à Súmula 555/STJ aponta para o art. 150, § 4º, cita a súmula somente com [A VERIFICAR] e remete a regra aplicável ao juízo",
+        "Registra a tese do fato gerador mensal sob o § 4º do art. 42 como alternativa que antecipa o termo inicial, e informa que para 2020 a ciência está dentro dos dois prazos"
+      ]
+    }
+  ]
+}

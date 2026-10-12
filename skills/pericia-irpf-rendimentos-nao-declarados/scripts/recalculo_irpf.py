@@ -496,7 +496,7 @@ def main():
         texto = json.dumps(saida, ensure_ascii=False, indent=2)
         if args.saida:
             Path(args.saida).write_text(texto + "\n", encoding="utf-8")
-            resumo = "; ".join(f"{cen}/{ano}/{modo}: R$ {m['imposto_suplementar']}"
+            resumo = "; ".join(f"{cen}/{ano}/{modo}: {brl(m['imposto_suplementar'])}"
                                for cen, anos in saida["resultados"].items()
                                for ano, r in anos.items() for modo, m in r["modos"].items())
             print(f"Recálculo gravado em {args.saida}: imposto suplementar por cenário/ano/modo: {resumo}")
