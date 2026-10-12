@@ -1,6 +1,6 @@
 ---
 name: apuracao-haveres
-description: "Calcular e periciar haveres de sócio na dissolução parcial de sociedade (retirada, recesso, exclusão judicial ou extrajudicial, falecimento) pelo balanço de determinação a preço de saída na data da resolução (CPC, arts. 599 a 609; CC, arts. 1.028 a 1.031). Usar quando: (1) fixar a data da resolução por hipótese do art. 605; (2) definir o critério: contrato social válido ou balanço de determinação; (3) reavaliar ativos, passivos e contingências (CPC 25) a preço de saída; (4) mensurar fundo de comércio como intangível sem projetar fluxo futuro; (5) integrar lucros, JCP e pro labore devidos até a resolução (art. 608) com a prescrição trienal; (6) apurar haveres líquidos, prazo de 90 dias e termos de correção e juros; (7) criticar laudo que usou DCF ou responder quesitos. Acionar ao mencionar: apuração de haveres, dissolução parcial, balanço de determinação, retirada de sócio, exclusão de sócio, sócio falecido, herdeiros do sócio, valor da quota, fundo de comércio, goodwill, aviamento, preço de saída, quanto vale minha parte, o perito usou fluxo de caixa. COMPLEMENTAR a valuation-capital-fechado: use ESTA para a quota do sócio em juízo; use aquela para avaliar a empresa em negociação."
+description: "Calcular e periciar haveres de sócio na dissolução parcial de sociedade (retirada, recesso, exclusão, morte) por balanço de determinação a preço de saída na data da resolução (CPC, arts. 599 a 609; CC, art. 1.031). Usar quando: (1) fixar a data da resolução pelo art. 605; (2) aplicar contrato social válido ou critério legal; (3) reavaliar ativos, passivos e contingências (CPC 25); (4) mensurar fundo de comércio sem projetar fluxo futuro; (5) integrar lucros, JCP e pro labore até a data (art. 608) com prescrição trienal; (6) apurar haveres líquidos, prazo de 90 dias, correção e juros; (7) criticar laudo com DCF ou responder quesitos. Acionar ao mencionar: apuração de haveres, dissolução parcial, balanço de determinação, retirada de sócio, sócio falecido, valor da quota, fundo de comércio, goodwill, aviamento, preço de saída, quanto vale minha parte, o perito usou fluxo de caixa. COMPLEMENTAR a valuation-capital-fechado: use ESTA para a quota do sócio em juízo; use aquela para avaliar a empresa em negociação."
 metadata:
   version: "2.0.0"
   author: "Prof. Carlos André Moreira Chelfo (ChelfoIA)"
@@ -112,11 +112,11 @@ A sociedade pode pedir indenização compensável com os haveres (CPC, art. 602)
 
 ```bash
 python3 scripts/haveres_socio.py --balanco balanco.json --fundo-comercio fundo.json \
-  --participacao 25% --data-resolucao 30/06/2025 --socio "João da Silva (autor)" \
+  --participacao 25% --data-resolucao 30/06/2025 --data-ajuizamento 15/08/2025 \
   --lucros-declarados assets/exemplo_lucros_declarados.json \
   --remuneracao-administrador assets/exemplo_remuneracao_administrador.json \
-  --adiantamentos assets/exemplo_adiantamentos.json --data-ajuizamento 15/08/2025 \
-  --data-liquidacao 10/03/2026 --saida haveres.json --md haveres.md --parcelas parcelas.json
+  --adiantamentos assets/exemplo_adiantamentos.json --data-liquidacao 10/03/2026 \
+  --saida haveres.json --md haveres.md --parcelas parcelas.json
 ```
 
 Quota patrimonial é o PL de determinação com fundo de comércio multiplicado pela participação e pela fração integralizada (CC, art. 1.031, caput: montante efetivamente realizado). Haveres brutos somam quota, lucros e JCP integrados e remuneração; deduções são adiantamentos (inclusive o levantamento do depósito da parte incontroversa) e indenização compensável; haveres líquidos fecham com a soma das parcelas. O pagamento segue o contrato social e, no silêncio, 90 dias em dinheiro a partir da liquidação (CPC, art. 609; CC, art. 1.031, § 2º); prazo diverso exige `--fundamento-prazo`. A correção monetária corre desde a data da resolução (CPC, art. 608, parágrafo único) e os juros de mora, do dia seguinte ao fim do prazo de pagamento (CC, art. 397), salvo decisão que fixe termo diverso, que entra como premissa declarada. Índice e taxa não são escolhidos aqui: `parcelas.json` sai no formato da `atualizacao-monetaria` (`competencia`, `valor`, `descricao`, deduções com sinal negativo), que aplica o regime civil da Lei 14.905/2024 (CC, arts. 389 e 406) período a período. O "1% ao mês" da v1 não existe mais na skill. PL de determinação negativo zera a quota com alerta; eventual débito do sócio é questão jurídica marcada `[A VERIFICAR]`.
@@ -176,18 +176,16 @@ Template completo, com exemplo preenchido a partir dos dados fictícios de `asse
 
 Exemplo de quadro de haveres (saída do script 3 com os exemplos de `assets/`):
 
-```
-| Rubrica                                             | R$          |
-|-----------------------------------------------------|------------:|
-| PL de determinação (CPC, art. 606)                  |  490.000,00 |
-| Fundo de comércio na data da resolução              |  353.400,00 |
-| Quota patrimonial (25%)                             |  210.850,00 |
-| Lucros declarados e não pagos (art. 608)            |   21.000,00 |
-| Remuneração como administrador (art. 608)           |   16.000,00 |
-| Haveres brutos                                      |  247.850,00 |
-| Levantamento da parte incontroversa (art. 604, § 2º)| (30.000,00) |
-| Haveres líquidos em 30/06/2025                      |  217.850,00 |
-```
+| Rubrica | R$ |
+|---|---:|
+| PL de determinação (CPC, art. 606) | 490.000,00 |
+| Fundo de comércio na data da resolução | 353.400,00 |
+| Quota patrimonial (25%) | 210.850,00 |
+| Lucros declarados e não pagos (art. 608) | 21.000,00 |
+| Remuneração como administrador (art. 608) | 16.000,00 |
+| Haveres brutos | 247.850,00 |
+| Levantamento da parte incontroversa (art. 604, § 2º) | (30.000,00) |
+| Haveres líquidos em 30/06/2025 | 217.850,00 |
 
 Exemplo de resposta a quesito:
 
