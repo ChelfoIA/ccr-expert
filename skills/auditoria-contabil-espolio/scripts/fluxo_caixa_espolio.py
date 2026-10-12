@@ -11,7 +11,7 @@ Uso:
         --abertura-sucessao 10/01/2024 --saldo-inicial 12.500,00 \
         --imoveis-ocupados IM02 --saida fluxo.json --csv dfc.csv --md dfc.md
 
-    Conciliação com o extrato: acrescentar --saldo-final-extrato 63.450,55; se o saldo
+    Conciliação com o extrato: acrescentar --saldo-final-extrato 38.430,55; se o saldo
     reconstruído divergir, o script falha de propósito (ERRO de validação).
 
 Entrada (CSV separado por ponto e vírgula, com cabeçalho):
@@ -25,6 +25,8 @@ Entrada (CSV separado por ponto e vírgula, com cabeçalho):
     vinculo_beneficiario herdeiro | inventariante | terceiro | espolio
     autorizacao_judicial S | N (vazio equivale a N)
     documento            referência ao lastro (fl., recibo, nota); vazio equivale a sem documento
+    moeda                (opcional) só BRL é aceito; movimento em euro é convertido antes por
+                         scripts/conversao_ptax.py, cujo CSV de saída entra aqui diretamente
 
 Saída: JSON com premissas, DFC mensal, totais por categoria, por conta e por vínculo do
 beneficiário, listas de exceção, avisos, testes de sanidade e memória de cálculo.
@@ -156,6 +158,19 @@ def ler_movimentos(caminho):
             aut = (linha.get("autorizacao_judicial") or "").strip().upper()
             if aut not in {"S", "N", ""}:
                 raise ValueError(f"linha {n}: autorizacao_judicial deve ser S ou N, veio {aut!r}")
+            # O fluxo é apurado em reais: moeda estrangeira precisa passar antes por conversao_ptax.py,
+            # porque somar euro com real produz um saldo sem significado.
+            moeda = (linha.get("moeda") or "BRL").strip().upper() or "BRL"
+            if moeda != "BRL":
+                raise ValueError(
+                    f"linha {n}: moeda {moeda} diferente de BRL; converter antes com scripts/conversao_ptax.py "
+                    "e usar o CSV gerado por --csv como entrada"
+                )
+            conversao = ""
+            if (linha.get("moeda_original") or "").strip() and (linha.get("moeda_original") or "").strip().upper() != "BRL":
+                conversao = (f"{linha.get('moeda_original', '').strip()} {linha.get('valor_original', '').strip()} x "
+                             f"{linha.get('cotacao', '').strip()} ({linha.get('criterio_cotacao', '').strip()}, "
+                             f"PTAX de {linha.get('data_cotacao', '').strip()})")
             movimentos.append({
                 "linha": n,
                 "data": parse_data(linha.get("data"), f"linha {n}: data"),
@@ -170,6 +185,7 @@ def ler_movimentos(caminho):
                 "documento": (linha.get("documento") or "").strip(),
                 "imovel_id": (linha.get("imovel_id") or "").strip(),
                 "empresa_id": (linha.get("empresa_id") or "").strip(),
+                "conversao": conversao,
             })
     if not movimentos:
         raise ValueError("nenhum movimento válido encontrado no CSV")
@@ -192,6 +208,7 @@ def resumo_mov(m, motivo):
         ("autorizacao_judicial", m["autorizacao"]),
         ("documento", m["documento"] or "sem documento"),
         ("imovel_id", m["imovel_id"]),
+        ("conversao", m.get("conversao", "")),
         ("motivo", motivo),
     ])
 
@@ -519,6 +536,7 @@ def main():
             ("criterio_periodo", "movimentos anteriores à abertura da sucessão excluídos (CC, art. 1.784)"),
             ("criterio_autorizacao", "vazio equivale a N; conservação (CPC, art. 619, IV) listada em separado das demais saídas"),
             ("criterio_documento", "vazio equivale a sem lastro documental"),
+            ("criterio_moeda", "só BRL; movimento em moeda estrangeira entra convertido por conversao_ptax.py, com a cotação rastreada na coluna conversao"),
             ("categorias_entrada", sorted(CATEGORIAS_ENTRADA)),
             ("categorias_saida", sorted(CATEGORIAS_SAIDA)),
         ])
