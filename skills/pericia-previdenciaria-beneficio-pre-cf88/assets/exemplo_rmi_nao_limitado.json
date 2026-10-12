@@ -1,0 +1,20 @@
+{
+  "skill": "pericia-previdenciaria-beneficio-pre-cf88",
+  "script": "rmi_clps84.py",
+  "observacao": "EXEMPLO FICTÍCIO: benefício cuja média não excede o menor valor-teto; serve ao teste de ausência de diferença na readequação",
+  "para_readequacao": {
+    "dib": "03/1987",
+    "moeda_dib": "Cz$",
+    "media": "10000",
+    "rmi": "9500",
+    "coeficiente": "0.95",
+    "fracao_excedente_efetiva": "0",
+    "menor_valor_teto": "12000",
+    "maior_valor_teto": "24000",
+    "limitacao_na_concessao": "não limitado",
+    "rmi_em_salarios_minimos": "7.916666666666667",
+    "salario_minimo_dib": "1200",
+    "media_em_salarios_minimos": "8.333333333333333",
+    "fonte_salario_minimo": "EXEMPLO FICTÍCIO: substituir pela tabela oficial"
+  }
+}

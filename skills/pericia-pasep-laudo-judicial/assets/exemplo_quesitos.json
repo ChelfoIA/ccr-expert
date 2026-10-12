@@ -1,0 +1,25 @@
+{
+  "processo": {
+    "id": "P-002",
+    "numero": "0000002-00.0000.0.00.0000",
+    "vara": "2ª Vara Cível",
+    "comarca": "Comarca fictícia",
+    "autor": "Maria da Silva (autora)",
+    "reus": ["Banco do Brasil S.A."]
+  },
+  "quesitos": [
+    {"proponente": "juizo", "numero": 1, "texto": "Qual a evolução do saldo da conta PASEP da autora desde a abertura até a migração de 31/05/2020, mês a mês, e em que documentos se apoia?", "tema": "saldo"},
+    {"proponente": "juizo", "numero": 2, "texto": "Classifique cada saída lançada na conta por modalidade (saque em caixa, crédito em conta-corrente ou folha de pagamento) e informe se há nos autos a comprovação correspondente.", "tema": "saques"},
+    {"proponente": "autor", "numero": 1, "texto": "Os saques de 14/08/1998 e de 03/03/2003 foram efetuados pela autora? Há recibo assinado ou documento de identificação nos autos?"},
+    {"proponente": "autor", "numero": 2, "texto": "Qual o saldo que a conta teria em 31/05/2020 se as saídas impugnadas não tivessem ocorrido, com a valorização oficial do Conselho Diretor?"},
+    {"proponente": "autor", "numero": 3, "texto": "O Banco do Brasil é responsável pelos desfalques e deve ser condenado a indenizar a autora?"},
+    {"proponente": "autor", "numero": 4, "texto": "Qual o valor atualizado da diferença apurada, com juros de mora desde a citação?"},
+    {"proponente": "autor", "numero": 5, "texto": "A autora faz jus a indenização por danos morais em razão dos saques?"},
+    {"proponente": "reu", "numero": 1, "proponente_rotulo": "Réu (BB)", "texto": "A pretensão da autora está prescrita, considerando que o primeiro saque impugnado ocorreu em 1998?"},
+    {"proponente": "reu", "numero": 2, "proponente_rotulo": "Réu (BB)", "texto": "Em que data a autora tomou ciência das saídas que impugna? Indique o documento dos autos que o demonstra."},
+    {"proponente": "reu", "numero": 3, "proponente_rotulo": "Réu (BB)", "texto": "O lançamento de 10/06/2011 corresponde a pagamento por folha (PASEP-FOPAG)? A autora juntou contracheques do período?"},
+    {"proponente": "reu", "numero": 4, "proponente_rotulo": "Réu (BB)", "texto": "Os índices de valorização creditados na conta correspondem aos percentuais oficiais fixados pelo Conselho Diretor e divulgados pelo Tesouro Nacional?"},
+    {"proponente": "reu", "numero": 5, "proponente_rotulo": "Réu (BB)", "texto": "Cabe ao Banco do Brasil o ônus de provar os saques por crédito em conta e por folha de pagamento?"},
+    {"proponente": "reu", "numero": 6, "proponente_rotulo": "Réu (BB)", "texto": "Classifique cada saída lançada na conta por modalidade (saque em caixa, crédito em conta-corrente ou folha de pagamento) e informe se há nos autos a comprovação correspondente."}
+  ]
+}

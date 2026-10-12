@@ -1,0 +1,71 @@
+{
+  "skill_name": "apuracao-haveres",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita numa dissolução parcial. O sócio João da Silva tinha 25% da Alfa Comércio Ltda. e mandou notificação de retirada que a sociedade recebeu em 01/05/2025. O contrato social é omisso sobre haveres. Tenho o balancete de 30/06/2025 (PL contábil de uns 480 mil), laudo do imóvel sede avaliando em 550 mil contra 400 mil de custo, aging list com 30 mil de títulos podres, estoque com 20 mil de obsoletos, uma trabalhista provável de 80 mil com só 20 mil provisionados e um auto de ICMS de 150 mil que os advogados dizem ser possível. DREs de 2020 a 2024 dão lucro médio na casa de 170 mil. Me diz a data-base, monta o balanço de determinação e apura os haveres.",
+      "expected_output": "Data da resolução fixada em 30/06/2025 (sexagésimo dia seguinte ao recebimento da notificação, CPC, art. 605, II), não em 01/05/2025; critério do art. 606 pela omissão do contrato; balanço de determinação conta a conta com fundamento (imóvel a 550 mil, clientes menos 30 mil, estoques menos 20 mil, provisão adicional de 60 mil para a trabalhista provável, auto de ICMS possível apenas divulgado); fundo de comércio por lucro excedente com taxa de remuneração do capital com fonte declarada e sensibilidade; haveres de 25% sobre o PL de determinação com fundo de comércio; termos de correção e juros; parcelas.json para a atualizacao-monetaria; pendências listadas.",
+      "files": [],
+      "expectations": [
+        "Fixa a data da resolução em 30/06/2025 pelo art. 605, II, do CPC (60 dias após o recebimento da notificação em 01/05/2025) e explica por que 01/05/2025 só valeria no recesso (inciso III)",
+        "Executa balanco_determinacao.py com ativos e passivos a preço de saída e fundamento por conta, provisiona 60 mil adicionais para a contingência provável e apenas divulga o auto de ICMS possível, sem deduzi-lo",
+        "Executa fundo_comercio.py pelo lucro excedente ou múltiplo, exige fonte para a taxa de remuneração do capital em vez de digitá-la de memória e apresenta a sensibilidade ao fator",
+        "Executa haveres_socio.py com 25% sobre o PL de determinação acrescido do fundo de comércio e declara correção desde 30/06/2025 e juros após os 90 dias do art. 1.031, § 2º, do CC, sem usar 1% ao mês",
+        "Verifica a sanidade: ativo a preço de saída menos passivo a preço de saída menos provisões adicionais igual ao PL de determinação",
+        "Não cita precedente fora da lista verificada sem o marcador [A VERIFICAR] e inclui seção de pendências de verificação"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Caso de falecimento de sócio em 14/02/2025, sociedade de prazo indeterminado com 3 sócios. O contrato social diz que em caso de morte os herdeiros recebem o valor da quota pelo patrimônio líquido contábil do último balanço anual, em 24 parcelas. O espólio diz que a cláusula é abusiva porque o balanço contábil não reflete o imóvel da sede, comprado em 1998 e nunca reavaliado, nem a carteira de clientes. A sociedade diz que contrato é contrato. Como eu monto a perícia e o que eu respondo?",
+      "expected_output": "Data da resolução na data do óbito (CPC, art. 605, I; CC, art. 1.028); explicação de que o critério contratual prevalece quando válido (CPC, art. 604, II) e que a abusividade é decisão do juízo; apuração em dois cenários numerados, o contratual (PL contábil do último balanço anual, em 24 parcelas conforme o contrato e o art. 609) e o legal (balanço de determinação na data do óbito com imóvel a preço de saída e intangível), com a diferença em reais; quesitos e documentos a requisitar; limites do perito.",
+      "files": [],
+      "expectations": [
+        "Fixa a data da resolução em 14/02/2025 com base no art. 605, I, do CPC e no art. 1.028 do CC",
+        "Explica que o perito não decide a validade da cláusula (CPC, art. 473, § 2º) e apresenta dois cenários numerados: critério contratual e critério legal do art. 606, com a diferença quantificada",
+        "No cenário contratual respeita o prazo de 24 parcelas previsto no contrato (CPC, art. 609) e no cenário legal usa os 90 dias do art. 1.031, § 2º, do CC",
+        "No cenário legal reavalia o imóvel a preço de saída por laudo de avaliação e trata a carteira de clientes como intangível mensurado na data do óbito sem projetar fluxo futuro",
+        "Cita a hierarquia de critérios com o AREsp 2.883.122 ou o REsp 1.877.331 e não afirma que alguma decisão é vinculante"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Sou assistente técnica da sociedade. O perito do juízo avaliou a empresa por fluxo de caixa descontado: projetou 10 anos de EBITDA crescendo 5% ao ano, WACC de 14%, perpetuidade, chegou a R$ 9,8 milhões e deu 30% disso pro sócio excluído, R$ 2,94 milhões. O PL contábil é de R$ 1,9 milhão e o balanço de determinação que eu levantei dá R$ 2,6 milhões antes do intangível. Preciso impugnar o laudo. Monta a crítica técnica e o parecer divergente.",
+      "expected_output": "Crítica estruturada: o DCF projeta lucros futuros que o excluído não tem direito de receber (CPC, art. 608, parágrafo único) e a jurisprudência das duas Turmas do STJ o afasta na apuração de haveres (REsp 1.877.331, REsp 1.904.252, REsp 2.174.631, REsp 1.900.838, AgInt nos EDcl no REsp 2.160.132, AgInt no AgInt no AREsp 2.903.904); o critério legal na omissão do contrato é o balanço de determinação com intangível mensurado na data da resolução; parecer divergente com o PL de determinação de R$ 2,6 milhões mais fundo de comércio por lucro excedente, quadro comparativo DCF x balanço de determinação e quesitos de esclarecimento ao perito.",
+      "files": [],
+      "expectations": [
+        "Aponta que o fluxo de caixa descontado projeta lucros futuros e que o sócio só tem direito aos valores até a data da resolução (CPC, art. 608), citando ao menos três dos precedentes verificados do STJ com Turma e data",
+        "Não calcula DCF nem o reproduz como cenário patrimonial; demonstra que fundo_comercio.py recusa o método e usa lucro excedente ou múltiplo para mensurar o intangível na data da resolução",
+        "Apresenta quadro comparativo com os haveres pelo laudo do perito (R$ 2,94 milhões) e pelo balanço de determinação com fundo de comércio, explicando a origem da diferença",
+        "Registra que os precedentes são de Turma e não vinculantes e formula quesitos de esclarecimento ao perito (CPC, art. 477) sobre a projeção, o WACC e a perpetuidade",
+        "Mantém o papel de assistente técnico: premissas declaradas, mesmo método dos scripts, sem alterar a data da resolução fixada pelo juízo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Retirada de sócio com 20%, data da resolução já fixada em 31/03/2025. Ele cobra lucros deliberados e não pagos: ata de 30/04/2021 (sua parte R$ 18.000,00), ata de 30/04/2023 (R$ 22.000,00) e ata de 30/04/2024 (R$ 25.000,00, dos quais recebeu R$ 10.000,00). A ação foi ajuizada em 20/06/2025 e o juiz mandou depositar a parte incontroversa; ele já levantou R$ 50.000,00 em 10/08/2025. O PL de determinação ficou em R$ 1.200.000,00 e o fundo de comércio em R$ 300.000,00. Fecha os haveres e me entrega o arquivo pra atualizar.",
+      "expected_output": "Quota patrimonial de 20% sobre R$ 1.500.000,00 = R$ 300.000,00; lucros de 2021 excluídos por prescrição trienal (deliberação em 30/04/2021, mais de três anos antes de 20/06/2025; CC, art. 206, § 3º; REsp 1.904.252), lucros de 2023 (R$ 22.000,00) e saldo de 2024 (R$ 15.000,00) integrados pelo art. 608; haveres brutos R$ 337.000,00; dedução de R$ 50.000,00 levantados; haveres líquidos R$ 287.000,00; parcelas.json com a quota em 03/2025, os lucros nas competências das deliberações e o levantamento como parcela negativa em 08/2025; termos de correção e juros.",
+      "files": [],
+      "expectations": [
+        "Exclui os R$ 18.000,00 da ata de 30/04/2021 por prescrição trienal contada da deliberação com interrupção na data do ajuizamento (20/06/2025), listando o valor excluído e citando CC, art. 206, § 3º, e REsp 1.904.252",
+        "Integra R$ 22.000,00 e R$ 15.000,00 (R$ 25.000,00 menos R$ 10.000,00 pagos) pelo art. 608 do CPC e chega a haveres brutos de R$ 337.000,00",
+        "Deduz os R$ 50.000,00 levantados do depósito da parte incontroversa (CPC, art. 604, §§ 1º e 2º) e chega a haveres líquidos de R$ 287.000,00",
+        "Gera parcelas.json no formato da atualizacao-monetaria com a quota em 03/2025, os lucros nas competências 04/2023 e 04/2024 e o levantamento como valor negativo em 08/2025, e confere que a soma das parcelas é igual aos haveres líquidos",
+        "Declara correção monetária desde 31/03/2025 (CPC, art. 608, parágrafo único) e juros após o prazo de pagamento do art. 1.031, § 2º, do CC, remetendo o cálculo à skill atualizacao-monetaria, regime civil"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Exclusão extrajudicial deliberada em reunião de 15/10/2024. A sociedade só me entregou a ECD de 31/12/2023 e os extratos bancários; não tem balancete de outubro de 2024, o contador diz que a escrituração de 2024 está atrasada e o inventário de estoque é de dezembro de 2023. Os advogados da sociedade não deram parecer sobre os três processos trabalhistas. O que eu faço com o balanço de determinação nessa situação?",
+      "expected_output": "Data da resolução em 15/10/2024 (CPC, art. 605, V; CC, art. 1.085); balanço de partida pela ECD de 31/12/2023 com rolagem documentada até 15/10/2024 a partir de extratos, notas e razões disponíveis, apresentado como cenário reconstruído com ressalva; requisição por termo de diligência do balancete, do inventário e do parecer jurídico (CPC, arts. 396, 420 e 473, § 3º); contingências sem parecer classificadas com critério declarado e sensibilidade; efeito de cada lacuna quantificado; consequência da recusa reservada ao juízo (CPC, art. 400).",
+      "files": [],
+      "expectations": [
+        "Fixa a data da resolução em 15/10/2024 pela data da reunião que deliberou a exclusão (CPC, art. 605, V) e menciona o art. 1.085 do CC",
+        "Não levanta o balanço em 31/12/2023 nem em 31/12/2024: parte da ECD de 2023 e rola até 15/10/2024 com os documentos disponíveis, apresentando o resultado como cenário reconstruído com ressalva expressa",
+        "Requisita por termo de diligência o balancete, o inventário valorado e o parecer dos advogados, citando CPC, arts. 396, 420 e 473, § 3º, e registra o que não veio",
+        "Para os processos trabalhistas sem parecer, declara o critério adotado para a probabilidade (por exemplo, fase processual e valor da causa) e mostra o efeito nos haveres se a classificação mudar, sem deduzir contingência possível como provável",
+        "Afirma que a consequência da recusa de exibição é do juízo (CPC, art. 400) e quantifica o efeito de cada lacuna em reais em vez de assumir zero ou o valor pedido pela parte"
+      ]
+    }
+  ]
+}

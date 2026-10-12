@@ -1,0 +1,54 @@
+{
+  "_comentario": "Exemplo fictício para scripts/evolucao_cdc_veiculo.py. Dados inventados, reconhecíveis como tal. Números no padrão brasileiro (1.234,56) ou técnico (1234.56); datas em dd/mm/aaaa.",
+  "identificacao": "CCB nº 000000 (financiamento de veículo, alienação fiduciária)",
+  "processo": "0000000-00.0000.0.00.0000",
+  "credor": "Banco Alfa S.A. (autor da busca e apreensão)",
+  "devedor": "Maria da Silva (ré na busca e apreensão, autora da revisional)",
+  "bem": "Automóvel fictício, placa AAA0A00, ano 2021",
+  "valor_bem": "45.000,00",
+  "entrada": "10.000,00",
+  "valor_financiado": "38.500,00",
+  "composicao_do_financiado": "35.000,00 de principal líquido + 850,00 cadastro + 350,00 registro + 400,00 avaliação + 1.100,00 seguro prestamista + 800,00 IOF",
+  "data_contratacao": "15/03/2024",
+  "taxa_mensal_contratada": "2,90",
+  "taxa_anual_informada": "40,92",
+  "cet_anual_informado": "48,10",
+  "n_parcelas": 36,
+  "data_primeira_parcela": "15/04/2024",
+  "iof": "800,00",
+  "tarifas": [
+    {"nome": "Tarifa de cadastro", "valor": "850,00", "incluida_no_financiado": true, "contestada": false,
+     "motivo": "início de relacionamento; validade a conferir no laudo"},
+    {"nome": "Registro de contrato", "valor": "350,00", "incluida_no_financiado": true, "contestada": true,
+     "motivo": "sem comprovação do registro no órgão de trânsito nos autos"},
+    {"nome": "Avaliação do bem", "valor": "400,00", "incluida_no_financiado": true, "contestada": true,
+     "motivo": "sem laudo de avaliação juntado; serviço não comprovado"}
+  ],
+  "seguros": [
+    {"nome": "Seguro prestamista", "valor": "1.100,00", "incluida_no_financiado": true, "contestada": false,
+     "motivo": "adesão facultativa assinada em documento apartado"}
+  ],
+  "notificacao_extrajudicial": {
+    "data_envio": "20/07/2025",
+    "endereco": "o mesmo do contrato",
+    "resultado_ar": "não procurado",
+    "parcela_mais_antiga_em_aberto": 15
+  },
+  "data_liminar": "10/09/2025",
+  "pagamentos": [
+    {"n_parcela": 1, "data": "15/04/2024", "valor": "1.737,23"},
+    {"n_parcela": 2, "data": "15/05/2024", "valor": "1.737,23"},
+    {"n_parcela": 3, "data": "17/06/2024", "valor": "1.737,23"},
+    {"n_parcela": 4, "data": "15/07/2024", "valor": "1.737,23"},
+    {"n_parcela": 5, "data": "15/08/2024", "valor": "1.737,23"},
+    {"n_parcela": 6, "data": "16/09/2024", "valor": "1.737,23"},
+    {"n_parcela": 7, "data": "15/10/2024", "valor": "1.737,23"},
+    {"n_parcela": 8, "data": "18/11/2024", "valor": "1.737,23"},
+    {"n_parcela": 9, "data": "16/12/2024", "valor": "1.737,23"},
+    {"n_parcela": 10, "data": "15/01/2025", "valor": "1.737,23"},
+    {"n_parcela": 11, "data": "17/02/2025", "valor": "1.737,23"},
+    {"n_parcela": 12, "data": "17/03/2025", "valor": "1.737,23"},
+    {"n_parcela": 13, "data": "15/04/2025", "valor": "1.737,23"},
+    {"n_parcela": 14, "data": "15/05/2025", "valor": "1.737,23"}
+  ]
+}

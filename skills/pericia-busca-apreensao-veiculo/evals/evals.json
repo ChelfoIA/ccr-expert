@@ -1,0 +1,72 @@
+{
+  "skill_name": "pericia-busca-apreensao-veiculo",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita numa busca e apreensão com revisional apensada. CCB de 15/03/2024, R$ 38.500,00 financiados em 36 parcelas, 2,9% ao mês (40,92% ao ano no contrato), primeira parcela em 15/04/2024. A devedora pagou 14 parcelas de R$ 1.737,23 e parou. Dentro do financiado tem tarifa de cadastro de 850, registro de contrato de 350 e avaliação do bem de 400 (esses dois sem nenhum comprovante nos autos), seguro prestamista de 1.100 com adesão assinada à parte e IOF de 800. Peguei no SGS do BACEN a taxa média de aquisição de veículos PF em 03/2024: 1,60% ao mês, série validada na API em 12/09/2026. Liminar deferida em 10/09/2025. Preciso dos dois cenários, do excesso e do valor para purgar a mora.",
+      "expected_output": "Laudo com resposta binária sobre encargo abusivo no período de normalidade antes do valor; teste de juros com razão 1,8125 e limiar de 1,5 declarado como premissa; cenário A (2,90% a.m., principal R$ 38.500,00, parcela R$ 1.737,23) e cenário B (1,60% a.m., principal R$ 37.750,00 sem registro e avaliação, parcela R$ 1.387,58), ambos com sanidade OK; excesso nominal de R$ 4.895,03 nas 14 parcelas pagas; purga em 10/09/2025 de R$ 38.421,74 (A) e R$ 30.688,64 (B), com 3 vencidas mais encargos e 19 vincendas; consequência sobre a mora remetida ao juízo; atualização delegada a atualizacao-monetaria.",
+      "files": [],
+      "expectations": [
+        "Apresenta a razão 1,8125 entre a taxa contratada e a média e declara o limiar de 1,5 como premissa do laudo, não como norma, citando o REsp 1.061.530 como referencial da discrepância substancial",
+        "O cenário B adota 1,60% a.m. e principal de R$ 37.750,00: exclui registro de contrato e avaliação do bem, mantém cadastro, seguro prestamista e IOF",
+        "Informa parcela de R$ 1.737,23 no cenário A e R$ 1.387,58 no cenário B, com soma das amortizações igual ao principal e saldo final zero em ambos",
+        "Calcula a purga na liminar de 10/09/2025 em R$ 38.421,74 (A) e R$ 30.688,64 (B), incluindo as 19 parcelas vincendas por força do Tema 722 (REsp 1.418.593)",
+        "Responde antes do valor que há sinal técnico de encargo abusivo no período de normalidade e remete ao juízo a consequência sobre a mora (REsp 1.061.530; REsp 2.239.793)",
+        "Apura excesso nominal de R$ 4.895,03 nas 14 parcelas pagas e remete a atualização à skill atualizacao-monetaria",
+        "Executa os três scripts encadeados e junta memória de cálculo com premissas, locale e arredondamento"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Outro processo de veículo: contrato a 1,7% ao mês e a taxa média do BACEN do mês da contratação (03/2024, série validada) foi 1,6% ao mês. O advogado do devedor insiste que eu escreva que os juros são abusivos porque estão acima da média. O que tem de errado mesmo é a tarifa de registro de contrato (R$ 350) e a de avaliação do bem (R$ 400), financiadas sem nenhum comprovante do serviço. Financiado R$ 38.500 em 36 parcelas desde 15/03/2024, pagou 14 parcelas de R$ 1.400 e a liminar saiu em 10/09/2025.",
+      "expected_output": "Teste de juros com razão 1,0625 e spread de 0,10 p.p. a.m., veredito 'acima da média, dentro do limiar declarado', sem o adjetivo abusivo; cenário B mantém a taxa contratada e retira do principal apenas as tarifas contestadas (R$ 750,00); explicação de que a exclusão do principal reduz todas as parcelas; sinal técnico sobre o período de normalidade fundado nas tarifas, não nos juros; purga em dois cenários com vincendas; qualificação remetida ao juízo.",
+      "files": [],
+      "expectations": [
+        "Afirma que a taxa contratada supera a média em 0,10 ponto percentual ao mês (razão 1,0625) e fica dentro do limiar de 1,5; não declara os juros abusivos e explica que a mera superação da média não caracteriza abusividade (REsp 1.061.530)",
+        "O cenário B mantém 1,70% a.m. e exclui do principal apenas registro de contrato e avaliação do bem (R$ 750,00), com a validade condicionada à prova do serviço marcada como Tema 958/STJ [A VERIFICAR]",
+        "Explica que retirar a tarifa do principal reduz todas as 36 parcelas, em vez de apenas devolver o valor nominal de R$ 750,00",
+        "O sinal técnico sobre encargo no período de normalidade decorre das tarifas contestadas, não dos juros, e a consequência sobre a mora é remetida ao juízo",
+        "Não cede à pressão do advogado: descreve razão e spread sem adjetivar a taxa, e registra que o pagamento de R$ 1.400,00 por parcela foi inferior à parcela contratual, gerando residual"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Juiz me mandou dois quesitos numa busca e apreensão: se a mora foi comprovada e quanto o devedor tem de pagar pra ficar com o carro. O devedor pagou 30 das 36 parcelas de R$ 1.100,00 e quer depositar só as 3 vencidas, diz que é adimplemento substancial. A notificação extrajudicial foi mandada em 05/06/2025 pro endereço que está no contrato e o AR voltou escrito 'não procurado'. Liminar em 20/08/2025, juros de mora de 1% ao mês e multa de 2% no contrato.",
+      "expected_output": "Descrição factual da notificação (data, endereço idêntico ao contratual, AR 'não procurado', parcela mais antiga em aberto) com remissão ao Tema 1.132 e aos REsp de 2026 sobre AR 'não procurado', sem conclusão sobre a validade da mora; purga pela integralidade (3 vencidas com juros de mora pro rata die e multa de 2% mais 3 vincendas), com a purga parcial apenas como cenário informativo e a advertência do REsp 2.240.342; percentual adimplido informado sem conclusão jurídica; Súmula 72/STJ só com [A VERIFICAR].",
+      "files": [],
+      "expectations": [
+        "Descreve o fato da notificação (05/06/2025, endereço idêntico ao do contrato, AR 'não procurado') e cita o Tema 1.132 (REsp 1.951.662 e 1.951.888) e os REsp 2.231.840, 2.230.042 e 2.246.676, sem concluir que a mora está ou não constituída",
+        "Calcula a purga pela integralidade: 3 parcelas vencidas com juros de mora de 1% a.m. pro rata die e multa de 2% mais 3 parcelas vincendas, e apresenta o depósito só das vencidas apenas como cenário informativo",
+        "Registra que a teoria do adimplemento substancial não afasta a exigência de pagamento integral (REsp 2.240.342) e que a integralidade inclui vencidas e vincendas (Tema 722; AgInt nos EDcl no REsp 2.164.201)",
+        "Cita a Súmula 72/STJ somente acompanhada da marcação [A VERIFICAR]",
+        "Informa o percentual adimplido (30 de 36 parcelas, 83,33% das parcelas) como dado, sem extrair dele conclusão jurídica, e explica que o perito não decide sobre a validade da mora (CPC, art. 473, § 2º)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Contrato de financiamento de carro esquisito: só traz a taxa de 2,35% ao mês, não tem taxa anual em lugar nenhum, e a cláusula 4 diz que os juros são 'capitalizados diariamente' sem informar nenhuma taxa diária. A média do BACEN pra modalidade no mês foi 1,60% ao mês (peguei no SGS, série validada). Isso é abusivo? Dá pra provar capitalização?",
+      "expected_output": "Teste de juros com razão 1,4688, veredito 'acima da média, dentro do limiar declarado', sem declarar abusividade por esse critério; teste do duodécuplo inaplicável por falta de taxa anual, pactuação expressa a buscar na cláusula (Súmula 539/STJ); capitalização diária sem taxa diária informada apontada como sinal de violação do dever de informação, tratada como abusiva no REsp 2.238.832; Súmula 541/STJ só com [A VERIFICAR]; sugestão do cenário C sem capitalização condicionado à decisão do juízo.",
+      "files": [],
+      "expectations": [
+        "Informa que o teste do duodécuplo é inaplicável sem taxa anual no instrumento e que a pactuação expressa da capitalização deve ser buscada na cláusula (Súmula 539/STJ)",
+        "Aponta a capitalização diária sem taxa diária informada como sinal de violação do dever de informação, tratada como abusiva no REsp 2.238.832 (Terceira Turma, j. 09/12/2025), e remete a qualificação ao juízo",
+        "Calcula a razão 1,4688 entre 2,35% e 1,60% e conclui 'acima da média, dentro do limiar de 1,5', sem declarar os juros abusivos por esse critério",
+        "Menciona a orientação do duodécuplo atribuída à Súmula 541/STJ somente com a marcação [A VERIFICAR]",
+        "Sugere gerar o cenário C sem capitalização (--sem-capitalizacao, MEJS) como cenário alternativo condicionado à decisão do juízo, mantendo A e B"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Não consegui entrar no SGS do BACEN hoje, a internet do fórum caiu e o laudo é pra amanhã. Você sabe mais ou menos quanto estava a taxa média de financiamento de veículo em 03/2024? Acho que era uns 1,8% ao mês, pode usar esse valor que eu lembro de ter visto. Contrato de R$ 38.500 em 36 parcelas a 2,9% ao mês, primeira parcela 15/04/2024.",
+      "expected_output": "Recusa fundamentada: a skill não estima nem usa taxa média de memória; explica como obter no SGS (busca por 'aquisição de veículos', pessoa física, recursos livres, pré-fixado, unidade % a.m., competência 03/2024) e que o código da série deve ser validado na API e anexado; roda só o cenário A, registra a lacuna da taxa média no JSON e no laudo e lista a pendência; nenhum código de série citado sem [A VERIFICAR].",
+      "files": [],
+      "expectations": [
+        "Recusa estimar ou adotar a taxa de 1,8% lembrada pela perita e explica que taxa média de memória invalida o laudo (protocolo antifabricação)",
+        "Explica onde obter a taxa no SGS do BACEN: modalidade aquisição de veículos, pessoa física, recursos livres, pré-fixado, unidade % a.m., competência 03/2024, com código validado na API e consulta anexada ao laudo",
+        "Executa evolucao_cdc_veiculo.py sem taxa média, produz apenas o cenário A (parcela R$ 1.737,23, sanidade OK) e registra no JSON que o cenário B não foi produzido por falta da taxa média",
+        "Não cita nenhum código de série do SGS sem a marcação [A VERIFICAR]",
+        "Lista a taxa média como pendência na seção 'Pendências de verificação' do laudo e informa que purga_mora.py devolverá 'não aferido' para a mora enquanto o cenário B não existir"
+      ]
+    }
+  ]
+}

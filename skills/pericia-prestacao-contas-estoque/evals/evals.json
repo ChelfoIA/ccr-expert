@@ -1,0 +1,58 @@
+{
+  "skill_name": "pericia-prestacao-contas-estoque",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Sou perita numa ação de exigir contas, segunda fase. A autora vendeu as quotas da Alfa Comércio Ltda. em 31/03/2025 e o contrato diz que o valor da venda do estoque existente nessa data vai pra ela, abatidos os impostos, até o dia 30 do mês seguinte. Tenho o inventário assinado pelas partes (5 itens, R$ 32.820,00 a custo), os XML de saída de abril a julho e as compras do período. A empresa é Lucro Presumido. O réu juntou comprovantes de PIX de 15.000 e TED de 8.000 e diz que pagou mais 3.000 em dinheiro sem recibo. Monta a apuração e o quadro de contas.",
+      "expected_output": "Execução encadeada dos três scripts com os CSV montados a partir do inventário, compras e vendas; receita bruta do estoque antigo por mês com PEPS; tributos ICMS (alíquota por arquivo, marcada [A VERIFICAR]), PIS 0,65% e COFINS 3% no cenário base e IRPJ e CSLL no amplo; conciliação com os dois repasses comprovados no cenário base e o repasse em dinheiro só no amplo; quadro em forma mercantil com saldo credor da autora e data; fundamentação em CPC 551 e 552 e Tema 908; pendências listadas.",
+      "files": [],
+      "expectations": [
+        "Roda peps_estoque_transferido.py com --data-base 31/03/2025 e informa a receita bruta atribuída ao estoque antigo por mês, destacando vendas atribuídas ao estoque novo e quantidades sem lastro",
+        "Aplica ICMS somente por arquivo de parâmetros com campo fonte e marca a alíquota como [A VERIFICAR] no RICMS da UF; PIS 0,65% e COFINS 3% citados com Lei 9.715/1998, art. 8º, I, e Lei 9.718/1998, art. 8º",
+        "Apresenta cenário base (tributos sobre a receita) e cenário amplo (mais IRPJ e CSLL presumidos) com a diferença em reais e explica que a escolha da leitura da cláusula cabe ao juízo (STJ, Tema 908)",
+        "Classifica o repasse de R$ 3.000,00 em dinheiro como sem comprovante, fora do cenário base e dentro do cenário amplo, sem tratá-lo como zero definitivo nem como pago",
+        "Entrega quadro em forma mercantil (receita bruta, tributos, líquida, compensações, repasses, saldo) que fecha ao centavo com a cronologia e cita CPC, arts. 551 e 552",
+        "Não cita precedente fora da lista verificada sem o marcador [A VERIFICAR] e inclui seção de pendências de verificação"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Caso de trespasse de uma loja de autopeças em 15/08/2024. Não existe inventário assinado: o contrato só diz que o estoque da data vai para o vendedor líquido de impostos. O comprador entregou o SPED Fiscal de 2024 com Bloco H de 31/12/2023 e os XML de entrada e saída de janeiro a dezembro de 2024. Tem balancete de 31/08/2024 com conta Estoques de R$ 410.000,00. Como eu delimito o estoque transferido e o que eu escrevo no laudo sobre isso?",
+      "expected_output": "Reconstrução do estoque na data-base por rolagem item a item a partir do H010 de 31/12/2023 mais entradas menos saídas até 15/08/2024, teste de razoabilidade contra o balancete, apresentação como cenário reconstruído com ressalva expressa, atribuição do ônus da lacuna ao comprador, requisição de documentos faltantes por termo de diligência e indicação do efeito de uma retificação futura sobre o saldo.",
+      "files": [],
+      "expectations": [
+        "Descreve a hierarquia de fontes (inventário assinado, H010 na data-base, rolagem a partir de H010 anterior, balancete) e escolhe a rolagem por item a partir do H010 de 31/12/2023 com C170 de entrada e saída até 15/08/2024",
+        "Usa o balancete de R$ 410.000,00 apenas como teste de ordem de grandeza e não como inventário por item, apontando divergência acima de 5% como sinal de inconsistência",
+        "Redige a ressalva de que a composição foi reconstruída e é apresentada como cenário, com a lacuna documental atribuída ao comprador (CPC, art. 373, § 1º) e menção à exibição integral de livros na gestão à conta de outrem (CC, art. 1.191) e à presunção do CPC, art. 400, como decisão do juízo",
+        "Não trata a falta de inventário como estoque zero nem adota o valor pedido pelo autor; propõe termo de diligência com os documentos faltantes",
+        "Menciona que o SPED prova contra o contribuinte que o entregou (CPC, art. 417) e lista a verificação do layout do Guia Prático da EFD como [A VERIFICAR]"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Empresa do Simples Nacional, Anexo I. Vendeu a sociedade em 30/06/2025 com cláusula de repasse do estoque abatidos os impostos. O problema é que o comprador continuou comprando os mesmos itens (ração e suplemento) e vendendo tudo misturado; a planilha dele diz que só 40% das vendas de julho a setembro eram do estoque antigo. Tenho o inventário assinado, as NF de compra e de venda de julho a setembro e os PGDAS-D dos três meses com alíquota efetiva. Quanto é devido?",
+      "expected_output": "Atribuição PEPS item a item: as vendas consomem primeiro o inventário de 30/06/2025 e só depois as compras posteriores, com compra processada antes da venda no mesmo dia; receita bruta do estoque antigo por mês; DAS pela alíquota efetiva declarada no PGDAS-D de cada competência com fonte, conferida contra as faixas do Anexo I marcadas [A VERIFICAR]; cenário base e amplo coincidem no Simples; confronto com o percentual de 40% alegado pelo comprador.",
+      "files": [],
+      "expectations": [
+        "Rejeita o rateio de 40% da planilha do réu como critério e aplica PEPS por item, explicando que o estoque existente na data-base é consumido antes das compras posteriores (NBC TG 16) e que critério diverso exigiria cláusula contratual",
+        "Informa, por venda ou por mês, a quantidade atribuída ao estoque antigo e ao novo e confirma os testes de sanidade (atribuição nunca excede o inventário; soma das atribuições igual à quantidade vendida)",
+        "Calcula o DAS pela alíquota efetiva do PGDAS-D de cada mês, com o campo fonte preenchido, e registra alerta se a declarada divergir da calculada pelas faixas informadas (LC 123/2006, art. 18, § 1º-A)",
+        "Explica que no Simples o cenário amplo coincide com o base porque o DAS já contém IRPJ e CSLL (LC 123/2006, art. 13) e que a CPP integra o DAS indivisível",
+        "Marca as faixas do Anexo I do ano-calendário como [A VERIFICAR] e não digita alíquota nominal de memória como fato"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "O réu apresentou as contas e descontou do repasse: R$ 18.000,00 de uma dívida antiga do vendedor com um fornecedor, que ele diz ter pago; R$ 2.300,00 de devoluções de clientes do estoque antigo com NF de devolução; e uma multa de R$ 5.000,00 por quebra de exclusividade. O contrato só fala em devoluções. O vendedor impugnou tudo. Já tenho a receita líquida mensal apurada (R$ 61.420,00 no total) e os comprovantes de repasse somam R$ 30.000,00, sendo que dois TED de R$ 5.000,00 aparecem na mesma data com o mesmo número de documento. Fecha o saldo.",
+      "expected_output": "Conciliação com a devolução de R$ 2.300,00 admitida no cenário base (prevista no contrato e documentada), a dívida com fornecedor e a multa fora do cenário base e dentro do amplo, o segundo TED de R$ 5.000,00 excluído por duplicidade comprovada, saldo nos três cenários com indicação do credor, imputação ao mês mais antigo em aberto e fundamentação de que a segunda fase não reescreve o contrato.",
+      "files": [],
+      "expectations": [
+        "Admite no cenário base apenas a devolução de R$ 2.300,00 e exclui do base a dívida com fornecedor (R$ 18.000,00) e a multa (R$ 5.000,00) por falta de previsão contratual, levando-as ao cenário amplo com o saldo correspondente",
+        "Identifica o segundo TED de R$ 5.000,00 como duplicidade comprovada (mesmo documento) e o exclui de todos os cenários, informando repasses admitidos de R$ 25.000,00",
+        "Apura saldo base de R$ 34.120,00 (61.420,00 menos 2.300,00 menos 25.000,00) em favor do vendedor e apresenta também o estrito (R$ 36.420,00) e o amplo (R$ 11.120,00), com a ordem estrito maior ou igual a base maior ou igual a amplo",
+        "Fundamenta que a compensação não prevista no contrato é decisão do juízo e que a segunda fase apura o saldo nos termos do contrato (STJ, Tema 908), sem opinar sobre a licitude da compensação (CPC, art. 473, § 2º)",
+        "Declara a imputação dos repasses ao mês mais antigo em aberto (CC, arts. 352 a 355) e entrega lista de parcelas para atualização pela skill atualizacao-monetaria com o termo inicial como pendência"
+      ]
+    }
+  ]
+}

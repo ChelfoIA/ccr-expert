@@ -1,0 +1,27 @@
+{
+  "empresa": "Alfa Comércio Ltda.",
+  "data_resolucao": "30/06/2025",
+  "observacao": "Dados fictícios para teste. O PL tangível pode vir deste campo ou de --balanco (saída de balanco_determinacao.py), que prevalece.",
+  "pl_determinacao_tangivel": "550.000,00",
+  "fonte_pl": "balanco_determinacao.py, totais.pl_determinacao_tangivel (PL de determinação menos intangíveis já reconhecidos)",
+  "lucros": [
+    {"exercicio": "2020", "lucro_contabil": "150.000,00", "ajustes": [{"descricao": "Ganho na venda de imóvel (não recorrente)", "valor": "-40.000,00"}], "fonte": "DRE 2020 (ECD), fls. 400"},
+    {"exercicio": "2021", "lucro_contabil": "180.000,00", "ajustes": [], "fonte": "DRE 2021 (ECD), fls. 402"},
+    {"exercicio": "2022", "lucro_contabil": "200.000,00", "ajustes": [{"descricao": "Multa contratual paga a fornecedor (não recorrente)", "valor": "15.000,00"}], "fonte": "DRE 2022 (ECD), fls. 404"},
+    {"exercicio": "2023", "lucro_contabil": "170.000,00", "ajustes": [], "fonte": "DRE 2023 (ECD), fls. 406"},
+    {"exercicio": "2024", "lucro_contabil": "190.000,00", "ajustes": [], "fonte": "DRE 2024 (ECD), fls. 408"}
+  ],
+  "taxa_remuneracao_capital": {
+    "valor": "12%",
+    "descricao": "Taxa fictícia de exemplo para o custo de oportunidade do capital tangível",
+    "fonte": "Na perícia real, informar a origem: bcb.gov.br/SGS (série e data da consulta) ou custo de oportunidade fundamentado no laudo"
+  },
+  "fator": {
+    "valor": "3",
+    "fundamento": "Comércio varejista com carteira de clientes de rotatividade média; prática pericial de 2 a 4 anos de lucro excedente; sensibilidade apresentada para 2 e 4"
+  },
+  "multiplo": {
+    "valor": "4",
+    "fundamento": "Múltiplo de referência sobre o lucro normalizado adotado apenas para contraprova; sem transações comparáveis verificadas neste exemplo"
+  }
+}

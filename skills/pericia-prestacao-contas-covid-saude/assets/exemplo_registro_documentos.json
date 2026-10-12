@@ -1,0 +1,46 @@
+{
+  "processo": {
+    "numero": "0000000-00.0000.0.00.0000",
+    "juizo": "Vara da Fazenda Pública da Comarca de Exemplo",
+    "acao": "Ação civil pública por ato de improbidade administrativa (Lei 8.429/1992)",
+    "objeto_saneamento": "Aplicação e prestação de contas dos recursos federais e estaduais recebidos pelo Município de Exemplo para o enfrentamento da covid-19 nos exercícios de 2020 e 2021 (fontes 214-COVID, 215-COVID e LC 173/2020, art. 5º, I), com apuração de despesas sem comprovação, desvio de finalidade e sobrepreço.",
+    "data_saneamento": "20/08/2026",
+    "data_nomeacao": "01/09/2026",
+    "data_intimacao_perito": "08/09/2026",
+    "prazo_quesitos_dias": 15
+  },
+  "perito": {
+    "nome": "Maria da Silva (perita)",
+    "registro": "CRC 000000/O-0",
+    "cidade": "Exemplo"
+  },
+  "prazo_laudo": {
+    "data_inicio": "15/09/2026",
+    "dias": 60,
+    "observacao": "prazo fixado na decisão de nomeação, contado do termo de início dos trabalhos (CPC, arts. 465 e 474)"
+  },
+  "partes": [
+    {"id": "autor", "nome": "Ministério Público do Estado (autor)", "papel": "autor", "endereco": "[endereço da Promotoria]"},
+    {"id": "reu_municipio", "nome": "Município de Exemplo (réu)", "papel": "réu", "endereco": "[endereço da Prefeitura]"},
+    {"id": "reu_gestor", "nome": "João da Silva, ex-prefeito (réu)", "papel": "réu", "endereco": "[endereço do advogado]"},
+    {"id": "fns", "nome": "Fundo Nacional de Saúde / Ministério da Saúde", "papel": "terceiro", "endereco": "[endereço do FNS]"},
+    {"id": "tce", "nome": "Tribunal de Contas do Estado", "papel": "terceiro", "endereco": "[endereço do TCE]"},
+    {"id": "banco", "nome": "Banco Alfa S.A. (agência mantenedora das contas específicas)", "papel": "terceiro", "endereco": "[endereço da agência]"}
+  ],
+  "documentos": [
+    {"id": "D01", "descricao": "Relatório de repasses do FNS ao município por competência e portaria, 03/2020 a 12/2021", "parte_responsavel": "reu_municipio", "fonte_recurso": "214-COVID; 215-COVID", "status": "recebido", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "25/09/2026", "observacao": "conferido contra o Portal FNS em 26/09/2026"},
+    {"id": "D02", "descricao": "Extratos bancários mensais das contas específicas dos recursos covid, 03/2020 a 12/2021, com aplicações financeiras", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "parcial", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "28/09/2026", "observacao": "faltam os extratos de 2021 e os da aplicação financeira"},
+    {"id": "D03", "descricao": "Razão contábil analítico por fonte de recursos e por conta bancária, 2020 e 2021", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": ""},
+    {"id": "D04", "descricao": "Relação de empenhos, liquidações e pagamentos por fonte, exportada do sistema contábil, com credor, CNPJ, objeto, processo e documento fiscal", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": "layout de assets/exemplo_despesas.csv enviado com o termo"},
+    {"id": "D05", "descricao": "Processos administrativos das contratações emergenciais (Lei 13.979/2020): termo de referência, pesquisa de preços, contrato, notas fiscais, atesto, comprovante de entrega", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "parcial", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "30/09/2026", "observacao": "recebidos 6 de 14 processos listados na inicial"},
+    {"id": "D06", "descricao": "Portarias GM/MS e atos de transferência citados na inicial, com os valores por parcela", "parte_responsavel": "autor", "fonte_recurso": "214-COVID; 215-COVID", "status": "recebido", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "22/09/2026", "observacao": ""},
+    {"id": "D07", "descricao": "Relatório anual de gestão (RAG) 2020 e 2021, relatórios quadrimestrais e pareceres do Conselho Municipal de Saúde", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": ""},
+    {"id": "D08", "descricao": "Prestação de contas anual dos exercícios de 2020 e 2021 e eventual decisão ou relatório de auditoria sobre recursos covid", "parte_responsavel": "tce", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "18/09/2026", "prazo_dias": 20, "data_recebimento": "", "observacao": "ofício requerido ao juízo em 18/09/2026"},
+    {"id": "D09", "descricao": "Controle de almoxarifado e de patrimônio: entradas e saídas de EPI, medicamentos e equipamentos adquiridos com recursos covid; termos de tombamento", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": ""},
+    {"id": "D10", "descricao": "Relação dos leitos covid habilitados e produção assistencial do período (habilitações e SIH/SUS)", "parte_responsavel": "reu_municipio", "fonte_recurso": "215-COVID", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": ""},
+    {"id": "D11", "descricao": "Consultas de CNPJ, CEIS e CNEP dos fornecedores relacionados na inicial, com data da consulta", "parte_responsavel": "perito", "fonte_recurso": "todas", "status": "recebido", "data_pedido": "16/09/2026", "prazo_dias": 5, "data_recebimento": "17/09/2026", "observacao": "diligência própria, consultas anexadas"},
+    {"id": "D12", "descricao": "Inquérito civil e relatório técnico que instruíram a inicial, em formato pesquisável", "parte_responsavel": "autor", "fonte_recurso": "todas", "status": "recebido", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "20/09/2026", "observacao": ""},
+    {"id": "D13", "descricao": "Extratos e ordens bancárias das contas específicas diretamente do banco, 03/2020 a 12/2021, para confronto com os extratos do ente", "parte_responsavel": "banco", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "18/09/2026", "prazo_dias": 20, "data_recebimento": "", "observacao": "ofício requerido ao juízo em 18/09/2026"},
+    {"id": "D14", "descricao": "Atas do Conselho Municipal de Saúde que deliberaram sobre a aplicação dos recursos covid e plano de contingência municipal", "parte_responsavel": "reu_municipio", "fonte_recurso": "todas", "status": "pendente", "data_pedido": "15/09/2026", "prazo_dias": 15, "data_recebimento": "", "observacao": ""}
+  ]
+}

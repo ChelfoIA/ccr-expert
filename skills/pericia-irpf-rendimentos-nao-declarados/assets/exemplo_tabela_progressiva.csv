@@ -1,0 +1,11 @@
+ano;modo;faixa_inicio;faixa_fim;aliquota;deducao;fonte
+2023;anual;0,00;24.000,00;0,0;0,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;anual;24.000,01;36.000,00;7,5;1.800,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;anual;36.000,01;48.000,00;15,0;4.500,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;anual;48.000,01;60.000,00;22,5;8.100,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;anual;60.000,01;;27,5;11.100,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;mensal;0,00;2.000,00;0,0;0,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;mensal;2.000,01;3.000,00;7,5;150,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;mensal;3.000,01;4.000,00;15,0;375,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;mensal;4.000,01;5.000,00;22,5;675,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano
+2023;mensal;5.000,01;;27,5;925,00;EXEMPLO FICTÍCIO: substituir pela tabela oficial do ano

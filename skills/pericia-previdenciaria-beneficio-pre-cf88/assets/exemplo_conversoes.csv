@@ -1,0 +1,7 @@
+# Cortes de padrão monetário; conferir com scripts/padroes_monetarios.py da skill atualizacao-monetaria
+competencia;divisor;moeda_nova;fonte
+03/1986;1000;Cz$;Decreto-Lei 2.283/1986, republicado pelo Decreto-Lei 2.284/1986 (conferir em padroes_monetarios.py da atualizacao-monetaria)
+01/1989;1000;NCz$;Medida Provisória 32/1989, convertida na Lei 7.730/1989 (conferir em padroes_monetarios.py da atualizacao-monetaria)
+03/1990;1;Cr$;Medida Provisória 168/1990, convertida na Lei 8.024/1990, paridade mantida (conferir em padroes_monetarios.py da atualizacao-monetaria)
+08/1993;1000;CR$;Medida Provisória 336/1993, convertida na Lei 8.697/1993 (conferir em padroes_monetarios.py da atualizacao-monetaria)
+07/1994;2750;R$;Lei 8.880/1994 e Lei 9.069/1995, CR$ 2.750,00 por R$ 1,00 (conferir em padroes_monetarios.py da atualizacao-monetaria)

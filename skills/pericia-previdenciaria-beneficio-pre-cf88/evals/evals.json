@@ -1,0 +1,58 @@
+{
+  "skill_name": "pericia-previdenciaria-beneficio-pre-cf88",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita numa revisional na Justiça Federal. O autor se aposentou por tempo de serviço em março de 1987 e diz que contribuiu sobre 20 salários mínimos e recebeu só 4. Tenho a carta de concessão com os 36 salários de contribuição (os de 1984 e 1985 em cruzeiro, os de 1986 e 1987 em cruzado) e a tabela de coeficientes ORTN/OTN da portaria do MPAS daquele mês. Menor valor-teto Cz$ 12.000,00, maior Cz$ 24.000,00, coeficiente 95%. Quanto era a RMI e quantos salários mínimos representava?",
+      "expected_output": "Reconstrução da RMI com rmi_clps84.py: 36 SC com a moeda de cada competência, conversão Cr$ para Cz$ pelo corte de 03/1986 (arquivo de conversões obtido com padroes_monetarios.py da atualizacao-monetaria), correção dos 24 primeiros pelos coeficientes lidos de arquivo com fonte, média, limitação ao maior valor-teto, parcela até o menor, excedente na fração informada pela perita com fundamento marcado [A VERIFICAR: art. 23 do Decreto 89.312/1984], coeficiente de 95%, RMI e número de salários mínimos pelo salário mínimo da DIB informado com fonte (Súmula 25 da TNU); explicação de que contribuir sobre 20 salários mínimos não gera renda de 20 salários mínimos; recusa de digitar coeficiente ou salário mínimo de memória.",
+      "files": [],
+      "expectations": [
+        "Executa rmi_clps84.py com o CSV dos 36 salários de contribuição com coluna moeda e com o CSV de coeficientes com coluna fonte, e aborta ou pede o arquivo se faltar coeficiente para qualquer das 24 competências corrigidas",
+        "Converte os salários de 1984 e 1985 de Cr$ para Cz$ pelo arquivo de conversões, citando padroes_monetarios.py da skill atualizacao-monetaria, e declara a moeda de cada competência na memória",
+        "Aplica a parcela até o menor valor-teto por inteiro e o excedente até o maior valor-teto na fração informada com --fracao-excedente e --fundamento-fracao, marcando o dispositivo da CLPS/84 como [A VERIFICAR], sem embutir fração de memória",
+        "Apresenta a RMI e o número de salários mínimos na DIB calculado com o salário mínimo informado por arquivo ou parâmetro com fonte, e cita a Súmula 25 da TNU para o critério da data da concessão",
+        "Explica que o teto de contribuição de 20 salários mínimos (Lei 6.950/1981, art. 4º [A VERIFICAR]) não equivale a benefício de 20 salários mínimos e registra se o benefício foi limitado ao maior valor-teto na concessão"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Mesmo caso do benefício de 03/1987, RMI de Cz$ 20.520,00 com média de Cz$ 27.436,11 acima do maior valor-teto. Preciso fazer a readequação pelos tetos da EC 20 e da EC 41 como manda o Tema 1.140 do STJ. Tenho as portarias de reajuste dos benefícios desde 1987 e o HISCRE a partir de 2003. Como fica a renda em 12/1998 e em 12/2003 e qual a diferença mensal?",
+      "expected_output": "Execução de readequacao_tetos.py com o JSON do script 1, reajustes por arquivo com fonte, conversões de moeda, tetos e HISCRE; na competência de cada emenda, aplicação dos limitadores da época sobre a média evoluída usando o teto da emenda como maior valor-teto e a metade como menor valor-teto, com o mesmo coeficiente e fração da concessão; renda devida readequada quando supera a devida anterior; trava no teto vigente; diferença mensal contra a renda paga (presumida igual à RMI reajustada antes de 2003); indicador de benefício limitado na concessão; transcrição da tese do Tema 1.140 com a identificação do brief; menção aos Temas 76 e 930 do STF e à linha do TRF1.",
+      "files": [],
+      "expectations": [
+        "Executa readequacao_tetos.py com --reajustes, --conversoes, --tetos e --pago lidos de arquivos com fonte, usando os tetos de R$ 1.200,00 (EC 20/1998, art. 14) e R$ 2.400,00 (EC 41/2003, art. 5º) como maior valor-teto e R$ 600,00 e R$ 1.200,00 como menor valor-teto",
+        "Calcula a renda readequada em cada emenda como coeficiente vezes a soma da parcela até o menor valor-teto com o excedente até o maior valor-teto multiplicado pela fração da concessão, e só substitui a renda devida quando a readequada a supera",
+        "Apresenta a evolução mês a mês com moeda, índice, renda sem teto, renda limitada, teto, renda devida, renda paga e diferença, e declara que a renda paga anterior ao HISCRE foi presumida igual à RMI reajustada",
+        "Registra o indicador de benefício limitado na concessão (maior valor-teto) e o critério de limitação adotado, citando a Corte Especial do TRF1 (AC 1018697-75.2023.4.01.3300) para a exigência de limitação ao maior valor-teto",
+        "Cita a tese do Tema 1.140 do STJ (REsp 1.957.733 e 1.958.465, Primeira Seção, Rel. Min. Gurgel de Faria, j. 14/08/2024) e refere o Tema 76 do STF como paradigma com o texto da tese marcado [A VERIFICAR]"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "O INSS contestou dizendo que o benefício da autora, de 1987, não foi limitado ao teto na concessão: a média dos 36 salários deu Cz$ 10.000,00 com menor valor-teto de Cz$ 12.000,00, e a RMI foi 95% da média. Mesmo assim o advogado dela insiste que há diferença pelas emendas. Tem?",
+      "expected_output": "Demonstração, com readequacao_tetos.py sobre a RMI não limitada, de que a readequação não gera diferença: a renda readequada em 12/1998 e 12/2003 (coeficiente sobre a média evoluída limitada) não supera a renda que vinha sendo paga; indicador 'benefício limitado na concessão: não'; teste de sanidade de diferença zero aprovado; explicação de que o teto é limite externo e, se não incidiu, não há o que recompor (Tema 76 e Tema 1.140); referência à linha do TRF1 de que benefício não limitado ao maior valor-teto não tem diferenças; ressalva de que o perito descreve e o juízo decide.",
+      "files": [],
+      "expectations": [
+        "Executa readequacao_tetos.py com a média de Cz$ 10.000,00, o menor valor-teto de Cz$ 12.000,00 e o coeficiente de 95% e obtém diferença zero em todas as competências, com o indicador de benefício não limitado na concessão",
+        "Explica que a renda readequada em cada emenda é o coeficiente sobre a média evoluída limitada e que, não tendo havido limitação, ela coincide com a renda paga, de modo que não há acréscimo pelos limitadores do Tema 1.140",
+        "Cita a linha do TRF1 (Corte Especial, AC 1018697-75.2023.4.01.3300, e Primeira Turma) de que benefício não limitado ao maior valor-teto não gera diferenças, sem inventar outros precedentes",
+        "Mostra o teste de sanidade 'benefício não limitado na concessão: diferença zero' aprovado e registra que o resultado se mantém com os critérios 'maior' e 'qualquer' de limitação",
+        "Não conclui sobre a improcedência: descreve o resultado técnico e remete a decisão ao juízo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Caso antigo que travou: ação revisional ajuizada em 15/03/2008 pelo aposentado de 1987; ele morreu em 15/06/2010 e a viúva se habilitou e passou a receber pensão; agora descobri que a viúva morreu em 20/09/2023 e ninguém se habilitou ainda. Tenho a planilha de diferenças mensais da readequação até 2024 e o HISCRE da pensão. Quais parcelas entram, o que prescreveu, até quando vai e quem recebe?",
+      "expected_output": "Execução de atrasados_prescricao.py com ajuizamento em 15/03/2008 (marco 15/03/2003; prescritas as competências anteriores a 03/2003, critério declarado), bloco do titular de 03/2003 a 06/2010 (mês do óbito com o titular), bloco da pensão de 07/2010 a 09/2023 com coeficiente de 100% informado com fundamento marcado [A VERIFICAR regime do óbito] e pensão paga lida do HISCRE, corte no óbito da pensionista (Decreto 3.048/1999, art. 114, I), abono anual proporcional, quadro informativo da decadência (termo final atribuído a 01/08/2007 [A VERIFICAR: Tema 313]; readequação de teto não sofre decadência na linha do TRF1), habilitação: parcelas do titular e da pensão aos sucessores da pensionista (art. 112 da Lei 8.213/1991 [A VERIFICAR alcance]; CPC 110, 313, I, 687 a 692), parcelas.json para a atualizacao-monetaria no regime da Fazenda Pública.",
+      "files": [],
+      "expectations": [
+        "Aplica a prescrição quinquenal do art. 103, parágrafo único, da Lei 8.213/1991 contada do ajuizamento em 15/03/2008, separando as parcelas prescritas (competências anteriores a 03/2003) das devidas e declarando o critério da competência ou do mês de pagamento",
+        "Encerra o bloco do titular em 06/2010 e inicia a pensão em 07/2010 com o coeficiente informado por parâmetro e fundamento marcado [A VERIFICAR], confrontando a pensão devida sobre a renda revisada com a pensão paga lida do HISCRE",
+        "Encerra o bloco da pensão em 09/2023 pelo óbito da pensionista, citando o Decreto 3.048/1999, art. 114, I, e inclui o abono anual proporcional de cada bloco",
+        "Identifica os destinatários: parcelas do titular e da pensão aos sucessores da pensionista habilitados na forma dos arts. 687 a 692 do CPC, com o art. 112 da Lei 8.213/1991 e o marcador [A VERIFICAR] sobre o seu alcance à pensionista, e registra que ainda não há habilitação nos autos",
+        "Apresenta o quadro informativo da decadência (termo final atribuído a 01/08/2007 com [A VERIFICAR: STF, Tema 313]) e a linha do TRF1 de que a readequação de teto não sofre decadência, sem concluir sobre a incidência",
+        "Gera parcelas.json no formato [{competencia, valor, descricao}] só com as parcelas devidas e remete a atualização e os juros à skill atualizacao-monetaria no regime fazenda_publica"
+      ]
+    }
+  ]
+}

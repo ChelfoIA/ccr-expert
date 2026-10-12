@@ -1,0 +1,28 @@
+{
+  "id": "P-002",
+  "numero": "0000002-00.0000.0.00.0000",
+  "vara": "2ª Vara Cível",
+  "comarca": "Comarca fictícia",
+  "autor": "Maria da Silva (autora)",
+  "reus": ["Banco do Brasil S.A."],
+  "polo_demandado": "BB",
+  "cadastro_pasep": "0.000.000.000-0",
+  "data_abertura_conta": "1985",
+  "modalidades_alegadas": ["CAIXA-BB", "FOPAG"],
+  "saidas_sem_modalidade": true,
+  "saidas_impugnadas": [
+    {"data": "14/08/1998", "valor": "R$ 1.250,00", "modalidade": "CAIXA-BB"},
+    {"data": "03/03/2003", "valor": "R$ 2.180,00", "modalidade": "CAIXA-BB"},
+    {"data": "10/06/2011", "valor": "R$ 940,00", "modalidade": "FOPAG"},
+    {"data": "22/09/2016", "valor": "R$ 3.100,00", "modalidade": ""}
+  ],
+  "documentos": {
+    "extrato_analitico": "parcial",
+    "microfilmagem": "pendente",
+    "rais": "recebido",
+    "contracheques": "pendente",
+    "conta_destino": "nao_aplicavel"
+  },
+  "periodo_extrato_recebido": {"de": "01/1990", "ate": "05/2020"},
+  "observacoes": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985."
+}

@@ -1,0 +1,61 @@
+{
+  "skill_name": "pericia-prestacao-contas-covid-saude",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita numa ação civil pública de improbidade sobre a verba da covid do município (fundo a fundo do FNS em 2020 e 2021 e a parcela de saúde da LC 173). O saneamento saiu em 20/08/2026, fui intimada em 08/09/2026 e o juiz deu 60 dias pro laudo contados do início dos trabalhos. Ainda não comecei nada e estou esperando as partes mandarem a documentação. Quero montar o plano de trabalho, o termo de diligência e os ofícios pro município, pro FNS, pro TCE e pro banco. Pode preparar tudo?",
+      "expected_output": "Plano de trabalho pelo template (objeto conforme o saneamento, quesitos, metodologia com conciliação por fonte e matriz de testes, critério de amostragem, cronograma compatível com os arts. 465 e 477, documentos por responsável com prazo); registro JSON com partes e documentos; execução de checklist_documental_covid.py com --gerar todos produzindo painel, termo de diligência (CPC 473 § 3º, 378 e 379, 474, 466 § 2º) e minutas de ofício, as de terceiros marcadas para expedição pelo juízo (CPC 380 e 401 a 404); orientação de que a espera não é etapa: pedido datado, prazo e consequência.",
+      "files": [],
+      "expectations": [
+        "Entrega o plano de trabalho com objeto transcrito do saneamento, quesitos, metodologia (conciliação por fonte e testes por despesa), critério de amostragem declarado e cronograma que respeita o prazo de 60 dias e a antecedência do art. 477 do CPC",
+        "Monta o registro de documentos no formato de assets/exemplo_registro_documentos.json, com o município, o autor, o FNS, o TCE e o banco como responsáveis, e roda checklist_documental_covid.py gerando painel, termo e ofícios",
+        "O termo de diligência cita o art. 473, § 3º, e os arts. 378 e 379 do CPC, fixa prazo por documento, forma de entrega em CSV no layout dos assets e data e local de início com ciência aos assistentes (arts. 474 e 466, § 2º)",
+        "As minutas de ofício ao FNS, ao TCE e ao banco são apresentadas como minutas para expedição pelo juízo ou mediante autorização expressa (CPC, arts. 380 e 401 a 404), e o ofício ao município vai por intermédio do procurador com cópia ao juízo",
+        "Trata a fase zero como etapa técnica com registro, prazo e consequência, e não como espera, indicando que o que não vier será comunicado ao juízo e registrado como limitação no laudo",
+        "Não cita número de portaria GM/MS nem acórdão do TCU sem a marcação [A VERIFICAR]"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Já recebi o relatório do FNS e a relação de empenhos do município. Vieram três portarias do Ministério da Saúde: uma de R$ 150 mil em 20/03/2020 e outra de R$ 250 mil em 15/04/2020, as duas de custeio na fonte 214, e uma de R$ 100 mil em 05/08/2020 de investimento em leitos na fonte 215. Tem também duas parcelas de R$ 120 mil da LC 173 em junho e julho, um rendimento de R$ 1.250,40 em setembro e uma devolução de R$ 20 mil em janeiro de 2021. Na relação de empenhos vi um recapeamento de rua de R$ 85 mil pago com a parcela de saúde da LC 173, uma campanha publicitária de R$ 25 mil numa fonte 'LC173-LIVRE' que não aparece nos repasses, uma reforma de R$ 120 mil na fonte 215 e um pagamento de R$ 18 mil de sanitização sem liquidação. Preciso da conciliação por fonte.",
+      "expected_output": "Transcrição em CSV de receitas e despesas; execução de conciliacao_fonte_recurso.py; quadro por fonte com recebido bruto, devolvido, recebido líquido, empenhado, liquidado, pago e saldo; alerta de que o pago na fonte 215 supera o recebido; despesa na fonte LC173-LIVRE sem receita registrada; pagamento sem liquidação apontado com o art. 62 da Lei 4.320/1964; recapeamento sinalizado como objeto estranho à fonte (LRF, art. 8º, parágrafo único) e remetido à matriz; sanidade OK; números das portarias marcados como a conferir no relatório do FNS.",
+      "files": [],
+      "expectations": [
+        "Transcreve receitas e despesas nos layouts de assets/exemplo_receitas.csv e assets/exemplo_despesas.csv e executa conciliacao_fonte_recurso.py, apresentando o quadro por fonte com recebido líquido de R$ 381.250,40 na fonte 214-COVID (R$ 400.000,00 mais rendimento de R$ 1.250,40 menos devolução de R$ 20.000,00)",
+        "Aponta que na fonte 215-COVID o valor pago (R$ 120.000,00) supera o recebido líquido (R$ 100.000,00) e que a campanha de R$ 25.000,00 está em fonte sem receita registrada (LC173-LIVRE), com remissão ao art. 8º, parágrafo único, da LRF e ao art. 50, I",
+        "Lista o pagamento de R$ 18.000,00 sem liquidação como inconsistência de estágio com fundamento no art. 62 da Lei 4.320/1964, sem qualificá-lo juridicamente",
+        "Informa que o recapeamento de R$ 85.000,00 na fonte LC173-SAUDE é objeto a testar na matriz como aderência N (desvio de finalidade), e não o soma como dano na conciliação",
+        "Registra a devolução de R$ 20.000,00 e o rendimento de R$ 1.250,40 em quadro próprio e confirma que a sanidade (soma por fonte e por mês fecha com o total) passou",
+        "Não digita número ou data de portaria GM/MS de memória: usa os dados do relatório do FNS informado e marca a conferência"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Agora a matriz. Na relação tem uma compra de 8.000 máscaras N95 a R$ 12,00 cada, sem pesquisa de preços, de uma empresa aberta em janeiro de 2020 e contratada em abril; achei no painel de preços que a mediana em abril de 2020 era R$ 8,00. Tem também dois empenhos de sanitização pra mesma empresa de limpeza com 20 dias de diferença, um de R$ 18 mil e outro de R$ 17,5 mil, os dois por dispensa, e um lote de medicamentos de R$ 42 mil cuja nota fiscal é de 22/05/2020 mas o empenho só foi feito em 01/06/2020. E uma locação de 10 ventiladores de R$ 120 mil que foi paga mas não tem nenhum documento de entrega ou uso. Classifica tudo e me diz quanto dá a base pra ressarcimento.",
+      "expected_output": "Execução de matriz_despesas_covid.py com as colunas de teste preenchidas e a referência de R$ 8,00 com fonte e mês; máscaras N95 classificadas como sobrepreço a apurar (variação de 50% sobre a referência, base de R$ 32.000,00) com achados adicionais de pesquisa ausente e fornecedor constituído há 78 dias; sanitização agrupada como fracionamento (janela de 30 dias, R$ 35.500,00) com remissão ao art. 75, § 1º, da Lei 14.133/2021 e qualificação remetida ao juízo; medicamentos com nota fiscal anterior ao empenho como irregularidade formal (Lei 4.320, art. 60); ventiladores como sem comprovação (art. 63, § 2º), base R$ 120.000,00; totais por classe com sanidade; explicação de que a base de quantificação é número do perito e a imputação é do juízo; tolerância e janela declaradas como premissas.",
+      "files": [],
+      "expectations": [
+        "Classifica a compra de máscaras N95 como sobrepreço a apurar com variação de 50,00% sobre a referência de R$ 8,00 e base de R$ 32.000,00 (diferença de R$ 4,00 vezes 8.000), registrando também a ausência de pesquisa de preços e o fornecedor constituído 78 dias antes do empenho",
+        "Agrupa os dois empenhos de sanitização como fracionamento dentro da janela de 30 dias (soma R$ 35.500,00), cita o art. 75, § 1º, da Lei 14.133/2021 e remete ao juízo o enquadramento, sem presumir burla",
+        "Classifica o lote de medicamentos como irregularidade formal por nota fiscal anterior ao empenho, com fundamento no art. 60 da Lei 4.320/1964, sem base de quantificação",
+        "Classifica a locação dos ventiladores como sem comprovação, com base de R$ 120.000,00 e fundamento no art. 63, § 2º, da Lei 4.320/1964, informando que a juntada de registros de entrega ou uso pode alterar a classe",
+        "Apresenta os totais por classe e confirma que a soma por classe fecha com o universo (sanidade), distinguindo totais exclusivos por classe de achados não exclusivos por tipo",
+        "Declara a tolerância de 20% e a janela de 30 dias como premissas do laudo e afirma que a base de quantificação é número do perito, enquanto a imputação e o ressarcimento são do juízo (Lei 8.429/1992, art. 12; Tema 1.089/STJ)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Mandei o termo de diligência em 15/09/2026 com 15 dias de prazo. O município só mandou o relatório do FNS e metade dos processos; o razão por fonte, a relação de empenhos e os extratos de 2021 não vieram. O TCE e o banco também não responderam os ofícios de 18/09. Hoje é 12/10/2026 e meu prazo de 60 dias começou em 15/09. O que eu faço? Peticiono o quê? E se não vier nada, como fica o laudo?",
+      "expected_output": "Execução de checklist_documental_covid.py com --data-referencia 12/10/2026 mostrando os dias de atraso por documento, o resumo por responsável e os 33 dias restantes; sugestão de petição de ciência do atraso com intimação do município sob as consequências do art. 400 do CPC (arts. 473 § 3º, 378, 379, 396 a 400) e de reiteração dos ofícios ao TCE e ao banco (arts. 380 e 401 a 404); pedido de contagem do prazo a partir da juntada ou prorrogação do art. 476 (uma vez, metade do prazo); alternativa de laudo com limitação de escopo declarada e complementação; aviso do art. 468, II; modelo curto de petição sem qualificar o atraso; registro da limitação no laudo em três lugares (documentos, achados, conclusão), com a consequência probatória remetida ao juízo.",
+      "files": [],
+      "expectations": [
+        "Roda checklist_documental_covid.py com a data de referência 12/10/2026 e informa os dias de atraso de cada documento (12 dias para os do município com prazo em 30/09/2026 e 4 dias para os ofícios com prazo em 08/10/2026) e os 33 dias restantes do laudo",
+        "Sugere petição de ciência do atraso com requerimento de intimação do município para exibir em prazo certo sob as consequências do art. 400 do CPC, fundada nos arts. 473, § 3º, 378, 379 e 396 a 400",
+        "Sugere requerer ao juízo a reiteração dos ofícios ao TCE e ao banco com fundamento nos arts. 380 e 401 a 404 do CPC, explicando que o perito não tem poder de requisição sobre terceiros",
+        "Pede a contagem do prazo a partir da juntada completa ou a prorrogação do art. 476 (uma vez, pela metade do prazo), e apresenta a alternativa de laudo com limitação declarada e complementação posterior, mencionando o risco do art. 468, II",
+        "Explica que, sem a relação de empenhos e o razão por fonte, a conciliação não pode ser concluída, e que o laudo registra a limitação na seção de documentos (cronologia), nos achados ('sem documento nos autos') e na conclusão, sem presumir entrega nem desvio, deixando a consequência probatória ao juízo",
+        "Fornece o texto da petição sem qualificar o atraso como má-fé ou ocultação, descrevendo apenas datas e efeitos sobre o trabalho"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "_comentario": "Exemplo fictício para scripts/encargos_auto_infracao.py: valores lançados no auto de infração, transcritos do demonstrativo de apuração. Processo 0000000-00.0000.0.00.0000, Maria da Silva (autora) x União. O auto fictício não aplicou o § 3º, II, aos créditos de pequeno valor (R$ 15.650,00), tributou como omissão os aluguéis e honorários informados em DIMOB e DIRF sem compensar o IRRF de R$ 225,00 e calculou os juros com uma série diversa da do exemplo.",
+  "fonte": "auto de infração, demonstrativo de apuração e de multa e juros, fls. 12 a 15 (processo administrativo 00000.000000/0000-00)",
+  "ano_calendario": 2023,
+  "base_de_calculo_lancada": "408.650,00",
+  "principal": "99.949,75",
+  "multa_pct": "75",
+  "multa": "74.962,31",
+  "juros": "29.385,23",
+  "data_juros": "31/08/2026",
+  "total": "204.297,29"
+}

@@ -1,0 +1,54 @@
+{
+  "descricao": "Parâmetros tributários fictícios de Alfa Comércio Ltda. como optante pelo Simples Nacional (Anexo I, comércio). A alíquota efetiva é a do PGDAS-D de cada competência. Alternativa: informar RBT12 por mês e as faixas do Anexo I do ano-calendário (LC 123/2006, art. 18, § 1º-A) para o script calcular a efetiva.",
+  "regime": "simples",
+  "leitura_clausula": "Cláusula 4.1: repasse do valor da venda do estoque abatidos os impostos. No Simples Nacional o DAS já reúne ICMS, PIS, COFINS, IRPJ, CSLL e CPP: cenário base e cenário amplo coincidem.",
+  "simples": {
+    "aliquota_efetiva_por_mes": {
+      "04/2025": "5,38",
+      "05/2025": "5,44",
+      "06/2025": "5,47",
+      "07/2025": "5,90"
+    },
+    "fonte": "[A VERIFICAR] PGDAS-D de Alfa Comércio Ltda., competências 04/2025 a 07/2025, campo alíquota efetiva; conferir as faixas do Anexo I da LC 123/2006 vigentes no ano-calendário",
+    "faixas_anexo": [
+      {
+        "ate": "180.000,00",
+        "aliquota": "4,00",
+        "deduzir": "0,00"
+      },
+      {
+        "ate": "360.000,00",
+        "aliquota": "7,30",
+        "deduzir": "5.940,00"
+      },
+      {
+        "ate": "720.000,00",
+        "aliquota": "9,50",
+        "deduzir": "13.860,00"
+      },
+      {
+        "ate": "1.800.000,00",
+        "aliquota": "10,70",
+        "deduzir": "22.500,00"
+      },
+      {
+        "ate": "3.600.000,00",
+        "aliquota": "14,30",
+        "deduzir": "87.300,00"
+      },
+      {
+        "ate": "4.800.000,00",
+        "aliquota": "19,00",
+        "deduzir": "378.000,00"
+      }
+    ],
+    "fonte_faixas": "[A VERIFICAR] LC 123/2006, Anexo I, tabela vigente no ano-calendário do caso; os valores acima são ilustrativos e não substituem a conferência",
+    "rbt12_por_mes": {
+      "04/2025": "310.000,00",
+      "05/2025": "318.500,00",
+      "06/2025": "325.000,00",
+      "07/2025": "331.200,00"
+    },
+    "observacao": "A competência 07/2025 traz alíquota declarada de 5,90% propositalmente divergente da calculada pelas faixas, para demonstrar o alerta de conferência do script."
+  }
+}

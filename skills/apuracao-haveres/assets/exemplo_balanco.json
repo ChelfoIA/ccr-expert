@@ -1,0 +1,31 @@
+{
+  "empresa": "Alfa Comércio Ltda.",
+  "cnpj": "00.000.000/0000-00",
+  "processo": "0000000-00.0000.0.00.0000",
+  "hipotese": "retirada_imotivada",
+  "data_notificacao": "01/05/2025",
+  "data_resolucao": "30/06/2025",
+  "fonte_balanco": "Balancete de 30/06/2025 extraído da ECD (fls. 210 a 235), conciliado com extratos e razão analítico",
+  "observacao": "Dados fictícios para teste da skill apuracao-haveres. A data da resolução é o sexagésimo dia seguinte ao recebimento da notificação (CPC, art. 605, II): 01/05/2025 + 60 dias = 30/06/2025.",
+  "ativos": [
+    {"conta": "Caixa e equivalentes de caixa", "grupo": "circulante", "valor_contabil": "50.000,00", "valor_saida": "50.000,00", "fundamento": "Extratos bancários conciliados na data da resolução", "fonte": "fls. 240 a 252"},
+    {"conta": "Clientes (duplicatas a receber)", "grupo": "circulante", "valor_contabil": "200.000,00", "valor_saida": "170.000,00", "fundamento": "Perda estimada real: títulos vencidos há mais de 180 dias sem cobrança (aging list), 15% da carteira", "fonte": "aging list de 30/06/2025, fls. 260"},
+    {"conta": "Estoques", "grupo": "circulante", "valor_contabil": "150.000,00", "valor_saida": "130.000,00", "fundamento": "Valor realizável líquido: itens obsoletos e sem giro há 12 meses baixados a valor de liquidação", "fonte": "inventário valorado, fls. 270 a 281"},
+    {"conta": "Imóvel sede", "grupo": "imobilizado", "valor_contabil": "400.000,00", "valor_saida": "550.000,00", "fundamento": "Laudo de avaliação pelo método comparativo direto (ABNT NBR 14653), valor de mercado na data da resolução", "fonte": "laudo do engenheiro avaliador, fls. 300 a 340"},
+    {"conta": "Veículos e máquinas", "grupo": "imobilizado", "valor_contabil": "120.000,00", "valor_saida": "95.000,00", "fundamento": "Valor de mercado por cotações de referência para bens usados na data da resolução", "fonte": "cotações anexas, fls. 345 a 352"},
+    {"conta": "Software desenvolvido (intangível registrado)", "grupo": "intangivel", "valor_contabil": "30.000,00", "valor_saida": "30.000,00", "fundamento": "Custo amortizado sem indício de perda por desvalorização", "fonte": "razão da conta, fls. 236"}
+  ],
+  "passivos": [
+    {"conta": "Fornecedores", "grupo": "circulante", "valor_contabil": "80.000,00", "valor_saida": "80.000,00", "fundamento": "Saldos conciliados com circularização", "fonte": "fls. 360"},
+    {"conta": "Empréstimos bancários", "grupo": "nao_circulante", "valor_contabil": "200.000,00", "valor_saida": "205.000,00", "fundamento": "Encargos contratuais pro rata até a data da resolução, não apropriados no balancete", "fonte": "contrato e planilha do banco, fls. 370 a 378"},
+    {"conta": "Obrigações tributárias", "grupo": "circulante", "valor_contabil": "45.000,00", "valor_saida": "45.000,00", "fundamento": "Guias e declarações conferidas", "fonte": "fls. 380"},
+    {"conta": "Obrigações trabalhistas e sociais", "grupo": "circulante", "valor_contabil": "35.000,00", "valor_saida": "35.000,00", "fundamento": "Folha e encargos de junho de 2025, inclusive pro labore de maio e junho não pago aos administradores", "fonte": "fls. 385"},
+    {"conta": "Lucros a distribuir deliberados e não pagos", "grupo": "circulante", "valor_contabil": "90.000,00", "valor_saida": "90.000,00", "fundamento": "Atas de 30/04/2022, 28/04/2023 e 30/04/2025; saldo conciliado com os pagamentos parciais; a parte do sócio retirante entra pelo CPC, art. 608, em haveres_socio.py", "fonte": "fls. 88 a 98 e razão da conta"},
+    {"conta": "Provisão para contingências", "grupo": "nao_circulante", "valor_contabil": "20.000,00", "valor_saida": "20.000,00", "fundamento": "Provisão existente para a reclamação trabalhista; complemento tratado no quadro de contingências", "fonte": "fls. 390"}
+  ],
+  "contingencias": [
+    {"descricao": "Reclamação trabalhista 0000000-00.0000.5.00.0000", "tipo": "trabalhista", "valor": "80.000,00", "probabilidade": "provavel", "provisionado": "20.000,00", "fundamento": "Sentença de procedência parcial; parecer dos advogados classifica a perda como provável"},
+    {"descricao": "Auto de infração de ICMS (defesa administrativa em curso)", "tipo": "fiscal", "valor": "150.000,00", "probabilidade": "possivel", "provisionado": "0,00", "fundamento": "Parecer dos advogados: perda possível; divulgar em nota"},
+    {"descricao": "Ação indenizatória cível de ex-cliente", "tipo": "civel", "valor": "50.000,00", "probabilidade": "remota", "provisionado": "0,00", "fundamento": "Parecer dos advogados: perda remota"}
+  ]
+}

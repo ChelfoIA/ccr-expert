@@ -1,0 +1,3656 @@
+{
+ "skill": "pericia-previdenciaria-beneficio-pre-cf88",
+ "script": "readequacao_tetos.py",
+ "observacao": "EXEMPLO FICTÍCIO: bloco para_atrasados gerado por readequacao_tetos.py com os assets de exemplo; entrada de atrasados_prescricao.py",
+ "premissas": {
+  "dib": "03/1987",
+  "fim": "12/2024",
+  "moeda_dib": "Cz$",
+  "rmi": 20520.0,
+  "limitacao_na_concessao": "maior valor-teto",
+  "readequacao_aplicavel": true,
+  "motivo": "benefício limitado ao maior valor-teto na concessão"
+ },
+ "para_atrasados": {
+  "dib": "03/1987",
+  "fim": "12/2024",
+  "coeficiente": "0.95",
+  "precisao": "8 casas decimais no encadeamento; apresentação com 2 casas",
+  "limitacao_na_concessao": "maior valor-teto",
+  "readequacao_aplicavel": true,
+  "linhas": [
+   {
+    "competencia": "03/1987",
+    "moeda": "Cz$",
+    "renda_devida": "20520.00000000",
+    "renda_paga": "20520.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1987",
+    "moeda": "Cz$",
+    "renda_devida": "20520.00000000",
+    "renda_paga": "20520.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1987",
+    "moeda": "Cz$",
+    "renda_devida": "20520.00000000",
+    "renda_paga": "20520.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1987",
+    "moeda": "Cz$",
+    "renda_devida": "38988.00000000",
+    "renda_paga": "38988.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1987",
+    "moeda": "Cz$",
+    "renda_devida": "97470.00000000",
+    "renda_paga": "97470.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1988",
+    "moeda": "Cz$",
+    "renda_devida": "97470.00000000",
+    "renda_paga": "97470.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1988",
+    "moeda": "Cz$",
+    "renda_devida": "97470.00000000",
+    "renda_paga": "97470.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1988",
+    "moeda": "Cz$",
+    "renda_devida": "175446.00000000",
+    "renda_paga": "175446.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1988",
+    "moeda": "Cz$",
+    "renda_devida": "175446.00000000",
+    "renda_paga": "175446.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1988",
+    "moeda": "Cz$",
+    "renda_devida": "175446.00000000",
+    "renda_paga": "175446.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1988",
+    "moeda": "Cz$",
+    "renda_devida": "543882.60000000",
+    "renda_paga": "543882.60000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1988",
+    "moeda": "Cz$",
+    "renda_devida": "2066753.88000000",
+    "renda_paga": "2066753.88000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2066.75388000",
+    "renda_paga": "2066.75388000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2066.75388000",
+    "renda_paga": "2066.75388000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2066.75388000",
+    "renda_paga": "2066.75388000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2052.00000000",
+    "renda_paga": "2052.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2052.00000000",
+    "renda_paga": "2052.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1989",
+    "moeda": "NCz$",
+    "renda_devida": "2052.00000000",
+    "renda_paga": "2052.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1989",
+    "moeda": "NCz$",
+    "renda_devida": "3420.00000000",
+    "renda_paga": "3420.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1989",
+    "moeda": "NCz$",
+    "renda_devida": "3420.00000000",
+    "renda_paga": "3420.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1989",
+    "moeda": "NCz$",
+    "renda_devida": "3420.00000000",
+    "renda_paga": "3420.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1989",
+    "moeda": "NCz$",
+    "renda_devida": "6840.00000000",
+    "renda_paga": "6840.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1989",
+    "moeda": "NCz$",
+    "renda_devida": "6840.00000000",
+    "renda_paga": "6840.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1989",
+    "moeda": "NCz$",
+    "renda_devida": "6840.00000000",
+    "renda_paga": "6840.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1990",
+    "moeda": "NCz$",
+    "renda_devida": "17100.00000000",
+    "renda_paga": "17100.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1990",
+    "moeda": "NCz$",
+    "renda_devida": "17100.00000000",
+    "renda_paga": "17100.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1990",
+    "moeda": "Cr$",
+    "renda_devida": "59850.00000000",
+    "renda_paga": "59850.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1990",
+    "moeda": "Cr$",
+    "renda_devida": "59850.00000000",
+    "renda_paga": "59850.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1990",
+    "moeda": "Cr$",
+    "renda_devida": "59850.00000000",
+    "renda_paga": "59850.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1990",
+    "moeda": "Cr$",
+    "renda_devida": "85500.00000000",
+    "renda_paga": "85500.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1990",
+    "moeda": "Cr$",
+    "renda_devida": "85500.00000000",
+    "renda_paga": "85500.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1990",
+    "moeda": "Cr$",
+    "renda_devida": "85500.00000000",
+    "renda_paga": "85500.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1990",
+    "moeda": "Cr$",
+    "renda_devida": "119700.00000000",
+    "renda_paga": "119700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1990",
+    "moeda": "Cr$",
+    "renda_devida": "119700.00000000",
+    "renda_paga": "119700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1990",
+    "moeda": "Cr$",
+    "renda_devida": "119700.00000000",
+    "renda_paga": "119700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1990",
+    "moeda": "Cr$",
+    "renda_devida": "119700.00000000",
+    "renda_paga": "119700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1991",
+    "moeda": "Cr$",
+    "renda_devida": "205200.00000000",
+    "renda_paga": "205200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1991",
+    "moeda": "Cr$",
+    "renda_devida": "205200.00000000",
+    "renda_paga": "205200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1991",
+    "moeda": "Cr$",
+    "renda_devida": "205200.00000000",
+    "renda_paga": "205200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1991",
+    "moeda": "Cr$",
+    "renda_devida": "290700.00000000",
+    "renda_paga": "290700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1991",
+    "moeda": "Cr$",
+    "renda_devida": "290700.00000000",
+    "renda_paga": "290700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1991",
+    "moeda": "Cr$",
+    "renda_devida": "290700.00000000",
+    "renda_paga": "290700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1991",
+    "moeda": "Cr$",
+    "renda_devida": "290700.00000000",
+    "renda_paga": "290700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1991",
+    "moeda": "Cr$",
+    "renda_devida": "290700.00000000",
+    "renda_paga": "290700.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1991",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1991",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1991",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1991",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1992",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1992",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1992",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1992",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1992",
+    "moeda": "Cr$",
+    "renda_devida": "718200.00000000",
+    "renda_paga": "718200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1992",
+    "moeda": "Cr$",
+    "renda_devida": "2872800.00000000",
+    "renda_paga": "2872800.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1992",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1993",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1993",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1993",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1993",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1993",
+    "moeda": "Cr$",
+    "renda_devida": "11491200.00000000",
+    "renda_paga": "11491200.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1993",
+    "moeda": "Cr$",
+    "renda_devida": "51710400.00000000",
+    "renda_paga": "51710400.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1993",
+    "moeda": "Cr$",
+    "renda_devida": "51710400.00000000",
+    "renda_paga": "51710400.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1993",
+    "moeda": "CR$",
+    "renda_devida": "51710.40000000",
+    "renda_paga": "51710.40000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1993",
+    "moeda": "CR$",
+    "renda_devida": "51710.40000000",
+    "renda_paga": "51710.40000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1993",
+    "moeda": "CR$",
+    "renda_devida": "51710.40000000",
+    "renda_paga": "51710.40000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1993",
+    "moeda": "CR$",
+    "renda_devida": "51710.40000000",
+    "renda_paga": "51710.40000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1993",
+    "moeda": "CR$",
+    "renda_devida": "258552.00000000",
+    "renda_paga": "258552.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1994",
+    "moeda": "CR$",
+    "renda_devida": "258552.00000000",
+    "renda_paga": "258552.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1994",
+    "moeda": "CR$",
+    "renda_devida": "258552.00000000",
+    "renda_paga": "258552.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1994",
+    "moeda": "CR$",
+    "renda_devida": "323190.00000000",
+    "renda_paga": "323190.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1994",
+    "moeda": "CR$",
+    "renda_devida": "323190.00000000",
+    "renda_paga": "323190.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1994",
+    "moeda": "CR$",
+    "renda_devida": "323190.00000000",
+    "renda_paga": "323190.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1994",
+    "moeda": "CR$",
+    "renda_devida": "1615950.00000000",
+    "renda_paga": "1615950.00000000",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1994",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1995",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1995",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1995",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1995",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1995",
+    "moeda": "R$",
+    "renda_devida": "587.61818182",
+    "renda_paga": "587.61818182",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1995",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1996",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1996",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1996",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1996",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1996",
+    "moeda": "R$",
+    "renda_devida": "675.76090909",
+    "renda_paga": "675.76090909",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1996",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1997",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1997",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1997",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1997",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1997",
+    "moeda": "R$",
+    "renda_devida": "756.85221818",
+    "renda_paga": "756.85221818",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1997",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1998",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1998",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1998",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1998",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1998",
+    "moeda": "R$",
+    "renda_devida": "817.40039564",
+    "renda_paga": "817.40039564",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1998",
+    "moeda": "R$",
+    "renda_devida": "858.27041542",
+    "renda_paga": "858.27041542",
+    "diferenca": "0E-8",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1998",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/1999",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/1999",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/1999",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/1999",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/1999",
+    "moeda": "R$",
+    "renda_devida": "986.13342438",
+    "renda_paga": "858.27041542",
+    "diferenca": "127.86300897",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/1999",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2000",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2000",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2000",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2000",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2000",
+    "moeda": "R$",
+    "renda_devida": "1035.44009560",
+    "renda_paga": "901.18393619",
+    "diferenca": "134.25615941",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2000",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2001",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2001",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2001",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2001",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2001",
+    "moeda": "R$",
+    "renda_devida": "1097.56650134",
+    "renda_paga": "955.25497236",
+    "diferenca": "142.31152898",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2001",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2002",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2002",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2002",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2002",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2002",
+    "moeda": "R$",
+    "renda_devida": "1185.37182145",
+    "renda_paga": "1031.67537015",
+    "diferenca": "153.69645130",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2002",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.52615346",
+    "diferenca": "167.52913191",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2003",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.53000000",
+    "diferenca": "167.52528538",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2003",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.53000000",
+    "diferenca": "167.52528538",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2003",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.53000000",
+    "diferenca": "167.52528538",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2003",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.53000000",
+    "diferenca": "167.52528538",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2003",
+    "moeda": "R$",
+    "renda_devida": "1292.05528538",
+    "renda_paga": "1124.53000000",
+    "diferenca": "167.52528538",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2003",
+    "moeda": "R$",
+    "renda_devida": "1550.46634245",
+    "renda_paga": "1349.43000000",
+    "diferenca": "201.03634245",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2003",
+    "moeda": "R$",
+    "renda_devida": "1599.22775397",
+    "renda_paga": "1349.43000000",
+    "diferenca": "249.79775397",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2004",
+    "moeda": "R$",
+    "renda_devida": "1599.22775397",
+    "renda_paga": "1349.43000000",
+    "diferenca": "249.79775397",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2004",
+    "moeda": "R$",
+    "renda_devida": "1599.22775397",
+    "renda_paga": "1349.43000000",
+    "diferenca": "249.79775397",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2004",
+    "moeda": "R$",
+    "renda_devida": "1599.22775397",
+    "renda_paga": "1349.43000000",
+    "diferenca": "249.79775397",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2004",
+    "moeda": "R$",
+    "renda_devida": "1599.22775397",
+    "renda_paga": "1349.43000000",
+    "diferenca": "249.79775397",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2004",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2005",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2005",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2005",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2005",
+    "moeda": "R$",
+    "renda_devida": "1679.18914167",
+    "renda_paga": "1416.90000000",
+    "diferenca": "262.28914167",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2005",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2006",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2006",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2006",
+    "moeda": "R$",
+    "renda_devida": "1779.94049017",
+    "renda_paga": "1501.92000000",
+    "diferenca": "278.02049017",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2006",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2007",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2007",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2007",
+    "moeda": "R$",
+    "renda_devida": "1868.93751468",
+    "renda_paga": "1577.01000000",
+    "diferenca": "291.92751468",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2007",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2008",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2008",
+    "moeda": "R$",
+    "renda_devida": "1925.00564012",
+    "renda_paga": "1624.32000000",
+    "diferenca": "300.68564012",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2008",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2009",
+    "moeda": "R$",
+    "renda_devida": "2021.25592213",
+    "renda_paga": "1705.54000000",
+    "diferenca": "315.71592213",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "08/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "09/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "10/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "11/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "12/2009",
+    "moeda": "R$",
+    "renda_devida": "2142.53127745",
+    "renda_paga": "1807.87000000",
+    "diferenca": "334.66127745",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "01/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "02/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "03/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "04/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "05/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "06/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42000000",
+    "diferenca": "358.08846687",
+    "origem_renda_paga": "informado"
+   },
+   {
+    "competencia": "07/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2010",
+    "moeda": "R$",
+    "renda_devida": "2292.50846687",
+    "renda_paga": "1934.42295255",
+    "diferenca": "358.08551432",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2011",
+    "moeda": "R$",
+    "renda_devida": "2430.05897489",
+    "renda_paga": "2050.48832971",
+    "diferenca": "379.57064518",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2012",
+    "moeda": "R$",
+    "renda_devida": "2575.86251338",
+    "renda_paga": "2173.51762949",
+    "diferenca": "402.34488389",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2013",
+    "moeda": "R$",
+    "renda_devida": "2730.41426418",
+    "renda_paga": "2303.92868726",
+    "diferenca": "426.48557693",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2014",
+    "moeda": "R$",
+    "renda_devida": "2894.23912003",
+    "renda_paga": "2442.16440849",
+    "diferenca": "452.07471154",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2015",
+    "moeda": "R$",
+    "renda_devida": "3067.89346724",
+    "renda_paga": "2588.69427300",
+    "diferenca": "479.19919423",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2016",
+    "moeda": "R$",
+    "renda_devida": "3405.36174863",
+    "renda_paga": "2873.45064303",
+    "diferenca": "531.91110560",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2017",
+    "moeda": "R$",
+    "renda_devida": "3643.73707104",
+    "renda_paga": "3074.59218805",
+    "diferenca": "569.14488299",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2018",
+    "moeda": "R$",
+    "renda_devida": "3716.61181246",
+    "renda_paga": "3136.08403181",
+    "diferenca": "580.52778065",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2019",
+    "moeda": "R$",
+    "renda_devida": "3828.11016683",
+    "renda_paga": "3230.16655276",
+    "diferenca": "597.94361407",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2020",
+    "moeda": "R$",
+    "renda_devida": "3981.23457350",
+    "renda_paga": "3359.37321487",
+    "diferenca": "621.86135863",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2021",
+    "moeda": "R$",
+    "renda_devida": "4180.29630218",
+    "renda_paga": "3527.34187561",
+    "diferenca": "652.95442657",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2022",
+    "moeda": "R$",
+    "renda_devida": "4598.32593240",
+    "renda_paga": "3880.07606318",
+    "diferenca": "718.24986922",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2023",
+    "moeda": "R$",
+    "renda_devida": "4874.22548834",
+    "renda_paga": "4112.88062697",
+    "diferenca": "761.34486138",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "01/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "02/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "03/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "04/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "05/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "06/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "07/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "08/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "09/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "10/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "11/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   },
+   {
+    "competencia": "12/2024",
+    "moeda": "R$",
+    "renda_devida": "5069.19450788",
+    "renda_paga": "4277.39585204",
+    "diferenca": "791.79865583",
+    "origem_renda_paga": "presumido (renda limitada evoluída)"
+   }
+  ]
+ }
+}
