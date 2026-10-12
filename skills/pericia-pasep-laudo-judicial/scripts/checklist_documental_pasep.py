@@ -190,12 +190,6 @@ def avalia(proc):
             cobertura += f"; conta aberta em {abertura}"
         avisos.append("extrato analítico parcial: " + cobertura + ". Solicitar o período faltante e ressalvar no laudo.")
 
-    for nome, estado in docs.items():
-        if estado == "nao_aplicavel" and nome in ("microfilmagem", "conta_destino", "contracheques"):
-            mod = {"microfilmagem": "CAIXA-BB", "conta_destino": "CREDITO-CC", "contracheques": "FOPAG"}[nome]
-            if mod in modalidades:
-                pass  # já tratado acima como faltante com aviso
-
     extrato = docs.get("extrato_analitico", "pendente")
     if extrato == "pendente":
         pode_calcular = "não: sem extrato analítico não há base para a reconstrução do saldo"
@@ -235,7 +229,7 @@ def texto_termo(proc, aval, prazo_txt, prazo_dias):
     linhas.append("")
     for i, f in enumerate(aval["faltantes"], start=1):
         linhas.append(f"{i}. {f['documento']}.")
-        linhas.append(f"   Fornecedor: {f['fornecedor']}. Estado atual: {f['estado_atual']}. Ônus: {f['onus']}.")
+        linhas.append(f"   Fornecedor: {f['fornecedor'].rstrip('.')}. Estado atual: {f['estado_atual']}. Ônus: {f['onus'].rstrip('.')}.")
     linhas.append("")
     if aval["avisos"]:
         linhas.append("Observações da perícia:")
@@ -262,7 +256,7 @@ def texto_oficio_bb(proc, aval, prazo_txt, prazo_dias):
     linhas.append("Ao Banco do Brasil S.A., [AGÊNCIA OU CENTRAL DE ATENDIMENTO A DEMANDAS JUDICIAIS], [ENDEREÇO OU CANAL ELETRÔNICO].")
     linhas.append("")
     linhas.append(bloco_processo(proc))
-    linhas.append(f"Na condição de perito(a) nomeado(a) pelo juízo (CPC art. 156 e 465), e com fundamento no art. 473, § 3º, do CPC, solicito a apresentação, no prazo de {prazo_dias} dias úteis (até {prazo_txt}), dos documentos relativos à conta individual PASEP nº [CADASTRO PASEP], titular {proc.get('autor', '[AUTOR]')}, CPF 000.000.000-00:")
+    linhas.append(f"Na condição de perito(a) nomeado(a) pelo juízo (CPC art. 156 e 465), e com fundamento no art. 473, § 3º, do CPC, solicito a apresentação, no prazo de {prazo_dias} dias úteis (até {prazo_txt}), dos documentos relativos à conta individual PASEP nº [CADASTRO PASEP], titular {proc.get('autor', '[AUTOR]')}, CPF [CPF DO TITULAR]:")
     linhas.append("")
     for i, f in enumerate(itens, start=1):
         linhas.append(f"{i}. {f['documento']}.")
@@ -284,7 +278,7 @@ def texto_oficio_bb(proc, aval, prazo_txt, prazo_dias):
 
 def texto_requerimento_autor(proc, aval, prazo_txt, prazo_dias):
     """Requerimento à parte autora pelos documentos que lhe cabem (CREDITO-CC e FOPAG)."""
-    itens = [f for f in aval["faltantes"] if "autora" in f["fornecedor"].lower() or "autor" in f["fornecedor"].lower()]
+    itens = [f for f in aval["faltantes"] if "autor" in f["fornecedor"].lower()]
     if not itens:
         return ""
     linhas = []

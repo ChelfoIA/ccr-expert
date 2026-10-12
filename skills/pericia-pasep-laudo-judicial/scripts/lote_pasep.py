@@ -16,7 +16,7 @@ Uso:
     python3 scripts/lote_pasep.py adicionar --registro lote.json --processo assets/exemplo_processos_lote.json
     python3 scripts/lote_pasep.py atualizar --registro lote.json --id P-002 --status diligencia \
         --documento microfilmagem=pendente --quesitos reu=6 --proxima-acao "Expedir ofício ao BB"
-    python3 scripts/lote_pasep.py painel --registro lote.json --hoje 12/09/2026 --md painel.md --saida painel.json
+    python3 scripts/lote_pasep.py painel --registro lote.json --hoje 12/09/2026 --md painel.md --csv painel.csv --saida painel.json
 
 Saída: JSON em stdout (ou no arquivo de --saida) com premissas, locale e a
 memória das operações. O painel também sai em Markdown com --md.
@@ -24,6 +24,7 @@ Códigos de saída: 0 sucesso; 1 erro de validação ou erro inesperado.
 """
 
 import argparse
+import csv
 import json
 import sys
 from datetime import date, datetime, timedelta
@@ -277,22 +278,31 @@ def cmd_atualizar(args, hoje):
     p = localiza(reg, args.id)
     alteracoes = {}
 
+    def registra(chave, anterior, novo):
+        """Registra a alteração apenas quando o valor muda de fato; repetição vira aviso."""
+        if anterior == novo:
+            sem_efeito.append(f"{chave} já era '{novo}'")
+            return False
+        alteracoes[chave] = (anterior, novo)
+        return True
+
+    sem_efeito = []
     if args.status:
         if args.status not in STATUS_VALIDOS:
             raise ErroValidacao(f"status '{args.status}' inválido; use {', '.join(STATUS_VALIDOS)}")
-        alteracoes["status"] = (p["status"], args.status)
-        p["status"] = args.status
+        if registra("status", p["status"], args.status):
+            p["status"] = args.status
     if args.prazo_laudo:
         parse_data(args.prazo_laudo, "--prazo-laudo")
-        alteracoes["prazo_laudo"] = (p["prazo_laudo"], args.prazo_laudo)
-        p["prazo_laudo"] = args.prazo_laudo
+        if registra("prazo_laudo", p["prazo_laudo"], args.prazo_laudo):
+            p["prazo_laudo"] = args.prazo_laudo
     if args.prazo_esclarecimentos:
         parse_data(args.prazo_esclarecimentos, "--prazo-esclarecimentos")
-        alteracoes["prazo_esclarecimentos"] = (p.get("prazo_esclarecimentos", ""), args.prazo_esclarecimentos)
-        p["prazo_esclarecimentos"] = args.prazo_esclarecimentos
+        if registra("prazo_esclarecimentos", p.get("prazo_esclarecimentos", ""), args.prazo_esclarecimentos):
+            p["prazo_esclarecimentos"] = args.prazo_esclarecimentos
     if args.proxima_acao is not None:
-        alteracoes["proxima_acao"] = (p.get("proxima_acao", ""), args.proxima_acao)
-        p["proxima_acao"] = args.proxima_acao
+        if registra("proxima_acao", p.get("proxima_acao", ""), args.proxima_acao):
+            p["proxima_acao"] = args.proxima_acao
     if args.observacao:
         anterior = p.get("observacoes", "")
         novo = (anterior + " | " if anterior else "") + f"{formata_data(hoje)}: {args.observacao}"
@@ -302,8 +312,8 @@ def cmd_atualizar(args, hoje):
         nome, estado = parse_par(item, "--documento")
         if estado not in ESTADOS_DOCUMENTO:
             raise ErroValidacao(f"documento '{nome}' com estado '{estado}'; use {', '.join(ESTADOS_DOCUMENTO)}")
-        alteracoes[f"documentos.{nome}"] = (p["documentos"].get(nome, ""), estado)
-        p["documentos"][nome] = estado
+        if registra(f"documentos.{nome}", p["documentos"].get(nome, ""), estado):
+            p["documentos"][nome] = estado
     for item in args.quesitos or []:
         prop, n = parse_par(item, "--quesitos")
         if prop not in PROPONENTES:
@@ -312,8 +322,8 @@ def cmd_atualizar(args, hoje):
             n_int = int(n)
         except ValueError:
             raise ErroValidacao(f"--quesitos {prop} precisa ser inteiro, recebeu '{n}'")
-        alteracoes[f"quesitos.{prop}"] = (p["quesitos"].get(prop, 0), n_int)
-        p["quesitos"][prop] = n_int
+        if registra(f"quesitos.{prop}", p["quesitos"].get(prop, 0), n_int):
+            p["quesitos"][prop] = n_int
     for item in args.modalidade or []:
         if item not in MODALIDADES_VALIDAS:
             raise ErroValidacao(f"modalidade '{item}' inválida; use {', '.join(MODALIDADES_VALIDAS)}")
@@ -324,11 +334,12 @@ def cmd_atualizar(args, hoje):
         chave, valor = parse_par(item, "--campo")
         if chave in ("id", "processos", "historico", "documentos", "quesitos"):
             raise ErroValidacao(f"o campo '{chave}' não pode ser alterado por --campo")
-        alteracoes[chave] = (p.get(chave, ""), valor)
-        p[chave] = valor
+        if registra(chave, p.get(chave, ""), valor):
+            p[chave] = valor
 
     if not alteracoes:
-        raise ErroValidacao("nenhuma alteração informada; use --status, --prazo-laudo, --documento, --quesitos, --proxima-acao, --observacao, --modalidade ou --campo")
+        detalhe = ("; valores repetidos: " + ", ".join(sem_efeito)) if sem_efeito else ""
+        raise ErroValidacao("nenhuma alteração efetiva; use --status, --prazo-laudo, --documento, --quesitos, --proxima-acao, --observacao, --modalidade ou --campo" + detalhe)
 
     p["historico"].append({
         "data": formata_data(hoje),
@@ -341,7 +352,9 @@ def cmd_atualizar(args, hoje):
         "registro": args.registro,
         "id": p["id"],
         "alteracoes": {k: {"de": v[0], "para": v[1]} for k, v in alteracoes.items()},
-        "memoria": [f"{p['id']}: {k}: '{v[0]}' -> '{v[1]}'" for k, v in alteracoes.items()],
+        "sem_efeito": sem_efeito,
+        "memoria": [f"{p['id']}: {k}: '{v[0]}' -> '{v[1]}'" for k, v in alteracoes.items()]
+                   + [f"{p['id']}: sem efeito: {t}" for t in sem_efeito],
     }
 
 
@@ -404,6 +417,11 @@ def cmd_painel(args, hoje):
     for i, l in enumerate(linhas, start=1):
         l["ordem"] = i
 
+    # Sanidade: uma linha por processo, ids únicos, nenhum processo perdido na ordenação
+    ids = [l["id"] for l in linhas]
+    if len(linhas) != len(reg["processos"]) or len(set(ids)) != len(ids):
+        raise RuntimeError("inconsistência interna: o painel não reproduz um processo por linha com ids únicos")
+
     por_status = {}
     for l in linhas:
         por_status[l["status"]] = por_status.get(l["status"], 0) + 1
@@ -443,6 +461,17 @@ def cmd_painel(args, hoje):
 
     if args.md:
         Path(args.md).write_text(texto_md, encoding="utf-8")
+    if args.csv:
+        colunas = ["ordem", "id", "numero", "juizo", "autor", "polo_demandado", "status", "prazo_rotulo",
+                   "prazo_data", "dias_corridos", "dias_uteis_aprox", "alerta", "quesitos_total",
+                   "documentos_pendentes", "proxima_acao"]
+        with open(args.csv, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=colunas, delimiter=";")
+            w.writeheader()
+            for l in linhas:
+                linha = dict(l)
+                linha["documentos_pendentes"] = ", ".join(l["documentos_pendentes"])
+                w.writerow({c: ("" if linha.get(c) is None else linha.get(c)) for c in colunas})
 
     return {
         "operacao": "painel",
@@ -503,6 +532,7 @@ def monta_parser():
     s = sub.add_parser("painel", help="Emite o painel do lote ordenado por prazo", parents=[comum])
     s.add_argument("--registro", required=True, help="Caminho do registro JSON")
     s.add_argument("--md", help="Grava o painel em Markdown neste arquivo")
+    s.add_argument("--csv", help="Grava o painel em CSV (separador ;) neste arquivo")
     s.add_argument("--alerta-dias", dest="alerta_dias", type=int, default=15, help="Limite de alerta em dias corridos (padrão 15)")
     return parser
 
