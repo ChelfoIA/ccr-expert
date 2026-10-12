@@ -27,7 +27,7 @@ import argparse
 import csv
 import json
 import sys
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP, getcontext
 from pathlib import Path
 
@@ -291,6 +291,9 @@ def montar_balanco(dados):
         f"Passo 7. Sanidade: PL contábil + ajustes de ativo - ajustes de passivo - provisões = {moeda(pl_por_ajustes)}; confere com o passo 6.",
         f"Passo 8. Intangíveis já reconhecidos no ativo (grupo intangivel ou fundo_comercio): {moeda(intangiveis)}; PL de determinação tangível = {moeda(pl_determinacao - intangiveis)} (base do fundo_comercio.py).",
     ]
+    contas_lucros = [p["conta"] for p in passivos if any(k in p["conta"].lower() for k in ("lucro", "dividendo", "jcp", "juros sobre o capital"))]
+    if contas_lucros:
+        memoria.append(f"Passo 9. Conta(s) de lucros ou dividendos a pagar no passivo ({'; '.join(contas_lucros)}) já reduzem o PL de determinação; a parte do sócio nesses valores entra pelo CPC, art. 608, em haveres_socio.py (--lucros-declarados), sem dupla contagem.")
 
     def serializar_item(i):
         return {

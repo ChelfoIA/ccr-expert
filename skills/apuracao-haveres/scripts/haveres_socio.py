@@ -308,6 +308,9 @@ def apurar(args):
     if lucros_lista and not isinstance(lucros_lista, list):
         raise ErroValidacao("--lucros-declarados deve apontar para uma lista JSON")
     lucros, total_lucros, prescritos = ler_lucros(lucros_lista, participacao, data_resolucao, data_ajuizamento, args.incluir_prescritos, alertas)
+    contas_lucros = [p.get("conta", "") for p in balanco.get("passivos", []) if any(k in str(p.get("conta", "")).lower() for k in ("lucro", "dividendo", "jcp", "juros sobre o capital"))]
+    if lucros and not contas_lucros:
+        alertas.append("lucros ou JCP declarados informados, mas o balanço de determinação não tem conta de lucros ou dividendos a pagar no passivo: confira se o valor deliberado permaneceu no PL (dupla contagem pelo art. 608) ou se já foi pago")
     remuneracao, total_remuneracao = ler_lancamentos(numero_ou_arquivo(args.remuneracao_administrador, "remuneracao_administrador"), "remuneracao_administrador", data_resolucao, alertas, "Remuneração como administrador devida e não paga até a data da resolução (CPC, art. 608)")
     adiantamentos, total_adiantamentos = ler_lancamentos(numero_ou_arquivo(args.adiantamentos, "adiantamentos"), "adiantamentos", data_resolucao, alertas, "Adiantamento de haveres já recebido")
     indenizacao = parse_num(args.indenizacao_compensavel, "--indenizacao-compensavel") if args.indenizacao_compensavel else Decimal(0)
@@ -365,7 +368,7 @@ def apurar(args):
         f"Passo 6. Haveres brutos = {moeda(quota)} + {moeda(total_lucros)} + {moeda(total_remuneracao)} = {moeda(haveres_brutos)}.",
         f"Passo 7. Deduções: adiantamentos {moeda(total_adiantamentos)}; indenização compensável {moeda(indenizacao)} (CPC, art. 602); total {moeda(total_deducoes)}.",
         f"Passo 8. Haveres líquidos = {moeda(haveres_brutos)} - {moeda(total_deducoes)} = {moeda(haveres_liquidos)}.",
-        f"Passo 9. Pagamento: {pagamento['prazo_dias']} dias ({pagamento['fundamento']}). Correção monetária desde {pagamento['termo_inicial_correcao']}; juros a partir do {pagamento['termo_inicial_juros']}. Atualização na skill atualizacao-monetaria (regime civil) com parcelas.json.",
+        f"Passo 9. Pagamento: {pagamento['prazo_dias']} dias ({pagamento['fundamento']}). Correção monetária desde {pagamento['termo_inicial_correcao']}; juros {'a partir de' if args.data_liquidacao else 'a partir do'} {pagamento['termo_inicial_juros']}. Atualização na skill atualizacao-monetaria (regime civil) com parcelas.json.",
         f"Passo 10. Sanidade: soma das {len(parcelas)} parcelas = {moeda(soma_parcelas)} = haveres líquidos.",
     ]
     return {
@@ -392,10 +395,19 @@ def apurar(args):
         "deducoes": {"adiantamentos": adiantamentos, "total_adiantamentos": tecnico(total_adiantamentos), "indenizacao_compensavel": tecnico(indenizacao), "fundamento_indenizacao": args.fundamento_indenizacao or "", "total": tecnico(total_deducoes)},
         "haveres_liquidos": tecnico(haveres_liquidos),
         "sanidade": {"brutos_menos_deducoes": tecnico(haveres_brutos - total_deducoes), "soma_parcelas": tecnico(soma_parcelas), "fecha": True},
-        "parcelas": [{"competencia": p["competencia"], "valor": float(p["valor"]), "descricao": p["descricao"]} for p in parcelas],
+        "parcelas": [{"competencia": p["competencia"], "valor": tecnico(p["valor"]), "descricao": p["descricao"]} for p in parcelas],
         "alertas": alertas,
         "memoria": memoria,
     }
+
+
+def parcelas_json(parcelas):
+    """Grava parcelas.json no formato da atualizacao-monetaria: valor como número JSON exato, sem passar por float."""
+    linhas = []
+    for p in parcelas:
+        linhas.append('  {"competencia": ' + json.dumps(p["competencia"]) + ', "valor": ' + p["valor"]
+                      + ', "descricao": ' + json.dumps(p["descricao"], ensure_ascii=False) + '}')
+    return "[\n" + ",\n".join(linhas) + "\n]\n"
 
 
 def gravar_md(saida, caminho):
@@ -426,7 +438,7 @@ def gravar_md(saida, caminho):
         linhas.append(f"- {k.replace('_', ' ')}: {v}")
     linhas += ["", "## Parcelas para atualizacao-monetaria (regime civil)", "", "| Competência | Valor (R$) | Descrição |", "|---|---:|---|"]
     for pr in saida["parcelas"]:
-        linhas.append(f"| {pr['competencia']} | {fmt_br(Decimal(str(pr['valor'])))} | {pr['descricao']} |")
+        linhas.append(f"| {pr['competencia']} | {fmt_br(pr['valor'])} | {pr['descricao']} |")
     linhas += ["", "## Memória de cálculo", ""] + [f"- {m}" for m in saida["memoria"]]
     if saida["alertas"]:
         linhas += ["", "## Alertas", ""] + [f"- {a}" for a in saida["alertas"]]
@@ -464,7 +476,7 @@ def main():
             print(f"Haveres gravados em {args.saida}", file=sys.stderr)
         else:
             print(texto)
-        Path(args.parcelas).write_text(json.dumps(saida["parcelas"], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        Path(args.parcelas).write_text(parcelas_json(saida["parcelas"]), encoding="utf-8")
         print(f"Parcelas para atualizacao-monetaria gravadas em {args.parcelas}", file=sys.stderr)
         if args.md:
             gravar_md(saida, args.md)

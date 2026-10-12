@@ -36,6 +36,17 @@ LOCALE = "pt-BR (R$ 1.234,56; 12,5%; dd/mm/aaaa)"
 ARREDONDAMENTO = "ROUND_HALF_UP, 2 casas na apresentação"
 CENTAVO = Decimal("0.01")
 METODOS = ("lucro-excedente", "multiplo", "dcf")
+ROTULOS = {
+    "lucro_medio_normalizado": "Lucro médio normalizado",
+    "pl_determinacao_tangivel": "PL de determinação tangível",
+    "taxa_remuneracao_capital": "Taxa de remuneração do capital",
+    "remuneracao_capital": "Remuneração do capital tangível",
+    "lucro_excedente": "Lucro excedente anual",
+    "fator": "Fator (anos de lucro excedente)",
+    "multiplo": "Múltiplo sobre o lucro normalizado",
+    "valor_referencia_por_multiplo": "Valor de referência por múltiplo",
+    "fundo_comercio": "Fundo de comércio na data da resolução",
+}
 
 RECUSA_DCF = (
     "método 'dcf' recusado. O fluxo de caixa descontado projeta lucros futuros e desconta a valor presente, "
@@ -343,7 +354,7 @@ def gravar_md(saida, caminho):
         linhas.append(f"| {e['exercicio']} | {fmt_br(e['lucro_contabil'])} | {fmt_br(e['total_ajustes'])} | {fmt_br(e['lucro_ajustado'])} | {e['peso']} |")
     linhas += ["", "| Rubrica | Valor |", "|---|---:|"]
     for k, v in r.items():
-        rotulo = k.replace("_", " ")
+        rotulo = ROTULOS.get(k, k.replace("_", " "))
         valor = v if k in ("taxa_remuneracao_capital", "fator", "multiplo") else fmt_br(v)
         linhas.append(f"| {rotulo} | {valor} |")
     linhas += ["", "## Sensibilidade", "", "| Parâmetro | Valor | Fundo de comércio (R$) |", "|---|---:|---:|"]

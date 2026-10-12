@@ -19,7 +19,8 @@
     {"conta": "Fornecedores", "grupo": "circulante", "valor_contabil": "80.000,00", "valor_saida": "80.000,00", "fundamento": "Saldos conciliados com circularização", "fonte": "fls. 360"},
     {"conta": "Empréstimos bancários", "grupo": "nao_circulante", "valor_contabil": "200.000,00", "valor_saida": "205.000,00", "fundamento": "Encargos contratuais pro rata até a data da resolução, não apropriados no balancete", "fonte": "contrato e planilha do banco, fls. 370 a 378"},
     {"conta": "Obrigações tributárias", "grupo": "circulante", "valor_contabil": "45.000,00", "valor_saida": "45.000,00", "fundamento": "Guias e declarações conferidas", "fonte": "fls. 380"},
-    {"conta": "Obrigações trabalhistas e sociais", "grupo": "circulante", "valor_contabil": "35.000,00", "valor_saida": "35.000,00", "fundamento": "Folha e encargos de junho de 2025", "fonte": "fls. 385"},
+    {"conta": "Obrigações trabalhistas e sociais", "grupo": "circulante", "valor_contabil": "35.000,00", "valor_saida": "35.000,00", "fundamento": "Folha e encargos de junho de 2025, inclusive pro labore de maio e junho não pago aos administradores", "fonte": "fls. 385"},
+    {"conta": "Lucros a distribuir deliberados e não pagos", "grupo": "circulante", "valor_contabil": "90.000,00", "valor_saida": "90.000,00", "fundamento": "Atas de 30/04/2022, 28/04/2023 e 30/04/2025; saldo conciliado com os pagamentos parciais; a parte do sócio retirante entra pelo CPC, art. 608, em haveres_socio.py", "fonte": "fls. 88 a 98 e razão da conta"},
     {"conta": "Provisão para contingências", "grupo": "nao_circulante", "valor_contabil": "20.000,00", "valor_saida": "20.000,00", "fundamento": "Provisão existente para a reclamação trabalhista; complemento tratado no quadro de contingências", "fonte": "fls. 390"}
   ],
   "contingencias": [
