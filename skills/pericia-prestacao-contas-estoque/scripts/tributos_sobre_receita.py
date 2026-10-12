@@ -57,7 +57,7 @@ PADROES_PRESUMIDO = {
              "adicional_metodo": "nenhum",
              "fonte": "Lei 9.249/1995, art. 15, caput (presunção de 8% para comércio) e art. 3º, caput e § 1º (15% e adicional de 10%)"},
     "csll": {"presuncao": "12,00", "aliquota": "9,00",
-             "fonte": "Lei 9.249/1995, art. 20 (base de 12% para comércio); Lei 7.689/1988, art. 3º, II (9%)"},
+             "fonte": "Lei 9.249/1995, art. 20 (base de 12% para comércio); Lei 7.689/1988, art. 3º (alíquota geral de 9%)"},
 }
 METODOS_ADICIONAL = ("nenhum", "integral", "faixa_mensal")
 
