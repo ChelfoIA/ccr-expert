@@ -1,0 +1,12 @@
+# Salário mínimo por competência de alteração (vale até a próxima linha); dados fictícios
+competencia;valor;moeda;fonte
+04/1989;120,00;NCz$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+07/1989;200,00;NCz$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+10/1989;400,00;NCz$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+01/1990;1.000,00;NCz$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+03/1990;3.500,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+06/1990;5.000,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+09/1990;7.000,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+01/1991;12.000,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+04/1991;17.000,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
+09/1991;42.000,00;Cr$;EXEMPLO FICTÍCIO: substituir pela tabela oficial (decretos e leis do salário mínimo)
