@@ -69,9 +69,10 @@ TEMA_KW = {
     "polo": ("legitimidade", "polo passivo", "litiscons", "banco do brasil e uniao", "responsabilidade", "responsavel",
              "condenad", "indenizar", "quem responde", "ma gestao", "ma-gestao"),
     "saldo": ("saldo", "qual o saldo", "saldo que", "evolucao", "reconstru", "cotas", "quotas", "deposito", "contribui",
-              "rais", "credito de cotas", "periodo", "abertura da conta", "migra"),
+              "rais", "credito de cotas", "abertura da conta", "migra"),
     "saques": ("saque", "retirada", "debito", "saida", "microfilm", "recibo", "assinatura", "biometri", "modalidade",
-               "fopag", "folha de pagamento", "credito em conta", "conta corrente", "conta-corrente", "caixa", "desfalque"),
+               "fopag", "folha de pagamento", "pagamento por folha", "contracheque", "credito em conta", "conta corrente",
+               "conta-corrente", "caixa", "desfalque"),
     "indices": ("indice", "correcao", "expurgo", "tjlp", "rla", "atualizacao monetaria", "conselho diretor", "rendimento",
                 "valorizacao", "rac", "percentual oficial", "tesouro", "ipca", "selic", "inpc", "tr "),
     "juros": ("juros", "mora", "taxa legal", "capitaliza", "anatocismo", "ec 113", "ec 136", "emenda constitucional"),
@@ -132,7 +133,7 @@ ABERTURAS = {
     ),
     "misto": (
         "A qualificação jurídica do ponto cabe ao juízo. Quanto ao fato, {complemento_fato} "
-        "Ver seção {secao}."
+        "Ver também a seção {secao}."
     ),
     "fora do objeto": (
         "O quesito extrapola o objeto da perícia fixado na decisão de saneamento e os limites do art. 473, § 2º, do CPC; "
@@ -149,13 +150,13 @@ COMPLEMENTO_DIREITO = {
     "outro": "a perícia apresenta os elementos de fato que constam dos autos sobre o ponto (seção 5).",
 }
 COMPLEMENTO_FATO = {
-    "prescricao": "as datas constam da seção 5.1 com o documento de cada uma;",
-    "polo": "a origem de cada diferença consta da seção 5.4 e a segregação por origem, da seção 6;",
-    "saques": "a modalidade e a comprovação de cada saída constam do quadro da seção 5.3;",
-    "indices": "os índices aplicados e suas fontes constam da seção 5.4;",
-    "juros": "os juros de cada cenário constam da seção 6;",
-    "saldo": "o saldo reconstruído e a conciliação constam da seção 5.2;",
-    "outro": "os elementos de fato constam da seção 5;",
+    "prescricao": "as datas constam da seção 5.1, cada uma com o documento que a comprova.",
+    "polo": "a origem de cada diferença consta da seção 5.4 e a segregação por origem, da seção 6.",
+    "saques": "a modalidade e a comprovação de cada saída constam do quadro da seção 5.3.",
+    "indices": "os índices aplicados e suas fontes constam da seção 5.4.",
+    "juros": "os juros de cada cenário constam da seção 6.",
+    "saldo": "o saldo reconstruído e a conciliação constam da seção 5.2.",
+    "outro": "os elementos de fato constam da seção 5.",
 }
 
 
@@ -259,6 +260,8 @@ def classifica(q):
     if fora:
         tipo = "fora do objeto"
         motivos = fora
+        if not q["tema_declarado"]:
+            tema = "outro"
     elif direito and fato:
         tipo = "misto"
         motivos = direito + fato

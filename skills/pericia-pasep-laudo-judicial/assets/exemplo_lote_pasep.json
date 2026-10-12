@@ -105,10 +105,6 @@
           "data": "12/09/2026",
           "evento": "atualização",
           "alteracoes": {
-            "status": {
-              "de": "diligencia",
-              "para": "diligencia"
-            },
             "proxima_acao": {
               "de": "Expedir termo de diligência: extrato analítico desde a abertura e microfilmagem dos saques",
               "para": "Expedir ofício ao BB pelo extrato desde 1985 e microfilmagem"
@@ -116,10 +112,6 @@
             "observacoes": {
               "de": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985.",
               "para": "Extrato juntado pelo BB cobre apenas 01/1990 a 05/2020; conta aberta em 1985. | 12/09/2026: Termo de diligência protocolado"
-            },
-            "documentos.microfilmagem": {
-              "de": "pendente",
-              "para": "pendente"
             },
             "quesitos.reu": {
               "de": 4,

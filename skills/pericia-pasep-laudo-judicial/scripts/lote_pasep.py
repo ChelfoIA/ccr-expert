@@ -381,9 +381,9 @@ def linha_painel(p, hoje, alerta_dias):
         corridos = (data_prazo - hoje).days
         uteis = dias_uteis_entre(hoje, data_prazo)
         if corridos < 0:
-            alerta = f"VENCIDO há {-corridos} dias corridos"
+            alerta = f"vencido há {-corridos} dias corridos"
         elif corridos < alerta_dias:
-            alerta = f"ALERTA: menos de {alerta_dias} dias"
+            alerta = f"alerta: menos de {alerta_dias} dias"
         else:
             alerta = "ok"
     pendentes = [n for n, e in p["documentos"].items() if e in ("pendente", "parcial")]

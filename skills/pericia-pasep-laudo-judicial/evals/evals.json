@@ -1,0 +1,61 @@
+{
+  "skill_name": "pericia-pasep-laudo-judicial",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tenho três de PASEP agora, fui nomeada perita do juízo nos três. P-001 é litisconsórcio BB e União, nomeada em 20/07/2026, laudo pra 30/10/2026, extrato completo e RAIS ok, falta microfilmagem de dois saques em caixa. P-002 só contra o BB, nomeada 05/08/2026, laudo pra 25/09/2026, o extrato que o BB juntou cobre só 01/1990 a 05/2020 mas a conta é de 1985, alega dois saques em caixa e um em folha, não tem contracheque. P-003 só contra a União, nomeada 08/09/2026, laudo pra 20/11/2026, só índices, ainda nem mandei proposta. Hoje é 12/09/2026. Monta o painel e o termo de diligência do P-002.",
+      "expected_output": "Registro do lote criado e os três processos adicionados com polo demandado LITISCONSORCIO, BB e UNIAO; painel ordenado por prazo com P-002 em primeiro (13 dias corridos, alerta abaixo de 15 dias), P-001 e P-003 em seguida; checklist do P-002 com extrato parcial, microfilmagem e contracheques faltantes, identificação de modalidade se houver saída sem modalidade; termo de diligência e ofício ao BB com prazo de 15 dias úteis (02/10/2026) e solicitação à autora pelos contracheques; próxima ação do P-003 apontando a proposta de honorários em 5 dias (CPC art. 465, § 2º) via proposta-pericial-judicial.",
+      "files": [],
+      "expectations": [
+        "Executa scripts/lote_pasep.py criar e adicionar com um registro por processo e o painel com --hoje 12/09/2026, e o P-002 aparece em primeiro com alerta de prazo inferior a 15 dias",
+        "Executa scripts/checklist_documental_pasep.py para o P-002 e lista como faltantes o extrato analítico (parcial, 1985 a 12/1989), a microfilmagem das saídas em caixa e os contracheques da saída em folha, com o fornecedor e o fundamento do ônus de cada um (CPC art. 373, I e II; Tema 1.300/STJ)",
+        "Entrega o termo de diligência e o ofício ao Banco do Brasil com prazo sugerido em dias úteis a partir de 12/09/2026 e menção ao art. 473, § 3º, do CPC e aos arts. 396 a 400 para o caso de não atendimento",
+        "Afirma que o período de 1985 a 12/1989 não será preenchido com saldo zero e entrará no laudo como ressalva se o BB não juntar o extrato",
+        "Remete a proposta de honorários do P-003 à skill proposta-pericial-judicial e o cálculo dos três processos ao motor da pericia-pasep, sem calcular valor nesta skill",
+        "Não cita precedente fora dos Temas 545, 1.150 e 1.300 do STJ, da Súmula 85/STJ e do Tema 810 do STF"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "No P-002 o BB mandou seis quesitos. O primeiro pergunta se a pretensão da autora está prescrita porque o primeiro saque foi em 1998. O segundo pergunta em que data a autora tomou ciência dos saques. O quinto pergunta se cabe ao autor provar o crédito em conta e a folha. Como eu respondo sem me enfiar na tese? A autora diz que só soube em 10/03/2021 quando tirou o extrato, a ação é de 05/05/2023 e a citação 20/06/2023.",
+      "expected_output": "Matriz de quesitos classificando o quesito 1 como questão de direito (tema prescrição), o quesito 2 como misto (data de fato) e o quesito 5 como questão de direito (ônus); respostas na forma 'Trata-se de questão de direito, cuja definição cabe ao juízo. Do ponto de vista contábil, ...' com as datas de fato (saques 1998 e 2003, ciência alegada 10/03/2021 pelo extrato, propositura 05/05/2023, citação 20/06/2023) e remissão ao quadro de cenários com e sem corte decenal; nenhuma afirmação de que está ou não prescrito.",
+      "files": [],
+      "expectations": [
+        "Classifica o quesito sobre prescrição como questão de direito e responde com a abertura 'Trata-se de questão de direito, cuja definição cabe ao juízo. Do ponto de vista contábil' seguida das datas de fato e da remissão ao quadro de cenários",
+        "Não afirma que a pretensão está prescrita nem que não está; apresenta o cenário A com corte decenal contado de 10/03/2021 e sem corte, e a hipótese alternativa de ciência na data de cada saque",
+        "Responde ao quesito sobre a data de ciência como fato: a autora aponta a emissão do extrato em 10/03/2021 e não consta dos autos documento anterior em que as saídas apareçam, com remissão à seção 5.1",
+        "Responde ao quesito sobre ônus como questão de direito e informa, do ponto de vista contábil, a modalidade de cada saída e se há nos autos extrato de destino ou contracheques, sem valorar a quem a ausência aproveita",
+        "Usa scripts/matriz_quesitos.py ou reproduz a sua lógica, com cobertura completa dos seis quesitos e seção do laudo indicada para cada um",
+        "Cita o Tema 1.150/STJ (prescrição decenal do art. 205 do CC, termo inicial na ciência) e o Tema 1.300/STJ (ônus por modalidade) com a identificação da lista verificada e não cita o Tema 545 como aplicável ao BB"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Preciso fechar o laudo do P-002. Já rodei a conciliação da pericia-pasep: quatro saídas, duas em caixa (14/08/1998 R$ 1.250,00 e 03/03/2003 R$ 2.180,00), uma em folha (10/06/2011 R$ 940,00) e uma de 22/09/2016 de R$ 3.100,00 com código 47 que não está na legenda. O BB respondeu o ofício dizendo que não localizou os recibos dos saques em caixa e não falou nada do código 47. A autora não juntou contracheque. Quero a seção de saídas, o quadro de cenários e a conclusão, sem eu decidir nada.",
+      "expected_output": "Seção 5.3 com as quatro saídas, modalidade, código, comprovação e situação ('sem comprovação apresentada pelo réu' para as duas em caixa; 'sem comprovação apresentada pela autora' para a folha; 'modalidade não identificada; ônus não atribuído pela perícia' para o código 47); quadro 6 só com cenários A e B (processo contra o BB), com colunas sem corte e com o corte decenal da tese e ressalva sobre a inclusão da saída 4; conclusão neutra listando o que depende de decisão do juízo; esclarecimento de que a valoração da falta de prova cabe ao juízo (CPC arts. 373 e 479).",
+      "files": [],
+      "expectations": [
+        "Registra as duas saídas em caixa como 'sem comprovação apresentada pelo réu', com remissão ao ofício e à resposta do BB, sem concluir que o banco não se desincumbiu do ônus",
+        "Registra a saída em folha como 'sem comprovação apresentada pela autora', sem concluir que a autora não provou o desfalque",
+        "Classifica a saída de 22/09/2016 como OUTROS (modalidade não identificada), não atribui ônus por inferência e apresenta o valor dos cenários com e sem essa saída",
+        "Apresenta apenas os cenários A e B, cada um rotulado pela tese pressuposta (Tema 1.150/STJ), com coluna sem corte prescricional e coluna com o corte decenal, sem indicar cenário recomendado",
+        "Escreve a conclusão com verbos neutros (apura-se, consta, não foi apresentado) e lista prescrição, consequência da falta de prova, incidência do CDC e escolha do cenário como matérias do juízo",
+        "Segue a numeração de seções do assets/template_laudo_pasep.md e remete os valores à memória do motor da pericia-pasep em anexo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Entreguei o laudo do P-001 em 05/11/2026 e o assistente do autor impugnou em 20/11/2026 dizendo três coisas: que eu errei a soma do quadro 5.2 em 1994 (ele tem razão, inverti dois dígitos), que eu deveria ter concluído que o BB é responsável pelos saques porque não juntou microfilmagem, e que eu apliquei a prescrição quinquenal contra o BB. Na verdade eu apresentei o cenário C da União com Súmula 85 e o A do BB com corte decenal, ele leu errado. Fui intimada hoje, 25/11/2026, para esclarecer. Como faço?",
+      "expected_output": "Esclarecimentos em 15 dias (CPC art. 477, § 2º, II), com prazo até meados de dezembro em dias úteis e atualização do lote para status esclarecimentos; documento ponto a ponto: ponto 1 retificado (erro material) com nova saída do motor, v2 do laudo e bloco 'O que mudou nesta versão'; ponto 2 mantido como questão de direito, com a observação de que o laudo registra a ausência de microfilmagem e apresenta o valor nos cenários, sem atribuir responsabilidade; ponto 3 mantido, apontando que o corte quinquenal com Súmula 85/STJ está no cenário C (União) e que o cenário A (BB) aplica o corte decenal do Tema 1.150, com remissão às linhas do quadro 6; linguagem sem qualificar o parecer.",
+      "files": [],
+      "expectations": [
+        "Indica o prazo de 15 dias do art. 477, § 2º, do CPC contado em dias úteis a partir da intimação de 25/11/2026 e registra o status esclarecimentos e o prazo no lote com scripts/lote_pasep.py atualizar",
+        "Trata o erro de soma de 1994 como erro material: retifica com nova memória do motor, gera a versão v2 do laudo com o bloco 'O que mudou nesta versão' e aponta a versão nos esclarecimentos, em vez de editar o número no texto",
+        "Mantém o ponto sobre a responsabilidade do BB como questão de direito, repetindo que o laudo registra a ausência de microfilmagem e o valor correspondente nos cenários sem atribuir responsabilidade",
+        "Mantém o ponto sobre a prescrição demonstrando, com remissão ao quadro 6, que o corte quinquenal com Súmula 85/STJ está no cenário C (União, Tema 545) e que o cenário A (BB) usa o corte decenal do Tema 1.150, sem qualificar o parecer do assistente",
+        "Estrutura o documento como esclarecimentos (identificação, pontos numerados com quem suscitou, resposta e decisão mantido ou retificado, quadro de retificações, encerramento), com nome de arquivo no padrão AAAA-MM-DD_Esclarecimentos_PASEP_P-001_v1.md",
+        "Não acrescenta precedente novo e não usa expressões que decidam a causa, como 'não se desincumbiu do ônus' ou 'está prescrito'"
+      ]
+    }
+  ]
+}
