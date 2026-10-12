@@ -1,0 +1,75 @@
+{
+  "skill_name": "auditoria-contabil-espolio",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fui nomeada perita no inventário do José Alfa, que faleceu em 10/01/2024. A inventariante é a viúva, Maria. Tenho os extratos da conta do espólio no BB de 01/2024 a 06/2026 e os da conta Itaú dela, que ela usou pra pagar coisas do espólio. O saldo no dia do óbito era 12.500. Já vi um PIX de 8 mil pra filha Paula em 20/12/2024 e outro de 5 mil pra própria Maria em 10/06/2025, nenhum com alvará, e um pacote de viagem de 2.300 pago da conta do espólio em 03/2025. Tem ITCMD de 48 mil e honorários de 20 mil, esses com alvará, e IPTU e condomínio todo mês sem alvará nenhum. Monta o fluxo de caixa dos três anos e me diz o que saiu sem autorização.",
+      "expected_output": "Transcrição dos movimentos no layout de assets/exemplo_movimentos.csv (conta do Itaú marcada como uso misto); execução de fluxo_caixa_espolio.py com --abertura-sucessao 10/01/2024 e --saldo-inicial 12.500,00; DFC mensal com sanidade (entradas menos saídas igual à variação do saldo) e conciliação com o extrato; listas de exceção separando saídas a herdeiro ou inventariante sem decisão (8.000 e 5.000), despesa estranha ao espólio (2.300), conservação sem alvará prévio (IPTU e condomínio, ratificáveis) e saídas com alvará (ITCMD e honorários, fora das exceções); recomposição sugerida nominal; vocabulário descritivo; remissão a atualizacao-monetaria.",
+      "files": [],
+      "expectations": [
+        "Transcreve os movimentos no layout de assets/exemplo_movimentos.csv, com a conta do Itaú identificada como de uso misto e vinculo_beneficiario preenchido (herdeiro para Paula, inventariante para Maria), e executa fluxo_caixa_espolio.py com --abertura-sucessao 10/01/2024 e --saldo-inicial 12.500,00",
+        "Apresenta o DFC mensal e confirma a sanidade: entradas menos saídas igual à variação do saldo, com conciliação do saldo final reconstruído contra o extrato",
+        "Lista os PIX de R$ 8.000,00 (20/12/2024) e R$ 5.000,00 (10/06/2025) como saídas em favor de herdeiro ou inventariante sem decisão judicial nem documento, com fundamento no CC, art. 2.020, e no CPC, arts. 618, VII, e 619, sem qualificá-los como fraude ou desvio doloso",
+        "Classifica o pacote de viagem de R$ 2.300,00 como despesa estranha ao espólio (desvio de finalidade) e o inclui na recomposição sugerida, em valor nominal",
+        "Separa IPTU e condomínio pagos sem alvará como despesas de conservação ratificáveis na prestação de contas (CPC, art. 619, IV), distintas das demais saídas sem autorização, e não lista ITCMD e honorários com alvará como exceção",
+        "Não atualiza os valores por conta própria: declara que são nominais e remete a atualização à skill atualizacao-monetaria, e não cita Tema, Súmula ou precedente fora da lista verificada sem [A VERIFICAR]"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "São três imóveis no espólio e quatro herdeiros em partes iguais, sem meação. Um apartamento alugado por 3 mil (o mercado está em 3.200). Uma casa em Campinas onde o Pedro, um dos herdeiros, mora desde o óbito sem pagar nada; o laudo de avaliação diz que o aluguel de mercado é 4 mil. E uma sala comercial vazia desde 01/01/2025, mercado 1.500. Os outros três notificaram o Pedro por cartório em 01/07/2024. O espólio pagou o condomínio e o IPTU da casa, 11.400 no total. O Pedro diz que ninguém reclamou por anos e que isso já prescreveu. Quanto ele deve, desde quando, e como fica a sala vazia? Data de referência 30/06/2026.",
+      "expected_output": "Execução de rendimentos_imoveis.py com fracao_ocupante 1/4, marco_inicial 01/07/2024 para a casa, --abertura-sucessao para o cenário alternativo e --data-referencia 30/06/2026; devido aos demais R$ 4.000,00 x 0,75 x 24 = R$ 72.000,00 desde a notificação, R$ 89.129,03 se o marco for a abertura da sucessão (quadro de sensibilidade, escolha do juízo); encargos de R$ 11.400,00 a cargo do ocupante (REsp 1.704.528) sem dupla compensação (REsp 1.918.125); supressio não configurada e prescrição só após o trânsito em julgado da partilha (AgInt no REsp 2.240.323), com o prazo marcado [A VERIFICAR]; sala vazia como renda potencial informativa (R$ 27.000,00), não dano sem prova de culpa; gap do apartamento como informação, com remissão à revisional da Lei 8.245/1991, art. 19.",
+      "files": [],
+      "expectations": [
+        "Executa rendimentos_imoveis.py com a casa como ocupado_herdeiro, fracao_ocupante 1/4, marco_inicial 01/07/2024 e aluguel_mercado R$ 4.000,00 com fonte (laudo de avaliação), e apresenta o valor devido aos demais coerdeiros de R$ 72.000,00 (R$ 4.000,00 x 0,75 x 24 meses) até 30/06/2026",
+        "Apresenta o cenário alternativo com marco na abertura da sucessão (R$ 89.129,03, pro rata die no mês parcial) como sensibilidade e declara que a escolha do marco é do juízo, citando REsp 1.583.973 (oposição inequívoca por outros meios) e AREsp 3.121.778/SP (notificação extrajudicial)",
+        "Trata os R$ 11.400,00 de condomínio e IPTU como encargos a cargo do ocupante (REsp 1.704.528), computados uma única vez, com a vedação à dupla compensação (REsp 1.918.125)",
+        "Responde à alegação de prescrição e inércia com o AgInt no REsp 2.240.323 (supressio não configurada; prazo só corre após o trânsito em julgado da partilha) e marca o prazo prescricional em si como [A VERIFICAR], sem inventar número de Tema repetitivo",
+        "Apresenta a renda potencial da sala vazia (R$ 27.000,00 em 18 meses) em linha informativa separada do total, explicando que só vira dano com prova de culpa na administração",
+        "Trata a diferença de R$ 200,00 mensais entre o aluguel contratual e o de mercado do apartamento como informação, e não como valor devido, com remissão à revisional após três anos (Lei 8.245/1991, art. 19)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "O apartamento de Lisboa rende 1.200 euros por mês desde fevereiro de 2024 e cai numa conta do espólio num banco português. Em maio pagaram 310 euros de IMI e em agosto 1.050 de IRS. Preciso disso em reais pro laudo. Não achei a tabela do euro; posso usar uma cotação média de 5,50 pra tudo? E outra: o juiz brasileiro pode mexer nesse imóvel?",
+      "expected_output": "Recusa de cotação média ou estimada; orientação para obter a série PTAX euro no SGS do BCB (código [A VERIFICAR]) ou no histórico de cotações e informar por arquivo com a coluna fonte; execução de conversao_ptax.py só com a série, cotação da data de cada movimento (venda, por padrão declarado; dia útil anterior quando não houver, com defasagem declarada); IMI e IRS como despesas documentadas do imóvel (tributo), conferidas contra as notas, sem recálculo e com [A VERIFICAR] nas regras portuguesas; nota sobre jurisdição (CPC, art. 23, II: exclusiva para bens no Brasil; o bem em Portugal segue a jurisdição local) com a observação de que a auditoria dos frutos não depende disso (CC, arts. 1.784 e 2.020); totais em euro e em reais sem mistura.",
+      "files": [],
+      "expectations": [
+        "Recusa a cotação média de 5,50 e qualquer cotação estimada, explicando que o script só converte com a série PTAX por arquivo, com a coluna fonte preenchida, e indica onde obter a série (SGS do BCB, código marcado [A VERIFICAR], ou histórico de cotações do BCB)",
+        "Executa conversao_ptax.py com a cotação da data de cada movimento, critério venda declarado como premissa, e, para data sem cotação, usa a do dia útil anterior disponível com a defasagem declarada linha a linha",
+        "Registra IMI e IRS como despesas documentadas do imóvel (categoria tributo, conservação do CPC, art. 619, IV), conferidas contra a nota de cobrança e a nota de liquidação, sem recalcular imposto português e com [A VERIFICAR] para as regras de IMI e de IRS de não residente",
+        "Explica que a jurisdição brasileira é exclusiva para inventário e partilha de bens situados no Brasil (CPC, art. 23, II), que o bem em Portugal segue a jurisdição local, e que a apuração dos frutos não depende disso porque a renda pertence ao espólio desde o óbito (CC, arts. 1.784 e 2.020)",
+        "Mantém os totais em euro separados dos totais em reais e só soma com o restante do fluxo após a conversão linha a linha, nunca por cotação média do período",
+        "Se usar a série dos assets para demonstrar, avisa que é fictícia e precisa ser substituída pela série oficial do BCB antes do laudo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "A Alfa Comércio Ltda. tinha o falecido com 60% e os dois filhos com 20% cada. O contrato social diz que a sociedade continua com os herdeiros e que os lucros são pro rata. De 2024 até 06/2026 a empresa lucrou 260 mil e distribuiu 100 mil: 25 mil pro espólio e 75 mil pros dois filhos. O Pedro, que virou administrador, recebeu 180 mil de pró-labore no período; uma pesquisa salarial que juntei diz que o mercado paga 96 mil pra esse cargo. Também tem um empréstimo de 40 mil da empresa pro Pedro sem contrato e 12 mil de despesas pessoais dele na empresa. Quanto o espólio deixou de receber? E quanto vale a quota do falecido?",
+      "expected_output": "Quadro por sociedade no layout de assets/exemplo_sociedades.csv: devido pro rata R$ 60.000,00 (60% de R$ 100.000,00), recebido R$ 25.000,00, diferença R$ 35.000,00 (CC, art. 1.007; continuidade com o espólio, CC, art. 1.028, I); pró-labore acima da referência: excesso R$ 84.000,00, parcela do espólio R$ 50.400,00 como lucro suprimido em linha separada; mútuo sem contrato e despesas pessoais R$ 52.000,00, parcela do espólio R$ 31.200,00, linha separada; lucro retido como informação; documentos a requerer por intermédio do juízo (balanços, DRE, atas, razão de sócios, DIRPF dos sócios, folha); valor da quota fora do objeto, remetido a apuracao-haveres e valuation-capital-fechado; achados descritivos sem qualificação jurídica.",
+      "files": [],
+      "expectations": [
+        "Calcula o lucro distribuído devido ao espólio em R$ 60.000,00 (60% de R$ 100.000,00, CC, art. 1.007), confronta com os R$ 25.000,00 recebidos e apura diferença de R$ 35.000,00, registrando que a distribuição aos filhos foi desproporcional às quotas sem cláusula que a autorize",
+        "Apura o excesso de pró-labore de R$ 84.000,00 (R$ 180.000,00 menos a referência de R$ 96.000,00, com a fonte da pesquisa salarial) e a parcela do espólio de R$ 50.400,00 como lucro suprimido, em linha separada e não somada automaticamente aos R$ 35.000,00",
+        "Trata o mútuo de R$ 40.000,00 sem contrato e as despesas pessoais de R$ 12.000,00 como sinais de retirada disfarçada, com a parcela do espólio de R$ 31.200,00 em linha separada, e descreve os fatos sem usar fraude, dolo ou má-fé",
+        "Reconhece a continuidade da sociedade com o espólio pela cláusula contratual (CC, art. 1.028, I) e lista os documentos a requerer por intermédio do juízo (balanços, DRE, atas de distribuição, razão das contas de sócios, folha de pró-labore, DIRPF dos sócios), já que a sociedade é terceiro (CPC, arts. 401 a 404)",
+        "Responde que o valor da quota está fora do objeto desta skill e remete a apuracao-haveres e valuation-capital-fechado, sem estimar o valor",
+        "Apresenta o lucro acumulado não distribuído como informação dependente de deliberação, e não como valor devido"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "A inventariante só mandou os extratos da conta do BB. A conta conjunta que ela tinha com o falecido em outro banco, por onde passaram aluguéis, ela não mandou, e o banco também não respondeu meu ofício. O juiz quer o laudo em 20 dias. Dá pra estimar o que passou nessa conta pela média da conta do BB e já atualizar tudo pelo IPCA até hoje pra fechar o laudo?",
+      "expected_output": "Recusa de estimar movimentos de conta sem extrato e de atualizar por conta própria; orientação processual: requerer a intimação da inventariante para exibir sob as consequências do CPC, art. 400 (arts. 396 a 400), reiteração do ofício ao banco pelo juízo (arts. 401 a 404), prorrogação do prazo do laudo (CPC, art. 476) ou laudo com limitação declarada e complementação; conta conjunta: saldo na data do óbito pela fração que a prova indicar, com cenários (metade e integral) remetidos ao juízo; fluxo da conta do BB entregue com sanidade e conciliação; limitação registrada na seção de documentos, nos achados e na conclusão, dizendo o que mudaria com os extratos; valores nominais e atualização pela skill atualizacao-monetaria quando o juízo fixar o critério.",
+      "files": [],
+      "expectations": [
+        "Recusa estimar os movimentos da conta conjunta pela média da conta do BB, explicando que o fluxo só se reconstrói com extrato e que o script falha de propósito sem saldo e movimentos documentados",
+        "Sugere petição com pedido de intimação da inventariante para exibir os extratos sob as consequências do CPC, art. 400 (arts. 396 a 400), e de reiteração do ofício ao banco por intermédio do juízo (CPC, arts. 401 a 404), com a cronologia dos pedidos",
+        "Oferece as alternativas de prorrogação do prazo (CPC, art. 476) ou de laudo com limitação declarada e complementação posterior, sem presumir regularidade nem desvio na conta não examinada",
+        "Trata a conta conjunta pela fração que a prova indicar na data do óbito e apresenta cenários (metade e integral) remetidos ao juízo, como premissa declarada e não como norma",
+        "Entrega o fluxo da conta do BB com sanidade e conciliação e registra a limitação nas seções de documentos, achados e conclusão, dizendo o que mudaria com a juntada dos extratos",
+        "Não aplica IPCA nem outro índice: mantém os valores nominais e remete a atualização à skill atualizacao-monetaria após o juízo fixar o critério"
+      ]
+    }
+  ]
+}
