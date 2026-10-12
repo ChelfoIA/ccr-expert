@@ -247,7 +247,7 @@ def calcular(args):
     amplitude = meses_entre(salarios[0]["competencia"], salarios[-1]["competencia"]) + 1
     if amplitude > 48:
         raise ErroValidacao("período básico com amplitude de %d meses; a CLPS limita a 48 "
-                            "[conferir art. 21 do Decreto 89.312/1984]" % amplitude)
+                            "[A VERIFICAR: art. 21 do Decreto 89.312/1984]" % amplitude)
     if amplitude != n_sc:
         avisos.append("período básico não é contínuo: %d competências em %d meses; conferir "
                       "se as lacunas correspondem a meses sem contribuição" % (n_sc, amplitude))
@@ -404,7 +404,7 @@ def calcular(args):
         "skill": "pericia-previdenciaria-beneficio-pre-cf88",
         "script": "rmi_clps84.py",
         "premissas": {
-            "regime": "CLPS, Decreto 89.312/1984, e legislação anterior [conferir art. 21 e art. 23]",
+            "regime": "CLPS, Decreto 89.312/1984, e legislação anterior [A VERIFICAR: arts. 21 e 23]",
             "dib": comp_str(dib),
             "moeda_dib": moeda_dib,
             "n_sc": n_sc,
@@ -456,6 +456,9 @@ def calcular(args):
             "maior_valor_teto": str(maior_teto),
             "limitacao_na_concessao": limitacao,
             "rmi_em_salarios_minimos": str(rmi_em_sm) if rmi_em_sm is not None else None,
+            "salario_minimo_dib": str(sm_dib) if sm_dib is not None else None,
+            "media_em_salarios_minimos": str(media / sm_dib) if sm_dib is not None else None,
+            "fonte_salario_minimo": args.fonte_sm or "",
         },
     }
     return resultado
