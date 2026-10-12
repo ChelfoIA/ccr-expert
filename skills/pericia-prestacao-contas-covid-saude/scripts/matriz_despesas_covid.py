@@ -351,7 +351,7 @@ def testar_fracionamento(despesas: list, janela: int) -> list:
         soma = sum((x["valor_empenhado"] for x in g), ZERO)
         for x in g:
             x["achados"].append({"codigo": "FRACIONAMENTO", "classe": "irregularidade formal",
-                                 "descricao": f"{len(g)} empenhos ao mesmo credor em {(g[-1]['data_empenho'] - g[0]['data_empenho']).days} dias "
+                                 "descricao": f"empenhos ao mesmo credor: {len(g)} em {(g[-1]['data_empenho'] - g[0]['data_empenho']).days} dias "
                                               f"(janela declarada {janela}); soma {fmt_brl(soma)}; conferir objeto e modalidade (Lei 14.133/2021, art. 75, § 1º)",
                                  "valor": ZERO})
             if x["classe"] == "regular":
